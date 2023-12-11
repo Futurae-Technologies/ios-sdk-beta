@@ -21,4 +21,5 @@ public class SDKConstants: NSObject {
     @objc public static let DEVICE_TOKEN_KEY = "ftr_device_token"
     @objc public static let ADAPTIVE_ENABLED_KEY = "adaptive_enabled"
     @objc public static let KEY_CONFIG = "key_config"
+    @objc public static let APP_GROUP_ENABLED = "app_group_enabled"
 }
