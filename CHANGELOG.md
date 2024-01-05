@@ -1,3 +1,7 @@
+# Version 3.0.1-beta
+2024-05-01
+- Removed version tag from the binary marketing version to comply with appstore requirements.
+
 # Version 3.0.0-beta
 2023-13-12
 ### Added

@@ -1165,6 +1165,10 @@ enum FTRQRCodeType : NSInteger;
 @property (nonatomic, readonly, strong) JailbreakStatus * _Nonnull jailbreakStatus;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull clientVersion;)
 + (NSString * _Nonnull)clientVersion SWIFT_WARN_UNUSED_RESULT;
+///
+/// returns:
+/// true if current build is beta and false otherwise.
+@property (nonatomic, readonly) BOOL isBeta;
 @end
 
 
@@ -3622,6 +3626,10 @@ enum FTRQRCodeType : NSInteger;
 @property (nonatomic, readonly, strong) JailbreakStatus * _Nonnull jailbreakStatus;
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _Nonnull clientVersion;)
 + (NSString * _Nonnull)clientVersion SWIFT_WARN_UNUSED_RESULT;
+///
+/// returns:
+/// true if current build is beta and false otherwise.
+@property (nonatomic, readonly) BOOL isBeta;
 @end
 
 
