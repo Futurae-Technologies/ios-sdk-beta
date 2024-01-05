@@ -812,6 +812,9 @@ extension FuturaeKit.FTRClient {
   @objc dynamic public class var clientVersion: Swift.String {
     @objc get
   }
+  @objc dynamic public var isBeta: Swift.Bool {
+    @objc get
+  }
 }
 @_inheritsConvenienceInitializers @objc public class SDKErrorDomain : ObjectiveC.NSObject {
   @objc public static let sdk: Swift.String

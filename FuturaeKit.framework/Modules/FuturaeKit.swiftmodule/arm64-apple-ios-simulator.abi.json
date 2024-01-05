@@ -12388,6 +12388,16 @@
         ]
       },
       {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FuturaeKit",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
         "kind": "TypeDecl",
         "name": "SDKConnectionError",
         "printedName": "SDKConnectionError",
@@ -18753,6 +18763,16 @@
             "usr": "s:SY",
             "mangledName": "$sSY"
           }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FuturaeKit",
+        "declAttributes": [
+          "RawDocComment"
         ]
       },
       {
@@ -28191,6 +28211,54 @@
                 "mangledName": "$s10FuturaeKit9FTRClientC13clientVersionSSvgZ",
                 "moduleName": "FuturaeKit",
                 "static": true,
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isBeta",
+            "printedName": "isBeta",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@CM@FuturaeKit@objc(cs)FTRClient(py)isBeta",
+            "mangledName": "$s10FuturaeKit9FTRClientC6isBetaSbvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@FuturaeKit@objc(cs)FTRClient(im)isBeta",
+                "mangledName": "$s10FuturaeKit9FTRClientC6isBetaSbvg",
+                "moduleName": "FuturaeKit",
                 "declAttributes": [
                   "Dynamic",
                   "ObjC"
@@ -47334,15 +47402,8 @@
     },
     {
       "filePath": "\/Users\/hvozdiev\/Desktop\/dev\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
-      "kind": "StringLiteral",
-      "offset": 3462,
-      "length": 7,
-      "value": "\"3.0.0\""
-    },
-    {
-      "filePath": "\/Users\/hvozdiev\/Desktop\/dev\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "FloatLiteral",
-      "offset": 3510,
+      "offset": 3475,
       "length": 4,
       "value": "20.0"
     },
@@ -48614,6 +48675,20 @@
       "value": "11"
     },
     {
+      "filePath": "\/Users\/hvozdiev\/Desktop\/dev\/futurae-ios-sdk\/FuturaeKit\/Internal\/Services\/BuildConfigProvider.swift",
+      "kind": "BooleanLiteral",
+      "offset": 747,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/hvozdiev\/Desktop\/dev\/futurae-ios-sdk\/FuturaeKit\/Internal\/Services\/BuildConfigProvider.swift",
+      "kind": "Array",
+      "offset": 787,
+      "length": 2,
+      "value": "[]"
+    },
+    {
       "filePath": "\/Users\/hvozdiev\/Desktop\/dev\/futurae-ios-sdk\/FuturaeKit\/Internal\/Other\/Utils\/ASN1DERParsing.swift",
       "kind": "IntegerLiteral",
       "offset": 11286,
@@ -49568,7 +49643,7 @@
     {
       "filePath": "\/Users\/hvozdiev\/Desktop\/dev\/futurae-ios-sdk\/FuturaeKit\/Internal\/FTRClient\/FTRClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 1733,
+      "offset": 1790,
       "length": 5,
       "value": "false"
     },
