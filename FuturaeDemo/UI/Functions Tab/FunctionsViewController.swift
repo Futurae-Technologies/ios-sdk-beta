@@ -40,6 +40,13 @@ class FunctionsViewController: UIViewController {
 
         loadServiceLogo()
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        QRCodeScanRequestCoordinator.instance.subscribeToQREvent(self)
+    }
+    
 
     // MARK: - Actions
 
@@ -124,9 +131,9 @@ class FunctionsViewController: UIViewController {
         case .enrollment:
             enrollWithQRCode(QRCodeResult)
         case .onlineAuth:
-            approveAuthWithQRCode(QRCodeResult)
+            showApproveAuthAlertQRCode(QRCodeResult)
         case .usernameless:
-            approveAuthWithUsernamelessQRCode(QRCodeResult)
+            showApproveAuthAlertUsernamelessQRCode(QRCodeResult)
         case .offlineAuth:
             offlineAuthWithQRCode(QRCodeResult)
         case .invalid:
@@ -202,22 +209,30 @@ extension FunctionsViewController: ExampleQRCodeReaderDelegate {
         
         guard let result = result else { return }
         
-        let QRCodeType = reader.QRCodeType
+        dismiss(animated: true) { [unowned self] in
+            let QRCodeType = reader.QRCodeType
 
-        switch QRCodeType {
-        case .enrollment:
-            enrollWithQRCode(result)
-        case .onlineAuth:
-            approveAuthWithQRCode(result)
-        case .offlineAuth:
-            offlineAuthWithQRCode(result)
-        case .generic:
-            handleGeneric(result)
+            switch QRCodeType {
+            case .enrollment:
+                enrollWithQRCode(result)
+            case .onlineAuth:
+                showApproveAuthAlertQRCode(result)
+            case .offlineAuth:
+                showApproveOfflineAlertQRCode(result)
+            case .generic:
+                handleGeneric(result)
+            }
         }
     }
     
     func readerDidCancel(_ reader: ExampleQRCodeViewController) {
         //
+    }
+}
+
+extension FunctionsViewController: QRCodeScanRequestDelegate {
+    func qrCodeScanRequested() {
+        presentQRCodeControllerWithQRCodeType(.onlineAuth, sender: disableAdaptiveButton)
     }
 }
 
