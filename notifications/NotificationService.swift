@@ -45,11 +45,7 @@ class NotificationService: UNNotificationServiceExtension {
                 if let decrypted = try? FTRClient.shared.decryptExtraInfo(encrypted, userId: userId) {
                     bestAttemptContent.categoryIdentifier = "auth"
                     bestAttemptContent.body =  decrypted.compactMap {
-                        if let key = $0["key"] as? String, let value = $0["value"] {
-                            return "\(key): \(value)"
-                        }
-                        
-                        return nil
+                            return "\($0.key): \($0.value)"
                     }.joined(separator: ", ")
                 }
             } catch {}
