@@ -1,3 +1,8 @@
+# Version 3.1.0-beta
+2024-31-01
+- Added `qrCodeScanRequested` method to the `FTRNotificationDelegate`. It is called when online QR authentication is requested and feature is enabled on the backend side.
+- Added transparent approveInfo decryption, when it comes encrypted from the backend, in the `getAccountsStatus` and `getSessionInfo` methods. The feature needs to be enabled on the backend side.
+
 # Version 3.0.1-beta
 2024-05-01
 - Removed version tag from the binary marketing version to comply with appstore requirements.

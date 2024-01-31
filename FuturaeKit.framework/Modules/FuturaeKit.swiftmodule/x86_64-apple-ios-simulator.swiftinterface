@@ -192,7 +192,6 @@ import _SwiftConcurrencyShims
   @objc dynamic public func registerPushToken(_ deviceToken: Foundation.Data, success: @escaping FuturaeKit.FTRSuccessHandler, failure: @escaping FuturaeKit.FTRFailureHandler)
   @nonobjc public func registerPushToken(_ deviceToken: Foundation.Data) -> FuturaeKit.AsyncTask
   @objc dynamic public func handleNotification(_ payload: [Swift.AnyHashable : Any], delegate: (any FuturaeKit.FTRNotificationDelegate)?)
-  @objc dynamic public func decryptExtraInfo(_ encryptedExtraInfo: Swift.String, userId: Swift.String) throws -> [[Swift.String : Any]]
 }
 @_hasMissingDesignatedInitializers @objc public class SDKAppAttestError : FuturaeKit.SDKBaseError {
   @objc override public class var sdkDomainError: Swift.String {
@@ -603,6 +602,7 @@ extension FuturaeKit.FTRClient {
   @nonobjc public func logAnalyticsData(_ analyticsData: [Swift.String : Any]) -> FuturaeKit.AsyncTask
   @objc dynamic public func setUserPresenceDelegate(_ delegate: (any FuturaeKit.FTRUserPresenceDelegate)?)
   @objc dynamic public class func checkDataExists(forAppGroup appGroup: Swift.String?, keychainConfig: FuturaeKit.FTRKeychainConfig?, lockConfiguration: FuturaeKit.LockConfiguration) -> Swift.Bool
+  @objc dynamic public func decryptExtraInfo(_ encryptedExtraInfo: Swift.String, userId: Swift.String) throws -> [FuturaeKit.FTRExtraInfo]
 }
 @objc extension FuturaeKit.FTRClient {
   @objc dynamic public func getAccounts() throws -> [FuturaeKit.FTRAccount]
@@ -1079,6 +1079,7 @@ public typealias FTRVerificationCodeHandler = (Swift.String) -> Swift.Void
   @objc func approveAuthenticationReceived(_ authenticationInfo: FuturaeKit.FTRNotificationAuth)
   @objc func unenrollUserReceived(_ userId: Swift.String)
   @objc func notificationError(_ error: any Swift.Error)
+  @objc func qrCodeScanRequested(_ sessionId: Swift.String, _ userId: Swift.String, _ timeout: Foundation.TimeInterval)
 }
 @_hasMissingDesignatedInitializers @objc public class SDKSystemError : FuturaeKit.SDKBaseError {
   @objc override public class var sdkDomainError: Swift.String {
@@ -1127,7 +1128,7 @@ public typealias FTRVerificationCodeHandler = (Swift.String) -> Swift.Void
   @objc public class func defaultAccessibility() -> FuturaeKit.FTRKeychainItemAccessibility
   @objc deinit
 }
-@objc public class FTRSession : ObjectiveC.NSObject, Swift.Codable {
+@_hasMissingDesignatedInitializers @objc public class FTRSession : ObjectiveC.NSObject, Swift.Codable {
   @objc final public let factor: Swift.String
   @objc final public let userId: Swift.String?
   @objc final public let extraInfo: [FuturaeKit.FTRExtraInfo]?

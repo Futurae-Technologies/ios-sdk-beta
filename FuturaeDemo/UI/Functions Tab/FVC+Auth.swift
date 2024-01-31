@@ -32,8 +32,36 @@ extension FunctionsViewController {
         totpAuth(sdkPin: nil)
     }
     
-    func approveAuthWithQRCode(_ QRCodeResult: String) {
-        FTRClient.shared.replyAuth(AuthReplyParameters.approveQRCode(QRCodeResult, extraInfo: nil), success: {
+    func showApproveAuthAlertQRCode(_ QRCodeResult: String) {
+        let qrParts = QRCodeResult.split(separator: ":")
+        let userId = String(qrParts[0])
+        let sessionToken = String(qrParts[1])
+        
+        FTRClient.shared.getSessionInfo(.with(token: sessionToken, userId: userId)) { [weak self] session in
+            let extras = session.extraInfo ?? []
+            let mutableFormattedExtraInfo = extras.reduce("") { result, extraInfo in
+                result + "\(extraInfo.key): \(extraInfo.value)\n"
+            }
+
+            let title = "Approve"
+            let message = "Request Information\n\(mutableFormattedExtraInfo)"
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Deny", style: .destructive, handler: nil))
+            alert.addAction(UIAlertAction(title: "Approve", style: .default, handler: { [weak self] _ in
+                self?.approveAuthWithQRCode(QRCodeResult, extraInfo: extras)
+            }))
+            self?.present(alert, animated: true, completion: nil)
+        } failure: { error in
+            print(error)
+            
+            self.dismiss(animated: true) {
+                self.showAlert(title: "Error", message: error.localizedDescription)
+            }
+        }
+    }
+    
+    func approveAuthWithQRCode(_ QRCodeResult: String, extraInfo: [FTRExtraInfo]?) {
+        FTRClient.shared.replyAuth(AuthReplyParameters.approveQRCode(QRCodeResult, extraInfo: extraInfo), success: {
             self.dismiss(animated: true) {
                 self.showAlert(title: "Success", message: "User authenticated successfully!")
             }
@@ -44,15 +72,42 @@ extension FunctionsViewController {
         })
     }
 
+    func showApproveAuthAlertUsernamelessQRCode(_ QRCodeResult: String) {
+        let qrParts = QRCodeResult.split(separator: ":")
+        let userId = try! FTRClient.shared.getAccounts().first!.userId
+        let sessionToken = String(qrParts[1])
+        
+        FTRClient.shared.getSessionInfo(.with(token: sessionToken, userId: userId)) { [weak self] session in
+            let extras = session.extraInfo ?? []
+            let mutableFormattedExtraInfo = extras.reduce("") { result, extraInfo in
+                result + "\(extraInfo.key): \(extraInfo.value)\n"
+            }
 
-    func approveAuthWithUsernamelessQRCode(_ QRCodeResult: String) {
+            let title = "Approve"
+            let message = "Request Information\n\(mutableFormattedExtraInfo)"
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Deny", style: .destructive, handler: nil))
+            alert.addAction(UIAlertAction(title: "Approve", style: .default, handler: { [weak self] _ in
+                self?.approveAuthWithUsernamelessQRCode(QRCodeResult, extraInfo: extras)
+            }))
+            self?.present(alert, animated: true, completion: nil)
+        } failure: { error in
+            print(error)
+            
+            self.dismiss(animated: true) {
+                self.showAlert(title: "Error", message: error.localizedDescription)
+            }
+        }
+    }
+
+    func approveAuthWithUsernamelessQRCode(_ QRCodeResult: String, extraInfo: [FTRExtraInfo]?) {
         do {
             let accounts = try FTRClient.shared.getAccounts()
             let ac = UIAlertController(title: "Usernameless QR code", message: "Select an account", preferredStyle: .actionSheet)
 
             for account in accounts {
                 ac.addAction(UIAlertAction(title: account.username ?? "Username N/A", style: .default, handler: { [weak self] _ in
-                    self?.approveAuthWithUsernamelessQRCode(QRCodeResult, userId: account.userId)
+                    self?.approveAuthWithUsernamelessQRCode(QRCodeResult, userId: account.userId, extraInfo: extraInfo)
                 }))
             }
 
@@ -67,8 +122,8 @@ extension FunctionsViewController {
         }
     }
 
-    func approveAuthWithUsernamelessQRCode(_ QRCodeResult: String, userId: String) {
-        FTRClient.shared.replyAuth(AuthReplyParameters.approveUsernamelessQRCode(QRCodeResult, userId: userId, extraInfo: nil), success: { [weak self] in
+    func approveAuthWithUsernamelessQRCode(_ QRCodeResult: String, userId: String, extraInfo: [FTRExtraInfo]?) {
+        FTRClient.shared.replyAuth(AuthReplyParameters.approveUsernamelessQRCode(QRCodeResult, userId: userId, extraInfo: extraInfo), success: { [weak self] in
             self?.dismiss(animated: true) {
                 self?.showAlert(title: "Success", message: "User authenticated successfully!")
             }
@@ -80,12 +135,10 @@ extension FunctionsViewController {
     }
 
     func offlineAuthWithQRCode(_ QRCodeResult: String) {
-        dismiss(animated: true) {
-            if FTRClient.qrCodeType(from: QRCodeResult) == .offlineAuth {
-                self.showApproveOfflineAlertQRCode(QRCodeResult)
-            } else {
-                self.showAlert(title: "Error", message: "QR Code type is not offline.")
-            }
+        if FTRClient.qrCodeType(from: QRCodeResult) == .offlineAuth {
+            self.showApproveOfflineAlertQRCode(QRCodeResult)
+        } else {
+            self.showAlert(title: "Error", message: "QR Code type is not offline.")
         }
     }
 

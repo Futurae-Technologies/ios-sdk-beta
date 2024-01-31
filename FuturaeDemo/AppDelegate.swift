@@ -185,6 +185,11 @@ extension AppDelegate: FTRNotificationDelegate {
     func notificationError(_ error: Error) {
         //
     }
+    
+    func qrCodeScanRequested(_ sessionId: String, _ userId: String, _ timeout: TimeInterval) {
+        //
+        QRCodeScanRequestCoordinator.instance.notifyShouldScanQRCode()
+    }
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
@@ -237,7 +242,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
             return
         }
-
+        
         FTRClient.shared.handleNotification(response.notification.request.content.userInfo, delegate: self)
     }
 }
