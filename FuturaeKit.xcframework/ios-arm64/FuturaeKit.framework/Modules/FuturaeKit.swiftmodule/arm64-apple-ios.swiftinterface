@@ -29,14 +29,14 @@ import _SwiftConcurrencyShims
 @objc public protocol FTRUserPresenceDelegate {
   @objc func userPresenceVerificationType() -> FuturaeKit.UserPresenceVerificationType
 }
-@objc public class FTRAccountsStatus : ObjectiveC.NSObject, Swift.Codable {
+@_hasMissingDesignatedInitializers @objc public class FTRAccountsStatus : ObjectiveC.NSObject, Swift.Codable {
   @objc final public let accounts: [FuturaeKit.FTRAccount]
   @objc final public let featureFlags: [FuturaeKit.FTRFeatureFlag]
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
 }
-@objc public class FTRFeatureFlag : ObjectiveC.NSObject, Swift.Codable {
+@_hasMissingDesignatedInitializers @objc public class FTRFeatureFlag : ObjectiveC.NSObject, Swift.Codable {
   @objc final public let id: Swift.Int
   @objc final public let enabled: Swift.Bool
   @objc final public let name: Swift.String
@@ -45,7 +45,7 @@ import _SwiftConcurrencyShims
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
 }
-@objc public class FTRParam : ObjectiveC.NSObject, Swift.Codable {
+@_hasMissingDesignatedInitializers @objc public class FTRParam : ObjectiveC.NSObject, Swift.Codable {
   @objc final public let enabled: Swift.Bool
   @objc final public let serviceIds: [Swift.String]
   @objc deinit

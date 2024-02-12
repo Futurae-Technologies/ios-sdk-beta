@@ -42,15 +42,15 @@
 		5E84AC4720224A8B007A0191 /* futurae.com_tertiary.cer in Resources */ = {isa = PBXBuildFile; fileRef = 5E84AC4320224A8B007A0191 /* futurae.com_tertiary.cer */; };
 		5E84AC4820224A8B007A0191 /* futurae.com_primary.cer in Resources */ = {isa = PBXBuildFile; fileRef = 5E84AC4420224A8B007A0191 /* futurae.com_primary.cer */; };
 		5E84AC4920224A8B007A0191 /* futurae.com_secondary.cer in Resources */ = {isa = PBXBuildFile; fileRef = 5E84AC4520224A8B007A0191 /* futurae.com_secondary.cer */; };
+		983423902B7A31E200519F2D /* FuturaeKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9834238F2B7A31E200519F2D /* FuturaeKit.xcframework */; };
+		983423912B7A31E200519F2D /* FuturaeKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9834238F2B7A31E200519F2D /* FuturaeKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		983423962B7A320400519F2D /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 983423952B7A320400519F2D /* SQLite */; };
+		983423982B7A320C00519F2D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 983423972B7A320C00519F2D /* RxSwift */; };
+		983423992B7A321800519F2D /* FuturaeKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9834238F2B7A31E200519F2D /* FuturaeKit.xcframework */; };
+		9834239A2B7A321800519F2D /* FuturaeKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9834238F2B7A31E200519F2D /* FuturaeKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9834239C2B7A321B00519F2D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9834239B2B7A321B00519F2D /* RxSwift */; };
+		9834239E2B7A322000519F2D /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 9834239D2B7A322000519F2D /* SQLite */; };
 		988BCAC72B554CD80080B589 /* QRCodeScanRequestCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988BCAC62B554CD80080B589 /* QRCodeScanRequestCoordinator.swift */; };
-		98D34D5C2B6A9BA900412EDB /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 98D34D5B2B6A9BA900412EDB /* SQLite */; };
-		98D34D5F2B6A9BC000412EDB /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 98D34D5E2B6A9BC000412EDB /* RxSwift */; };
-		98D34D612B6A9BC600412EDB /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 98D34D602B6A9BC600412EDB /* RxSwift */; };
-		98D34D632B6A9BC900412EDB /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 98D34D622B6A9BC900412EDB /* SQLite */; };
-		98D34D652B6A9C5E00412EDB /* FuturaeKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98D34D642B6A9C5E00412EDB /* FuturaeKit.xcframework */; };
-		98D34D662B6A9C5E00412EDB /* FuturaeKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 98D34D642B6A9C5E00412EDB /* FuturaeKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		98D34D672B6A9C6400412EDB /* FuturaeKit.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98D34D642B6A9C5E00412EDB /* FuturaeKit.xcframework */; };
-		98D34D682B6A9C6400412EDB /* FuturaeKit.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 98D34D642B6A9C5E00412EDB /* FuturaeKit.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C672FB1F2850CC77006C23E5 /* SVPinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C672FB1A2850CC77006C23E5 /* SVPinView.swift */; };
 		C672FB202850CC77006C23E5 /* SVPinField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C672FB1B2850CC77006C23E5 /* SVPinField.swift */; };
 		C672FB212850CC77006C23E5 /* SVPinView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C672FB1D2850CC77006C23E5 /* SVPinView.xib */; };
@@ -88,18 +88,18 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				98D34D662B6A9C5E00412EDB /* FuturaeKit.xcframework in Embed Frameworks */,
+				9834239A2B7A321800519F2D /* FuturaeKit.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5E587B3B1FF41C730024ACFA /* Embed Frameworks */ = {
+		983423922B7A31E200519F2D /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				98D34D682B6A9C6400412EDB /* FuturaeKit.xcframework in Embed Frameworks */,
+				983423912B7A31E200519F2D /* FuturaeKit.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -143,13 +143,14 @@
 		5E587B241FF41B0C0024ACFA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E587B271FF41B0C0024ACFA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E587B291FF41B0C0024ACFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E587B381FF41C730024ACFA /* FuturaeKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FuturaeKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E837AF82021D0DF00DA4FCC /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		5E84AC4220224A8B007A0191 /* futurae.com_4096.cer */ = {isa = PBXFileReference; lastKnownFileType = file; name = futurae.com_4096.cer; path = FuturaeDemo/Resources/futurae.com_4096.cer; sourceTree = "<group>"; };
 		5E84AC4320224A8B007A0191 /* futurae.com_tertiary.cer */ = {isa = PBXFileReference; lastKnownFileType = file; name = futurae.com_tertiary.cer; path = FuturaeDemo/Resources/futurae.com_tertiary.cer; sourceTree = "<group>"; };
 		5E84AC4420224A8B007A0191 /* futurae.com_primary.cer */ = {isa = PBXFileReference; lastKnownFileType = file; name = futurae.com_primary.cer; path = FuturaeDemo/Resources/futurae.com_primary.cer; sourceTree = "<group>"; };
 		5E84AC4520224A8B007A0191 /* futurae.com_secondary.cer */ = {isa = PBXFileReference; lastKnownFileType = file; name = futurae.com_secondary.cer; path = FuturaeDemo/Resources/futurae.com_secondary.cer; sourceTree = "<group>"; };
+		9834238F2B7A31E200519F2D /* FuturaeKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FuturaeKit.xcframework; sourceTree = "<group>"; };
 		988BCAC62B554CD80080B589 /* QRCodeScanRequestCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeScanRequestCoordinator.swift; sourceTree = "<group>"; };
-		98D34D642B6A9C5E00412EDB /* FuturaeKit.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = FuturaeKit.xcframework; sourceTree = "<group>"; };
 		C672FB1A2850CC77006C23E5 /* SVPinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVPinView.swift; sourceTree = "<group>"; };
 		C672FB1B2850CC77006C23E5 /* SVPinField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SVPinField.swift; sourceTree = "<group>"; };
 		C672FB1D2850CC77006C23E5 /* SVPinView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SVPinView.xib; sourceTree = "<group>"; };
@@ -164,9 +165,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98D34D632B6A9BC900412EDB /* SQLite in Frameworks */,
-				98D34D612B6A9BC600412EDB /* RxSwift in Frameworks */,
-				98D34D652B6A9C5E00412EDB /* FuturaeKit.xcframework in Frameworks */,
+				9834239E2B7A322000519F2D /* SQLite in Frameworks */,
+				9834239C2B7A321B00519F2D /* RxSwift in Frameworks */,
+				983423992B7A321800519F2D /* FuturaeKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,9 +175,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98D34D5C2B6A9BA900412EDB /* SQLite in Frameworks */,
-				98D34D5F2B6A9BC000412EDB /* RxSwift in Frameworks */,
-				98D34D672B6A9C6400412EDB /* FuturaeKit.xcframework in Frameworks */,
+				983423982B7A320C00519F2D /* RxSwift in Frameworks */,
+				983423962B7A320400519F2D /* SQLite in Frameworks */,
+				983423902B7A31E200519F2D /* FuturaeKit.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,10 +338,11 @@
 		5E587B311FF41BBD0024ACFA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				98D34D642B6A9C5E00412EDB /* FuturaeKit.xcframework */,
+				9834238F2B7A31E200519F2D /* FuturaeKit.xcframework */,
 				0795C64929D3B1420050F342 /* Security.framework */,
 				0795C64729D3B13D0050F342 /* Foundation.framework */,
 				5E837AF82021D0DF00DA4FCC /* UserNotifications.framework */,
+				5E587B381FF41C730024ACFA /* FuturaeKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -401,8 +403,8 @@
 			);
 			name = notifications;
 			packageProductDependencies = (
-				98D34D602B6A9BC600412EDB /* RxSwift */,
-				98D34D622B6A9BC900412EDB /* SQLite */,
+				9834239B2B7A321B00519F2D /* RxSwift */,
+				9834239D2B7A322000519F2D /* SQLite */,
 			);
 			productName = notifications;
 			productReference = 075C1C5F2A56969F000FDA86 /* notifications.appex */;
@@ -415,8 +417,8 @@
 				5E587B141FF41B0C0024ACFA /* Sources */,
 				5E587B151FF41B0C0024ACFA /* Frameworks */,
 				5E587B161FF41B0C0024ACFA /* Resources */,
-				5E587B3B1FF41C730024ACFA /* Embed Frameworks */,
 				075C1C6E2A56969F000FDA86 /* Embed Foundation Extensions */,
+				983423922B7A31E200519F2D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -425,8 +427,8 @@
 			);
 			name = FuturaeDemo;
 			packageProductDependencies = (
-				98D34D5B2B6A9BA900412EDB /* SQLite */,
-				98D34D5E2B6A9BC000412EDB /* RxSwift */,
+				983423952B7A320400519F2D /* SQLite */,
+				983423972B7A320C00519F2D /* RxSwift */,
 			);
 			productName = FuturaeDemo;
 			productReference = 5E587B181FF41B0C0024ACFA /* FuturaeDemo.app */;
@@ -470,8 +472,8 @@
 			);
 			mainGroup = 5E587B0F1FF41B0C0024ACFA;
 			packageReferences = (
-				98D34D5A2B6A9BA900412EDB /* XCRemoteSwiftPackageReference "SQLite" */,
-				98D34D5D2B6A9BB400412EDB /* XCRemoteSwiftPackageReference "RxSwift" */,
+				983423932B7A31FB00519F2D /* XCRemoteSwiftPackageReference "RxSwift" */,
+				983423942B7A320400519F2D /* XCRemoteSwiftPackageReference "SQLite" */,
 			);
 			productRefGroup = 5E587B191FF41B0C0024ACFA /* Products */;
 			projectDirPath = "";
@@ -1619,15 +1621,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		98D34D5A2B6A9BA900412EDB /* XCRemoteSwiftPackageReference "SQLite" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/stephencelis/SQLite.swift";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.14.1;
-			};
-		};
-		98D34D5D2B6A9BB400412EDB /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+		983423932B7A31FB00519F2D /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
@@ -1635,27 +1629,35 @@
 				minimumVersion = 6.6.0;
 			};
 		};
+		983423942B7A320400519F2D /* XCRemoteSwiftPackageReference "SQLite" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stephencelis/SQLite.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.14.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		98D34D5B2B6A9BA900412EDB /* SQLite */ = {
+		983423952B7A320400519F2D /* SQLite */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 98D34D5A2B6A9BA900412EDB /* XCRemoteSwiftPackageReference "SQLite" */;
+			package = 983423942B7A320400519F2D /* XCRemoteSwiftPackageReference "SQLite" */;
 			productName = SQLite;
 		};
-		98D34D5E2B6A9BC000412EDB /* RxSwift */ = {
+		983423972B7A320C00519F2D /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 98D34D5D2B6A9BB400412EDB /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 983423932B7A31FB00519F2D /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
 		};
-		98D34D602B6A9BC600412EDB /* RxSwift */ = {
+		9834239B2B7A321B00519F2D /* RxSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 98D34D5D2B6A9BB400412EDB /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = 983423932B7A31FB00519F2D /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
 		};
-		98D34D622B6A9BC900412EDB /* SQLite */ = {
+		9834239D2B7A322000519F2D /* SQLite */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 98D34D5A2B6A9BA900412EDB /* XCRemoteSwiftPackageReference "SQLite" */;
+			package = 983423942B7A320400519F2D /* XCRemoteSwiftPackageReference "SQLite" */;
 			productName = SQLite;
 		};
 /* End XCSwiftPackageProductDependency section */
