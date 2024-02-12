@@ -364,6 +364,32 @@
           {
             "kind": "Constructor",
             "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "FTRAccountsStatus",
+                "printedName": "FuturaeKit.FTRAccountsStatus",
+                "usr": "c:@M@FuturaeKit@objc(cs)FTRAccountsStatus"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@FuturaeKit@objc(cs)FTRAccountsStatus(im)init",
+            "mangledName": "$s10FuturaeKit17FTRAccountsStatusCACycfc",
+            "moduleName": "FuturaeKit",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
             "printedName": "init(from:)",
             "children": [
               {
@@ -426,6 +452,7 @@
           "RawDocComment"
         ],
         "superclassUsr": "c:objc(cs)NSObject",
+        "hasMissingDesignatedInitializers": true,
         "superclassNames": [
           "ObjectiveC.NSObject"
         ],
@@ -761,6 +788,32 @@
           {
             "kind": "Constructor",
             "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "FTRFeatureFlag",
+                "printedName": "FuturaeKit.FTRFeatureFlag",
+                "usr": "c:@M@FuturaeKit@objc(cs)FTRFeatureFlag"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@FuturaeKit@objc(cs)FTRFeatureFlag(im)init",
+            "mangledName": "$s10FuturaeKit14FTRFeatureFlagCACycfc",
+            "moduleName": "FuturaeKit",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
             "printedName": "init(from:)",
             "children": [
               {
@@ -823,6 +876,7 @@
           "RawDocComment"
         ],
         "superclassUsr": "c:objc(cs)NSObject",
+        "hasMissingDesignatedInitializers": true,
         "superclassNames": [
           "ObjectiveC.NSObject"
         ],
@@ -1040,6 +1094,32 @@
           {
             "kind": "Constructor",
             "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "FTRParam",
+                "printedName": "FuturaeKit.FTRParam",
+                "usr": "c:@M@FuturaeKit@objc(cs)FTRParam"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@FuturaeKit@objc(cs)FTRParam(im)init",
+            "mangledName": "$s10FuturaeKit8FTRParamCACycfc",
+            "moduleName": "FuturaeKit",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
             "printedName": "init(from:)",
             "children": [
               {
@@ -1102,6 +1182,7 @@
           "RawDocComment"
         ],
         "superclassUsr": "c:objc(cs)NSObject",
+        "hasMissingDesignatedInitializers": true,
         "superclassNames": [
           "ObjectiveC.NSObject"
         ],
@@ -44307,16 +44388,37 @@
     {
       "filePath": "\/Users\/hvozdiev\/Desktop\/dev\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/FTRAccountsStatus.swift",
       "kind": "StringLiteral",
-      "offset": 1832,
+      "offset": 297,
+      "length": 17,
+      "value": "\"FuturaeKit.FTRAccountsStatus\""
+    },
+    {
+      "filePath": "\/Users\/hvozdiev\/Desktop\/dev\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/FTRAccountsStatus.swift",
+      "kind": "StringLiteral",
+      "offset": 1046,
+      "length": 14,
+      "value": "\"FuturaeKit.FTRFeatureFlag\""
+    },
+    {
+      "filePath": "\/Users\/hvozdiev\/Desktop\/dev\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/FTRAccountsStatus.swift",
+      "kind": "StringLiteral",
+      "offset": 2195,
       "length": 13,
       "value": "\"service_ids\""
     },
     {
       "filePath": "\/Users\/hvozdiev\/Desktop\/dev\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/FTRAccountsStatus.swift",
       "kind": "StringLiteral",
-      "offset": 1832,
+      "offset": 2195,
       "length": 13,
       "value": "\"service_ids\""
+    },
+    {
+      "filePath": "\/Users\/hvozdiev\/Desktop\/dev\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/FTRAccountsStatus.swift",
+      "kind": "StringLiteral",
+      "offset": 1851,
+      "length": 8,
+      "value": "\"FuturaeKit.FTRParam\""
     },
     {
       "filePath": "\/Users\/hvozdiev\/Desktop\/dev\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Enums\/KeychainItemAccessibility.swift",
@@ -45784,70 +45886,70 @@
     {
       "filePath": "\/Users\/hvozdiev\/Desktop\/dev\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Response\/Account.swift",
       "kind": "StringLiteral",
-      "offset": 3620,
+      "offset": 3735,
       "length": 14,
       "value": "\"device_token\""
     },
     {
       "filePath": "\/Users\/hvozdiev\/Desktop\/dev\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Response\/Account.swift",
       "kind": "StringLiteral",
-      "offset": 3659,
+      "offset": 3774,
       "length": 11,
       "value": "\"totp_seed\""
     },
     {
       "filePath": "\/Users\/hvozdiev\/Desktop\/dev\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Response\/Account.swift",
       "kind": "StringLiteral",
-      "offset": 3620,
+      "offset": 3735,
       "length": 14,
       "value": "\"device_token\""
     },
     {
       "filePath": "\/Users\/hvozdiev\/Desktop\/dev\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Response\/Account.swift",
       "kind": "StringLiteral",
-      "offset": 3659,
+      "offset": 3774,
       "length": 11,
       "value": "\"totp_seed\""
     },
     {
       "filePath": "\/Users\/hvozdiev\/Desktop\/dev\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Response\/Account.swift",
       "kind": "StringLiteral",
-      "offset": 3843,
+      "offset": 3958,
       "length": 11,
       "value": "\"device_id\""
     },
     {
       "filePath": "\/Users\/hvozdiev\/Desktop\/dev\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Response\/Account.swift",
       "kind": "StringLiteral",
-      "offset": 3879,
+      "offset": 3994,
       "length": 11,
       "value": "\"totp_seed\""
     },
     {
       "filePath": "\/Users\/hvozdiev\/Desktop\/dev\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Response\/Account.swift",
       "kind": "StringLiteral",
-      "offset": 3918,
+      "offset": 4033,
       "length": 14,
       "value": "\"sync_counter\""
     },
     {
       "filePath": "\/Users\/hvozdiev\/Desktop\/dev\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Response\/Account.swift",
       "kind": "StringLiteral",
-      "offset": 3843,
+      "offset": 3958,
       "length": 11,
       "value": "\"device_id\""
     },
     {
       "filePath": "\/Users\/hvozdiev\/Desktop\/dev\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Response\/Account.swift",
       "kind": "StringLiteral",
-      "offset": 3879,
+      "offset": 3994,
       "length": 11,
       "value": "\"totp_seed\""
     },
     {
       "filePath": "\/Users\/hvozdiev\/Desktop\/dev\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Response\/Account.swift",
       "kind": "StringLiteral",
-      "offset": 3918,
+      "offset": 4033,
       "length": 14,
       "value": "\"sync_counter\""
     },
@@ -54806,22 +54908,15 @@
     },
     {
       "filePath": "\/Users\/hvozdiev\/Desktop\/dev\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Response\/Session.swift",
-      "kind": "Array",
-      "offset": 1226,
-      "length": 2,
-      "value": "[]"
-    },
-    {
-      "filePath": "\/Users\/hvozdiev\/Desktop\/dev\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Response\/Session.swift",
       "kind": "StringLiteral",
-      "offset": 2221,
+      "offset": 2205,
       "length": 18,
       "value": "\"plain_text_array\""
     },
     {
       "filePath": "\/Users\/hvozdiev\/Desktop\/dev\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Response\/Session.swift",
       "kind": "StringLiteral",
-      "offset": 2221,
+      "offset": 2205,
       "length": 18,
       "value": "\"plain_text_array\""
     },
@@ -55339,14 +55434,14 @@
     {
       "filePath": "\/Users\/hvozdiev\/Desktop\/dev\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Response\/AccountsStatus.swift",
       "kind": "StringLiteral",
-      "offset": 824,
+      "offset": 990,
       "length": 13,
       "value": "\"service_ids\""
     },
     {
       "filePath": "\/Users\/hvozdiev\/Desktop\/dev\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Response\/AccountsStatus.swift",
       "kind": "StringLiteral",
-      "offset": 824,
+      "offset": 990,
       "length": 13,
       "value": "\"service_ids\""
     },

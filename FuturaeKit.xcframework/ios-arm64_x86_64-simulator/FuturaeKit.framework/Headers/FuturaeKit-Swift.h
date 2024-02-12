@@ -694,6 +694,8 @@ SWIFT_CLASS("_TtC10FuturaeKit17FTRAccountsStatus")
 @property (nonatomic, readonly, copy) NSArray<FTRAccount *> * _Nonnull accounts;
 /// An array of <code>FTRFeatureFlag</code> objects, each indicating the status and details of a specific feature flag.
 @property (nonatomic, readonly, copy) NSArray<FTRFeatureFlag *> * _Nonnull featureFlags;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
@@ -1245,6 +1247,8 @@ SWIFT_CLASS("_TtC10FuturaeKit14FTRFeatureFlag")
 /// An optional array of <code>FTRParam</code> objects providing additional parameters related to the feature flag.
 /// This may be nil if there are no additional parameters.
 @property (nonatomic, readonly, copy) NSArray<FTRParam *> * _Nullable params;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 enum FTRKeychainItemAccessibility : NSInteger;
@@ -1381,6 +1385,8 @@ SWIFT_CLASS("_TtC10FuturaeKit8FTRParam")
 @property (nonatomic, readonly) BOOL enabled;
 /// An array of service identifiers to which this parameter is applicable.
 @property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull serviceIds;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 @class AVCaptureVideoPreviewLayer;
@@ -3159,6 +3165,8 @@ SWIFT_CLASS("_TtC10FuturaeKit17FTRAccountsStatus")
 @property (nonatomic, readonly, copy) NSArray<FTRAccount *> * _Nonnull accounts;
 /// An array of <code>FTRFeatureFlag</code> objects, each indicating the status and details of a specific feature flag.
 @property (nonatomic, readonly, copy) NSArray<FTRFeatureFlag *> * _Nonnull featureFlags;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 
@@ -3710,6 +3718,8 @@ SWIFT_CLASS("_TtC10FuturaeKit14FTRFeatureFlag")
 /// An optional array of <code>FTRParam</code> objects providing additional parameters related to the feature flag.
 /// This may be nil if there are no additional parameters.
 @property (nonatomic, readonly, copy) NSArray<FTRParam *> * _Nullable params;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 enum FTRKeychainItemAccessibility : NSInteger;
@@ -3846,6 +3856,8 @@ SWIFT_CLASS("_TtC10FuturaeKit8FTRParam")
 @property (nonatomic, readonly) BOOL enabled;
 /// An array of service identifiers to which this parameter is applicable.
 @property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull serviceIds;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
 @class AVCaptureVideoPreviewLayer;

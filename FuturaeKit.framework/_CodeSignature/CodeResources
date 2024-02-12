@@ -30,7 +30,7 @@
 		</data>
 		<key>Headers/FuturaeKit-Swift.h</key>
 		<data>
-		DlD+glCrM2j3w/5yox00dPZzTcE=
+		Rk8lFQL/5mms1J0afcBydvJnel4=
 		</data>
 		<key>Headers/FuturaeKit.h</key>
 		<data>
@@ -102,23 +102,23 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		+XBwaL/VdkRUxCLM3z2b7Yn+2dw=
+		ReIrCDJsQ2bROPZsoxHhbm+vWBU=
 		</data>
 		<key>Modules/FuturaeKit.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		K0y6qH/Y5nrkT+B09kwodERsHUk=
+		CB72jhAtp6NfGiRhiArnIJqvzF8=
 		</data>
 		<key>Modules/FuturaeKit.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		ATQic+jv3yAc7/Zal0P3Muj4y/s=
+		n6YDYy3VKDpfWiwj2LbtJLEVqZE=
 		</data>
 		<key>Modules/FuturaeKit.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		hOl4ouAT0BMILIoZ7pG+ofLO+WQ=
+		fPOxDwD54eoNyYXRXfYeryeehAg=
 		</data>
 		<key>Modules/FuturaeKit.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		s6LhrvsKrPsggrk6Zam9QbSEOVc=
+		oO94pzuSp4F1In/pQKdw9kNf6Z8=
 		</data>
 		<key>Modules/FuturaeKit.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -126,19 +126,19 @@
 		</data>
 		<key>Modules/FuturaeKit.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		s6LhrvsKrPsggrk6Zam9QbSEOVc=
+		oO94pzuSp4F1In/pQKdw9kNf6Z8=
 		</data>
 		<key>Modules/FuturaeKit.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		GVzwqje56BO9Ov17ylqah+Cy1S8=
+		2k5H583bvHG3IT1c0GMm4oRS9wE=
 		</data>
 		<key>Modules/FuturaeKit.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		hOl4ouAT0BMILIoZ7pG+ofLO+WQ=
+		fPOxDwD54eoNyYXRXfYeryeehAg=
 		</data>
 		<key>Modules/FuturaeKit.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		GzaCmNyrtvxQ9CktoOY9XhsrWCM=
+		C9QohbAsDYregjLILrXaAua4u5E=
 		</data>
 		<key>Modules/FuturaeKit.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -146,11 +146,11 @@
 		</data>
 		<key>Modules/FuturaeKit.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		GzaCmNyrtvxQ9CktoOY9XhsrWCM=
+		C9QohbAsDYregjLILrXaAua4u5E=
 		</data>
 		<key>Modules/FuturaeKit.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		bzJrI65LSIQfAau763nTfZtxSRQ=
+		F1bmwnGbTx2F9ga4edgsAGmyfdM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -205,7 +205,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			7zs07nfQHVYbFW1p302uUIrx8Q6Cr7POLt/qYK+kyCE=
+			G3d1CbkZu0U4/lWulBn6XkU+lMSOYHWUCHNReTfX4bA=
 			</data>
 		</dict>
 		<key>Headers/FuturaeKit.h</key>
@@ -331,28 +331,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			vDVKnJOTffgvcFkE7747aqm0VMuxMKtuLroPvStSMOo=
+			UodHBwSKTxvduBNWx/3vsrtvVXlaOA4A6zwHVM5uc2o=
 			</data>
 		</dict>
 		<key>Modules/FuturaeKit.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			qp0uzmKMEKSezO6AF1iwceKJyFiQIjhbYXc3E22NXmE=
+			0ZZOPcxlhiU1ufnazI1v6iLQT3uok4oDyU2A7hpyRkw=
 			</data>
 		</dict>
 		<key>Modules/FuturaeKit.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			++AzQtjC/zGBYilGvpZ/5Fq8BjenshYjw+5nGvNSE9A=
+			2ozqbtzLw9Qv63Qxfs3gKbZMA2XCM0jReww/URaLkm0=
 			</data>
 		</dict>
 		<key>Modules/FuturaeKit.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			o6MOUH3mNEkuY3tqSkLzGOsRgUtq9lylQdOTKZ3xm5g=
+			57ma3TReVLdxz/j4uCsZxzJnPrCXgZ+tkcHVXlVS4Z4=
 			</data>
 		</dict>
 		<key>Modules/FuturaeKit.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
@@ -366,28 +366,28 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			o6MOUH3mNEkuY3tqSkLzGOsRgUtq9lylQdOTKZ3xm5g=
+			57ma3TReVLdxz/j4uCsZxzJnPrCXgZ+tkcHVXlVS4Z4=
 			</data>
 		</dict>
 		<key>Modules/FuturaeKit.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			VUmwFWPULZilHckNGs5+Z6PLsrAmfysXrNWrP38JuCw=
+			8h2AA4Kyi38/J3ZPmw+9rYkQNBKmx399SGCyr5b8VGM=
 			</data>
 		</dict>
 		<key>Modules/FuturaeKit.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			++AzQtjC/zGBYilGvpZ/5Fq8BjenshYjw+5nGvNSE9A=
+			2ozqbtzLw9Qv63Qxfs3gKbZMA2XCM0jReww/URaLkm0=
 			</data>
 		</dict>
 		<key>Modules/FuturaeKit.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1wfN3HpBFn4ej7uAwQspi3XD5G2Z8mWqjci9ZnCkoVc=
+			kCnXwjvZ79P4nQpNDr3T4G3xS3o6T4fg+sNE/2qAJk8=
 			</data>
 		</dict>
 		<key>Modules/FuturaeKit.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -401,14 +401,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			1wfN3HpBFn4ej7uAwQspi3XD5G2Z8mWqjci9ZnCkoVc=
+			kCnXwjvZ79P4nQpNDr3T4G3xS3o6T4fg+sNE/2qAJk8=
 			</data>
 		</dict>
 		<key>Modules/FuturaeKit.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			6ow7pykarIrOL3xtONvLuEhOi9FhNJ6OC1lln+7eIz4=
+			NRqTYC8QTZOQvFTKgiq+tzbZ+q2YbOCRvHrhdNh64a4=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

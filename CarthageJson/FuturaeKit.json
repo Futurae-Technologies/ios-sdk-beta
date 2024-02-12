@@ -1,5 +1,6 @@
 {
   "3.0.0-beta": "https://github.com/Futurae-Technologies/ios-sdk-beta/releases/download/v3.0.0-beta/FuturaeKit-v3.0.0-beta.xcframework.zip",
   "3.0.1-beta": "https://github.com/Futurae-Technologies/ios-sdk-beta/releases/download/v3.0.1-beta/FuturaeKit-v3.0.1-framework.zip",
-  "3.1.0-beta": "https://github.com/Futurae-Technologies/ios-sdk-beta/releases/download/v3.1.0-beta/FuturaeKit-v3.1.0-framework.zip"
+  "3.1.0-beta": "https://github.com/Futurae-Technologies/ios-sdk-beta/releases/download/v3.1.0-beta/FuturaeKit-v3.1.0-framework.zip",
+  "3.1.1-beta": "https://github.com/Futurae-Technologies/ios-sdk-beta/releases/download/v3.1.1-beta/FuturaeKit-v3.1.1-framework.zip"
 }

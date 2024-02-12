@@ -1,3 +1,8 @@
+# Version 3.1.1-beta
+2024-12-02
+- Fixed issue where account status does not include extra info.
+- Internal changes related to Usernameless QR.
+
 # Version 3.1.0-beta
 2024-31-01
 - Added `qrCodeScanRequested` method to the `FTRNotificationDelegate`. It is called when online QR authentication is requested and feature is enabled on the backend side.
