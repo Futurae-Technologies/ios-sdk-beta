@@ -1,7 +1,6 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.9.2 (swiftlang-5.9.2.2.56 clang-1500.1.0.2.5)
-// swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name FuturaeKit
-// swift-module-flags-ignorable: -enable-bare-slash-regex
+// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
+// swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name FuturaeKit
 import AVFoundation
 import Combine
 import CommonCrypto
@@ -178,9 +177,9 @@ import _SwiftConcurrencyShims
 }
 @_hasMissingDesignatedInitializers @objc public class SDKState : ObjectiveC.NSObject {
   @objc final public let lockStatus: FuturaeKit.SDKLockStatus
-  @objc final public let configStatus: FuturaeKit.SDKLockConfigStatus
   @objc final public let unlockedRemainingDuration: Foundation.TimeInterval
   @objc final public let error: (any Swift.Error)?
+  @objc final public let haveBiometricsChanged: Swift.Bool
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class FTRTotp : ObjectiveC.NSObject {
@@ -296,6 +295,9 @@ import _SwiftConcurrencyShims
   public var rawValue: Swift.Int {
     get
   }
+}
+@objc public protocol FTRClientDelegate {
+  @objc func didUpdateStatus(status: FuturaeKit.SDKStatus)
 }
 @_hasMissingDesignatedInitializers @objc public class OfflineQRCodeParameters : ObjectiveC.NSObject {
   @objc final public let qrCode: Swift.String
@@ -579,11 +581,20 @@ import _SwiftConcurrencyShims
   @objc dynamic public func changeSDKPin(newSDKPin: Swift.String, success: @escaping FuturaeKit.FTRSuccessHandler, failure: @escaping FuturaeKit.FTRFailureHandler)
   @nonobjc public func changeSDKPin(newSDKPin: Swift.String) -> FuturaeKit.AsyncTask
 }
+@_inheritsConvenienceInitializers @objc public class FTRUtils : ObjectiveC.NSObject {
+  @objc public static func userId(fromQRCode qrCode: Swift.String) -> Swift.String?
+  @objc public static func sessionToken(fromQRCode qrCode: Swift.String) -> Swift.String?
+  @objc public static func userId(fromUri uri: Swift.String) -> Swift.String?
+  @objc public static func sessionToken(fromUri uri: Swift.String) -> Swift.String?
+  @objc override dynamic public init()
+  @objc deinit
+}
 @_hasMissingDesignatedInitializers @objc public class FTRNotificationAuth : ObjectiveC.NSObject, Swift.Codable {
   @objc final public let sessionId: Swift.String
   @objc final public let userId: Swift.String
   @objc final public let multiNumberedChallenge: [Swift.Int]?
   @objc public var extraInfo: [FuturaeKit.FTRExtraInfo]?
+  @objc public var type: Swift.String?
   @objc public var timeout: Foundation.NSNumber? {
     @objc get
   }
@@ -750,9 +761,10 @@ extension FuturaeKit.FTRClient {
   @objc public static var shared: FuturaeKit.FTRClient {
     @objc get
   }
-  @objc public static var sdkIsLaunched: Swift.Bool {
+  @objc public static var sdkStatus: FuturaeKit.SDKStatus {
     @objc get
   }
+  @nonobjc public static var sdkStatusRx: RxSwift.BehaviorSubject<FuturaeKit.SDKStatus>
   @objc deinit
 }
 @objc extension FuturaeKit.FTRClient {
@@ -791,6 +803,10 @@ extension FuturaeKit.FTRClient {
   }
 }
 @objc extension FuturaeKit.FTRClient {
+  @objc public static var sdkIsLaunched: Swift.Bool {
+    @objc get
+  }
+  @objc dynamic public class func setDelegate(_ delegate: (any FuturaeKit.FTRClientDelegate)?)
   @objc dynamic public var isLocked: Swift.Bool {
     @objc get
   }
@@ -896,19 +912,6 @@ extension FuturaeKit.FTRClient {
     get
   }
 }
-@objc public enum SDKLockConfigStatus : Swift.Int {
-  case valid = 0
-  case invalid = 1
-  case invalidBiometricsMissing = 2
-  case invalidBiometricsChanged = 3
-  case invalidPasscodeMissing = 4
-  case invalidPasscodeChanged = 5
-  public init?(rawValue: Swift.Int)
-  public typealias RawValue = Swift.Int
-  public var rawValue: Swift.Int {
-    get
-  }
-}
 public enum SDKErrorAssociatedType {
   case base(error: FuturaeKit.SDKBaseError)
   case sdk(error: FuturaeKit.SDKError)
@@ -1008,6 +1011,17 @@ public typealias FTRVerificationCodeHandler = (Swift.String) -> Swift.Void
   @objc final public let userId: Swift.String
   @objc final public let username: Swift.String?
   @objc deinit
+}
+@objc public enum SDKStatus : Swift.Int {
+  case notLaunched = 0
+  case launched = 1
+  case launching = 2
+  case needsReset = 3
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
 }
 @objc extension FuturaeKit.FTRClient {
   @objc dynamic public func replyAuth(_ parameters: FuturaeKit.AuthReplyParameters, success: @escaping FuturaeKit.FTRSuccessHandler, failure: @escaping FuturaeKit.FTRFailureHandler)
@@ -1242,12 +1256,12 @@ extension FuturaeKit.UnlockMethodType : Swift.RawRepresentable {}
 extension FuturaeKit.SDKDatabaseErrorCode : Swift.Equatable {}
 extension FuturaeKit.SDKDatabaseErrorCode : Swift.Hashable {}
 extension FuturaeKit.SDKDatabaseErrorCode : Swift.RawRepresentable {}
-extension FuturaeKit.SDKLockConfigStatus : Swift.Equatable {}
-extension FuturaeKit.SDKLockConfigStatus : Swift.Hashable {}
-extension FuturaeKit.SDKLockConfigStatus : Swift.RawRepresentable {}
 extension FuturaeKit.SDKErrorType : Swift.Equatable {}
 extension FuturaeKit.SDKErrorType : Swift.Hashable {}
 extension FuturaeKit.SDKErrorType : Swift.RawRepresentable {}
+extension FuturaeKit.SDKStatus : Swift.Equatable {}
+extension FuturaeKit.SDKStatus : Swift.Hashable {}
+extension FuturaeKit.SDKStatus : Swift.RawRepresentable {}
 extension FuturaeKit.SDKLockStatus : Swift.Equatable {}
 extension FuturaeKit.SDKLockStatus : Swift.Hashable {}
 extension FuturaeKit.SDKLockStatus : Swift.RawRepresentable {}

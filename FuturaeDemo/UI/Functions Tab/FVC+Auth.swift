@@ -12,7 +12,11 @@ import FuturaeKit
 extension FunctionsViewController {
     @IBAction func syncTokenTouchedUpInside(_ sender: UIButton) {
         do {
-            guard let account = try FTRClient.shared.getAccounts().first else { return }
+            guard let account = try FTRClient.shared.getAccounts().first else {
+                self.showAlert(title: "Error", message: "No accounts available.")
+                return
+            }
+            
             let token = try FTRClient.shared.getSynchronousAuthToken(userId: account.userId)
             
             let title = "Sync Auth Token"
@@ -33,9 +37,11 @@ extension FunctionsViewController {
     }
     
     func showApproveAuthAlertQRCode(_ QRCodeResult: String) {
-        let qrParts = QRCodeResult.split(separator: ":")
-        let userId = String(qrParts[0])
-        let sessionToken = String(qrParts[1])
+        guard let userId = FTRUtils.userId(fromQRCode: QRCodeResult),
+              let sessionToken = FTRUtils.sessionToken(fromQRCode: QRCodeResult) else {
+            self.showAlert(title: "Error", message: "Invalid QR Code")
+            return
+        }
         
         FTRClient.shared.getSessionInfo(.with(token: sessionToken, userId: userId)) { [weak self] session in
             let extras = session.extraInfo ?? []
@@ -73,9 +79,11 @@ extension FunctionsViewController {
     }
 
     func showApproveAuthAlertUsernamelessQRCode(_ QRCodeResult: String) {
-        let qrParts = QRCodeResult.split(separator: ":")
         let userId = try! FTRClient.shared.getAccounts().first!.userId
-        let sessionToken = String(qrParts[1])
+        guard let sessionToken = FTRUtils.sessionToken(fromQRCode: QRCodeResult) else {
+            self.showAlert(title: "Error", message: "Invalid QR Code")
+            return
+        }
         
         FTRClient.shared.getSessionInfo(.with(token: sessionToken, userId: userId)) { [weak self] session in
             let extras = session.extraInfo ?? []
@@ -156,7 +164,11 @@ extension FunctionsViewController {
 
     func totpAuth(sdkPin: String?) {
         do {
-            guard let account = try FTRClient.shared.getAccounts().first else { return }
+            guard let account = try FTRClient.shared.getAccounts().first else {
+                self.showAlert(title: "Error", message: "No accounts available.")
+                return
+            }
+            
             let parameters: TOTPParameters = operationWithBiometrics ?
             .with(userId: account.userId, promptReason: "Unlock SDK") :
             (sdkPin != nil ? .with(userId: account.userId, sdkPin: sdkPin!) : .with(userId: account.userId))

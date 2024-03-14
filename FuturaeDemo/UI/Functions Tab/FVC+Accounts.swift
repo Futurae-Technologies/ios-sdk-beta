@@ -43,7 +43,11 @@ extension FunctionsViewController {
     
     @IBAction func fetchAccountHistory(_ sender: UIButton) {
         do {
-            guard let account = try FTRClient.shared.getAccounts().first else { return }
+            guard let account = try FTRClient.shared.getAccounts().first else { 
+                self.showAlert(title: "Error", message: "No accounts available.")
+                return
+            }
+            
             FTRClient.shared.getAccountHistory(account, success: { [weak self] responseObject in
                 guard let self = self else { return }
                 let allItems =  responseObject.activity.map { HistoryItem.init(activity: $0) }

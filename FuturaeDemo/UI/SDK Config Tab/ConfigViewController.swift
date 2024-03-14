@@ -86,6 +86,8 @@ final class ConfigViewController: UIViewController {
     var sdkClient: FTRClient?
     
     override func viewDidLoad() {
+        FTRClient.setDelegate(self)
+        
         super.viewDidLoad()
         UITabBar.appearance().barTintColor = .black
         UITabBar.appearance().tintColor = .green
@@ -98,9 +100,6 @@ final class ConfigViewController: UIViewController {
         } else if(FTRClient.sdkIsLaunched){
             selectedConfigOption = FTRClient.shared.currentLockConfiguration.type
             setupSdkView()
-        } else {
-            valueTextView.isHidden = false
-            valueTextView.text = "SDK is not launched\nSelect lock configuration and press launch button below"
         }
     }
     
@@ -130,6 +129,7 @@ final class ConfigViewController: UIViewController {
         
         do {
             try FTRClient.launch(config: config)
+            
             setupSdkView()
             
             if let token = UserDefaults.custom.data(forKey: SDKConstants.DEVICE_TOKEN_KEY) {
@@ -147,7 +147,7 @@ final class ConfigViewController: UIViewController {
                 sdkClient?.enableAdaptive(delegate: vc as! FTRAdaptiveSDKDelegate)
             }
         }
-        valueTextView.text = "SDK is launched with config: \(nameForOption(selectedConfigOption!))"
+        
         setupButtonsForOption(selectedConfigOption!)
         if let index = (options.firstIndex { $0 == selectedConfigOption }){
             settingsPickerView.selectRow(index, inComponent: 0, animated: false)
@@ -158,7 +158,7 @@ final class ConfigViewController: UIViewController {
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [unowned self] _ in
             if let status = sdkClient?.sdkState, let types = sdkClient?.activeUnlockMethods {
                 let unlockTypes = types.map { nameForUnlockType($0) }.joined(separator: ", ")
-                statusLabel.text = "STATUS: \(stringForEnum(status.lockStatus)) \nCONFIGURATION: \(stringForEnum(status.configStatus)) \nUNLOCK SECONDS LEFT: \(Int(status.unlockedRemainingDuration.rounded()))\nUNLOCK METHODS: \(unlockTypes)"
+                statusLabel.text = "STATUS: \(stringForEnum(status.lockStatus)) \nUNLOCK SECONDS LEFT: \(Int(status.unlockedRemainingDuration.rounded()))\nUNLOCK METHODS: \(unlockTypes)"
             }
         }
         
@@ -177,15 +177,6 @@ final class ConfigViewController: UIViewController {
             return "Locked"
         default:
             return "Unlocked"
-        }
-    }
-    
-    func stringForEnum(_ value: SDKLockConfigStatus) -> String {
-        switch(value){
-        case .valid:
-            return "Valid"
-        default:
-            return "Invalid"
         }
     }
     
@@ -208,8 +199,6 @@ final class ConfigViewController: UIViewController {
         
         statusLabel.isHidden = false
         statusLabel.text = ""
-        valueTextView.text = ""
-        valueTextView.isHidden = true
     }
     
     @IBAction func saveSettings(_ sender: Any) {
@@ -234,8 +223,6 @@ final class ConfigViewController: UIViewController {
         selectedConfigOption = nil;
         [pinStack, unlockWithBiometricsBtn, unlockWithBiometricsPasscodeBtn, lockSDKBtn, checkBiometricsBtn].forEach { $0?.isHidden = true }
         statusLabel.text = ""
-        valueTextView.isHidden = false
-        valueTextView.text = "SDK is not launched\nSelect lock configuration and press launch button below"
     }
     
     @IBAction func switchConfig(_ sender: Any) {
@@ -427,6 +414,26 @@ final class ConfigViewController: UIViewController {
         )
         valueTextView.isHidden = false
         valueTextView.text = dataExists ? "Data exists" : "No data present"
+    }
+}
+
+extension ConfigViewController: FTRClientDelegate {
+    func didUpdateStatus(status: SDKStatus) {
+        var message = ""
+        
+        switch status {
+        case .notLaunched:
+            message = "SDK is not launched\nSelect lock configuration and press launch button below"
+        case .launched:
+            message = "SDK is launched with config: \(nameForOption(selectedConfigOption!))"
+        case .launching:
+            message = "SDK is currently launching"
+        case .needsReset:
+            message = "SDK needs to be reset"
+        }
+        
+        valueTextView.isHidden = false
+        valueTextView.text = message
     }
 }
 

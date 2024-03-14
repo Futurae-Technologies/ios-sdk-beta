@@ -135,7 +135,26 @@ extension AppDelegate: FTRNotificationDelegate {
 
         let sessionTimeout = authenticationInfo.sessionTimeout
         let numbersChallenge = authenticationInfo.multiNumberedChallenge
-        let ac = UIAlertController(title: "Approve", message: "Would you like to approve the request? \(extraInfoMsg). \nSession timeout:\n \(sessionTimeout) seconds.", preferredStyle: .alert)
+        var message = "Would you like to approve the request? \(extraInfoMsg)."
+        
+        if let sessionTimeout = authenticationInfo.sessionTimeout {
+            message.append("\n\nSession timeout:\n\(sessionTimeout.intValue)")
+        }
+        
+        if let timestamp = authenticationInfo.timeout?.doubleValue {
+            let date = Date(timeIntervalSince1970: timestamp)            
+            let formatter = DateFormatter()
+            formatter.dateStyle = .medium
+            formatter.timeStyle = .medium
+            let dateString = formatter.string(from: date)
+            message.append("\n\nTimeout at:\n\(dateString)")
+        }
+        
+        if let authType = authenticationInfo.type {
+            message.append("\n\nType:\n\(authType)")
+        }
+        
+        let ac = UIAlertController(title: "Approve", message: message, preferredStyle: .alert)
 
         ac.addAction(UIAlertAction(title: "Approve", style: .cancel, handler: { _ in
             if let numbersChallenge = numbersChallenge {
