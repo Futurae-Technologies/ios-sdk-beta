@@ -1,3 +1,13 @@
+# Version 3.1.2-beta
+2024-14-03
+- [Added] Authentication type in dictionary data provided via notification delegate method `approveAuthenticationReceived`
+- [Added] Expose SDK state to clients (not launched, launching, launched)
+- [Changed] Ensure sequential execution of asynchronous operations in the SDK
+- [Changed] Ensure public key is sent to backend before calling operations that depend on it
+- [Changed] SDKLockConfigStatus is removed and no longer available.
+- [Added] Add `FTRUtils` class with convenience methods to retrieve user id or session token from QR code or URI.
+- [Changed] Internal improvements
+
 # Version 3.1.1-beta
 2024-12-02
 - Fixed issue where account status does not include extra info.
