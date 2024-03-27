@@ -1,3 +1,7 @@
+# Version 3.1.3-beta
+2024-26-03
++ [Fixed] Reject push authentication issue
+
 # Version 3.1.2-beta
 2024-14-03
 - [Added] Authentication type in dictionary data provided via notification delegate method `approveAuthenticationReceived`
