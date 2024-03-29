@@ -1,3 +1,7 @@
+# Version 3.1.4-beta
+2024-29-03
++ [Added] Flow binding implementation for enrollment
+
 # Version 3.1.3-beta
 2024-26-03
 + [Fixed] Reject push authentication issue

@@ -270,17 +270,37 @@ extension AppDelegate: FTROpenURLDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         let sourceApplication = options[.sourceApplication] as? String
         print("Received URL Scheme call from \(String(describing: sourceApplication)): \(url)")
+        
+        guard let vc = window?.rootViewController else { return true }
 
-        // TODO: Check if you want to open this URL and then pass it to the FTRClient as shown below
-        FTRClient.shared.openURL(url, options: options, delegate: self)
-
+        switch FTRUtils.typeFromURL(url){
+        case .activation:
+            if let code = FTRUtils.activationDataFromURL(url)?.activationCode {
+                vc.promptForBindingToken(callback: { token in
+                    FTRClient.shared.enroll(token != nil ? EnrollParameters.with(activationCode: code, bindingToken: token!)
+                                            : EnrollParameters.with(activationCode: code), success: {
+                        vc.showAlert(title: "Success", message: "User account enrolled successfully!")
+                    }, failure: { error in
+                        vc.showAlert(title: "Error", message: error.localizedDescription)
+                    })
+                })
+            }
+        default:
+            FTRClient.shared.openURL(url, options: options, delegate: self)
+        }
+        
         return true
     }
+    
     
     func authenticationURLOpened(_ authenticationInfo: FTRURLAuth) {
         print("authenticationURLOpened: \(authenticationInfo)")
 
         let redirectUri = authenticationInfo.successUrlCallback
+        authenticationURLFinished(redirectUri)
+    }
+    
+    func authenticationURLFinished(_ redirectUri: String?) {
         if let redirectUri = redirectUri, !redirectUri.isEmpty {
             let ac = UIAlertController(title: "MobileAuth Success", message: "Would you like to open the callback?", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "Open", style: .cancel, handler: { _ in
