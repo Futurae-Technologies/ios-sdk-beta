@@ -29,57 +29,63 @@ extension FunctionsViewController {
     }
     
     func enrollWithQRCode(_ QRCodeResult: String) {
-        if enrollWithPin {
-            guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pinViewController") as? PinViewController else { return }
-            vc.pinMode = .set
-            vc.didFinishWithPin = { [weak self] pin in
-                FTRClient.shared.enroll(EnrollParameters.with(activationCode: QRCodeResult, sdkPin: pin ?? ""), success: {
+        promptForBindingToken { [unowned self] bindingToken in
+            if enrollWithPin {
+                guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pinViewController") as? PinViewController else { return }
+                vc.pinMode = .set
+                vc.didFinishWithPin = { [weak self] pin in
+                    FTRClient.shared.enroll(bindingToken != nil ? EnrollParameters.with(activationCode: QRCodeResult, sdkPin: pin ?? "", bindingToken: bindingToken!)
+                                            : EnrollParameters.with(activationCode: QRCodeResult, sdkPin: pin ?? ""), success: {
+                        self?.dismiss(animated: true) {
+                            self?.showAlert(title: "Success", message: "User account enrolled successfully!")
+                            self?.loadServiceLogo()
+                        }
+                    }, failure: { error in
+                        self?.showAlert(title: "Error", message: error.localizedDescription)
+                    })
+                }
+
+                dismiss(animated: true) {
+                    self.present(vc, animated: true, completion: nil)
+                }
+            } else {
+                FTRClient.shared.enroll(bindingToken != nil ? EnrollParameters.with(activationCode: QRCodeResult, bindingToken: bindingToken!) : EnrollParameters.with(activationCode: QRCodeResult), success: { [weak self] in
                     self?.dismiss(animated: true) {
                         self?.showAlert(title: "Success", message: "User account enrolled successfully!")
                         self?.loadServiceLogo()
                     }
-                }, failure: { error in
-                    self?.showAlert(title: "Error", message: error.localizedDescription)
+                }, failure: { [weak self] error in
+                    self?.dismiss(animated: true) {
+                        self?.showAlert(title: "Error", message: error.localizedDescription)
+                    }
                 })
             }
-
-            dismiss(animated: true) {
-                self.present(vc, animated: true, completion: nil)
-            }
-        } else {
-            FTRClient.shared.enroll(EnrollParameters.with(activationCode: QRCodeResult), success: { [weak self] in
-                self?.dismiss(animated: true) {
-                    self?.showAlert(title: "Success", message: "User account enrolled successfully!")
-                    self?.loadServiceLogo()
-                }
-            }, failure: { [weak self] error in
-                self?.dismiss(animated: true) {
-                    self?.showAlert(title: "Error", message: error.localizedDescription)
-                }
-            })
         }
     }
 
     func enrollShortCodeWithPin(_ withPin: Bool) {
         guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pinViewController") as? PinViewController else { return }
-        vc.pinLength = 19
-        vc.secureText = false
-        vc.pinMode = .shortCode
-        vc.didFinishWithPin = { [weak self] pin in
-            self?.dismiss(animated: true) {
-                self?.enrollWithShortCode(pin ?? "", enrollWithPin: withPin)
+        
+        promptForBindingToken { [unowned self] token in
+            vc.pinLength = 19
+            vc.secureText = false
+            vc.pinMode = .shortCode
+            vc.didFinishWithPin = { [unowned self] pin in
+                dismiss(animated: false) { [unowned self] in
+                    enrollWithShortCode(pin ?? "", enrollWithPin: withPin, bindingToken: token)
+                }
             }
-        }
 
-        present(vc, animated: true, completion: nil)
+            present(vc, animated: true, completion: nil)
+        }
     }
 
-    func enrollWithShortCode(_ code: String, enrollWithPin withPin: Bool) {
+    func enrollWithShortCode(_ code: String, enrollWithPin withPin: Bool, bindingToken: String?) {
         if withPin {
             guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pinViewController") as? PinViewController else { return }
             vc.pinMode = .set
             vc.didFinishWithPin = { [weak self] pin in
-                FTRClient.shared.enroll(EnrollParameters.with(shortCode: code, sdkPin: pin ?? ""), success: {
+                FTRClient.shared.enroll(bindingToken != nil ? EnrollParameters.with(shortCode: code, sdkPin: pin ?? "", bindingToken: bindingToken!) : EnrollParameters.with(shortCode: code, sdkPin: pin ?? ""), success: {
                     self?.dismiss(animated: true) {
                         self?.showAlert(title: "Success", message: "User account enrolled successfully!")
                         self?.loadServiceLogo()
@@ -91,7 +97,7 @@ extension FunctionsViewController {
 
             present(vc, animated: true, completion: nil)
         } else {
-            FTRClient.shared.enroll(EnrollParameters.with(shortCode:code), success: {
+            FTRClient.shared.enroll(bindingToken != nil ? EnrollParameters.with(shortCode:code, bindingToken: bindingToken!) : EnrollParameters.with(shortCode:code), success: {
                 self.dismiss(animated: true) {
                     self.showAlert(title: "Success", message: "User account enrolled successfully!")
                     self.loadServiceLogo()

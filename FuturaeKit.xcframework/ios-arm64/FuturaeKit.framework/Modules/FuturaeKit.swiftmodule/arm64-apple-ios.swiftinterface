@@ -135,6 +135,7 @@ import _SwiftConcurrencyShims
   case internalServerException = 12
   case deviceArchived = 13
   case adaptiveMigrationFailed = 14
+  case bindingTokenCheckFailed = 15
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
@@ -485,6 +486,16 @@ import _SwiftConcurrencyShims
   @nonobjc public func unlock(_ parameters: FuturaeKit.UnlockParameters) -> FuturaeKit.AsyncTask
   @objc dynamic public func lock() throws
 }
+@objc public enum FTRURLType : Swift.Int {
+  case activation = 0
+  case authentication = 1
+  case unknown = 2
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
 @objc public protocol FTROpenURLDelegate : ObjectiveC.NSObjectProtocol {
   @objc func authenticationURLOpened(_ authenticationInfo: FuturaeKit.FTRURLAuth)
   @objc func activationURLOpened(_ userId: Swift.String)
@@ -493,26 +504,31 @@ import _SwiftConcurrencyShims
 @_hasMissingDesignatedInitializers @objc public class EnrollParameters : ObjectiveC.NSObject {
   @objc final public let code: Swift.String
   @objc public var sdkPin: Swift.String
+  @objc public var bindingToken: Swift.String?
   @objc public class func with(activationCode: Swift.String) -> FuturaeKit.EnrollActivationCode
+  @objc public class func with(activationCode: Swift.String, bindingToken: Swift.String) -> FuturaeKit.EnrollActivationCode
   @objc public class func with(shortCode: Swift.String) -> FuturaeKit.EnrollShortCode
+  @objc public class func with(shortCode: Swift.String, bindingToken: Swift.String) -> FuturaeKit.EnrollShortCode
   @objc public class func with(activationCode: Swift.String, sdkPin: Swift.String) -> FuturaeKit.EnrollActivationCodeSDKPin
+  @objc public class func with(activationCode: Swift.String, sdkPin: Swift.String, bindingToken: Swift.String) -> FuturaeKit.EnrollActivationCodeSDKPin
+  @objc public class func with(shortCode: Swift.String, sdkPin: Swift.String, bindingToken: Swift.String) -> FuturaeKit.EnrollShortCodeSDKPin
   @objc public class func with(shortCode: Swift.String, sdkPin: Swift.String) -> FuturaeKit.EnrollShortCodeSDKPin
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class EnrollActivationCode : FuturaeKit.EnrollParameters {
-  @objc public init(code: Swift.String)
+  @objc public init(code: Swift.String, bindingToken: Swift.String? = nil)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class EnrollActivationCodeSDKPin : FuturaeKit.EnrollParameters {
-  @objc public init(code: Swift.String, sdkPin: Swift.String)
+  @objc public init(code: Swift.String, sdkPin: Swift.String, bindingToken: Swift.String? = nil)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class EnrollShortCode : FuturaeKit.EnrollParameters {
-  @objc public init(code: Swift.String)
+  @objc public init(code: Swift.String, bindingToken: Swift.String? = nil)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class EnrollShortCodeSDKPin : FuturaeKit.EnrollParameters {
-  @objc public init(code: Swift.String, sdkPin: Swift.String)
+  @objc public init(code: Swift.String, sdkPin: Swift.String, bindingToken: Swift.String? = nil)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class SDKCryptoError : FuturaeKit.SDKBaseError {
@@ -587,6 +603,9 @@ import _SwiftConcurrencyShims
   @objc public static func sessionToken(fromQRCode qrCode: Swift.String) -> Swift.String?
   @objc public static func userId(fromUri uri: Swift.String) -> Swift.String?
   @objc public static func sessionToken(fromUri uri: Swift.String) -> Swift.String?
+  @objc public static func typeFromURL(_ url: Foundation.URL) -> FuturaeKit.FTRURLType
+  @objc public static func activationDataFromURL(_ url: Foundation.URL) -> FuturaeKit.ActivationURLData?
+  @objc public static func authenticationDataFromURL(_ url: Foundation.URL) -> FuturaeKit.AuthenticationURLData?
   @objc override dynamic public init()
   @objc deinit
 }
@@ -913,6 +932,12 @@ extension FuturaeKit.FTRClient {
     get
   }
 }
+@objc public class ActivationURLData : ObjectiveC.NSObject {
+  @objc final public let activationCode: Swift.String
+  @objc final public let userId: Swift.String?
+  @objc public init(activationCode: Swift.String, userId: Swift.String?)
+  @objc deinit
+}
 public enum SDKErrorAssociatedType {
   case base(error: FuturaeKit.SDKBaseError)
   case sdk(error: FuturaeKit.SDKError)
@@ -1059,6 +1084,13 @@ public typealias FTRVerificationCodeHandler = (Swift.String) -> Swift.Void
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
+}
+@objc public class AuthenticationURLData : ObjectiveC.NSObject {
+  @objc final public let userId: Swift.String
+  @objc final public let sessionToken: Swift.String
+  @objc final public let mobileAuthRedirectUri: Swift.String?
+  @objc public init(userId: Swift.String, sessionToken: Swift.String, mobileAuthRedirectUri: Swift.String? = nil)
+  @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class FTRAccount : ObjectiveC.NSObject, Swift.Codable {
   @objc public var userId: Swift.String
@@ -1236,6 +1268,9 @@ extension FuturaeKit.AuthReplyType : Swift.RawRepresentable {}
 extension FuturaeKit.FTRKeychainItemAccessibility : Swift.Equatable {}
 extension FuturaeKit.FTRKeychainItemAccessibility : Swift.Hashable {}
 extension FuturaeKit.FTRKeychainItemAccessibility : Swift.RawRepresentable {}
+extension FuturaeKit.FTRURLType : Swift.Equatable {}
+extension FuturaeKit.FTRURLType : Swift.Hashable {}
+extension FuturaeKit.FTRURLType : Swift.RawRepresentable {}
 extension FuturaeKit.SDKCryptoErrorCode : Swift.Equatable {}
 extension FuturaeKit.SDKCryptoErrorCode : Swift.Hashable {}
 extension FuturaeKit.SDKCryptoErrorCode : Swift.RawRepresentable {}
