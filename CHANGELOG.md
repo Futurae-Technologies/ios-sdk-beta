@@ -1,3 +1,7 @@
+# Version 3.1.5-beta
+2024-05-04
++ [Added] Trusted Session Binding for account migration
+
 # Version 3.1.4-beta
 2024-29-03
 + [Added] Flow binding implementation for enrollment

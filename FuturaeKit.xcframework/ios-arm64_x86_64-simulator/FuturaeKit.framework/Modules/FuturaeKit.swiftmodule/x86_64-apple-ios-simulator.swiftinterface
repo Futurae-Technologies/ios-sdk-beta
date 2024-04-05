@@ -516,19 +516,23 @@ import _SwiftConcurrencyShims
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class EnrollActivationCode : FuturaeKit.EnrollParameters {
-  @objc public init(code: Swift.String, bindingToken: Swift.String? = nil)
+  @objc public init(code: Swift.String)
+  @objc public init(code: Swift.String, bindingToken: Swift.String)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class EnrollActivationCodeSDKPin : FuturaeKit.EnrollParameters {
-  @objc public init(code: Swift.String, sdkPin: Swift.String, bindingToken: Swift.String? = nil)
+  @objc public init(code: Swift.String, sdkPin: Swift.String)
+  @objc public init(code: Swift.String, sdkPin: Swift.String, bindingToken: Swift.String)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class EnrollShortCode : FuturaeKit.EnrollParameters {
-  @objc public init(code: Swift.String, bindingToken: Swift.String? = nil)
+  @objc public init(code: Swift.String)
+  @objc public init(code: Swift.String, bindingToken: Swift.String)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class EnrollShortCodeSDKPin : FuturaeKit.EnrollParameters {
-  @objc public init(code: Swift.String, sdkPin: Swift.String, bindingToken: Swift.String? = nil)
+  @objc public init(code: Swift.String, sdkPin: Swift.String)
+  @objc public init(code: Swift.String, sdkPin: Swift.String, bindingToken: Swift.String)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class SDKCryptoError : FuturaeKit.SDKBaseError {
@@ -872,16 +876,21 @@ extension FuturaeKit.FTRClient {
 }
 @_hasMissingDesignatedInitializers @objc public class MigrationParameters : ObjectiveC.NSObject {
   @objc final public let sdkPin: Swift.String
+  @objc public var bindingToken: Swift.String?
   @objc public class func `default`() -> FuturaeKit.MigrationDefault
   @objc public class func with(sdkPin: Swift.String) -> FuturaeKit.MigrationSDKPin
+  @objc public class func `default`(bindingToken: Swift.String) -> FuturaeKit.MigrationDefault
+  @objc public class func with(sdkPin: Swift.String, bindingToken: Swift.String) -> FuturaeKit.MigrationSDKPin
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class MigrationDefault : FuturaeKit.MigrationParameters {
   @objc public init()
+  @objc public init(bindingToken: Swift.String)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class MigrationSDKPin : FuturaeKit.MigrationParameters {
   @objc public init(sdkPin: Swift.String)
+  @objc public init(sdkPin: Swift.String, bindingToken: Swift.String)
   @objc deinit
 }
 @objc public enum UnlockMethodType : Swift.Int {
@@ -1036,6 +1045,8 @@ public typealias FTRVerificationCodeHandler = (Swift.String) -> Swift.Void
 @_hasMissingDesignatedInitializers @objc public class FTRMigratableAccount : ObjectiveC.NSObject {
   @objc final public let userId: Swift.String
   @objc final public let username: Swift.String?
+  @objc final public let accountRecoveryFlowBindingEnabled: Swift.Bool
+  @objc final public let deviceId: Swift.String
   @objc deinit
 }
 @objc public enum SDKStatus : Swift.Int {
