@@ -574,7 +574,7 @@ SWIFT_CLASS("_TtC10FuturaeKit16EnrollParameters")
 /// Creates <code>EnrollActivationCode</code> with an activation code.
 /// \param activationCode The activation code for enrollment.
 ///
-/// \param binding The token for the flow binding.
+/// \param bindingToken The token for the flow binding.
 ///
 ///
 /// returns:
@@ -647,7 +647,13 @@ SWIFT_CLASS("_TtC10FuturaeKit20EnrollActivationCode")
 /// Initializes a new instance with the provided activation code.
 /// \param code The activation code for enrollment.
 ///
-- (nonnull instancetype)initWithCode:(NSString * _Nonnull)code bindingToken:(NSString * _Nullable)bindingToken OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithCode:(NSString * _Nonnull)code OBJC_DESIGNATED_INITIALIZER;
+/// Initializes a new instance with the provided activation code and binding token..
+/// \param code The activation code for enrollment.
+///
+/// \param bindingToken The token for the flow binding.
+///
+- (nonnull instancetype)initWithCode:(NSString * _Nonnull)code bindingToken:(NSString * _Nonnull)bindingToken OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -659,7 +665,15 @@ SWIFT_CLASS("_TtC10FuturaeKit26EnrollActivationCodeSDKPin")
 ///
 /// \param sdkPin An SDK pin used for enrollment.
 ///
-- (nonnull instancetype)initWithCode:(NSString * _Nonnull)code sdkPin:(NSString * _Nonnull)sdkPin bindingToken:(NSString * _Nullable)bindingToken OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithCode:(NSString * _Nonnull)code sdkPin:(NSString * _Nonnull)sdkPin OBJC_DESIGNATED_INITIALIZER;
+/// Initializes a new instance with the provided activation code, SDK pin and binding token.
+/// \param code The activation code for enrollment.
+///
+/// \param sdkPin An SDK pin used for enrollment.
+///
+/// \param bindingToken The token for the flow binding.
+///
+- (nonnull instancetype)initWithCode:(NSString * _Nonnull)code sdkPin:(NSString * _Nonnull)sdkPin bindingToken:(NSString * _Nonnull)bindingToken OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -670,7 +684,13 @@ SWIFT_CLASS("_TtC10FuturaeKit15EnrollShortCode")
 /// Initializes a new instance with the provided short code.
 /// \param code The short code for enrollment.
 ///
-- (nonnull instancetype)initWithCode:(NSString * _Nonnull)code bindingToken:(NSString * _Nullable)bindingToken OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithCode:(NSString * _Nonnull)code OBJC_DESIGNATED_INITIALIZER;
+/// Initializes a new instance with the provided short code and binding token.
+/// \param code The activation code for enrollment.
+///
+/// \param bindingToken The token for the flow binding.
+///
+- (nonnull instancetype)initWithCode:(NSString * _Nonnull)code bindingToken:(NSString * _Nonnull)bindingToken OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -682,7 +702,15 @@ SWIFT_CLASS("_TtC10FuturaeKit21EnrollShortCodeSDKPin")
 ///
 /// \param sdkPin An SDK pin for enrollment.
 ///
-- (nonnull instancetype)initWithCode:(NSString * _Nonnull)code sdkPin:(NSString * _Nonnull)sdkPin bindingToken:(NSString * _Nullable)bindingToken OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithCode:(NSString * _Nonnull)code sdkPin:(NSString * _Nonnull)sdkPin OBJC_DESIGNATED_INITIALIZER;
+/// Initializes a new instance with the provided short code, SDK pin and binding token..
+/// \param code The short code for enrollment.
+///
+/// \param sdkPin An SDK pin for enrollment.
+///
+/// \param bindingToken The token for the flow binding.
+///
+- (nonnull instancetype)initWithCode:(NSString * _Nonnull)code sdkPin:(NSString * _Nonnull)sdkPin bindingToken:(NSString * _Nonnull)bindingToken OBJC_DESIGNATED_INITIALIZER;
 @end
 
 @class NSDate;
@@ -1386,6 +1414,10 @@ SWIFT_CLASS("_TtC10FuturaeKit20FTRMigratableAccount")
 @property (nonatomic, readonly, copy) NSString * _Nonnull userId;
 /// The username associated with the account. This may be nil if the username is not available.
 @property (nonatomic, readonly, copy) NSString * _Nullable username;
+/// If account has trusted session binding requirement for account migration.
+@property (nonatomic, readonly) BOOL accountRecoveryFlowBindingEnabled;
+/// User device id
+@property (nonatomic, readonly, copy) NSString * _Nonnull deviceId;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -1706,6 +1738,8 @@ SWIFT_CLASS("_TtC10FuturaeKit19MigrationParameters")
 @interface MigrationParameters : NSObject
 /// The SDK-specific pin, used if the migration process involves an SDK-specific pin.
 @property (nonatomic, readonly, copy) NSString * _Nonnull sdkPin;
+/// Optional flow binding token  used during migration.
+@property (nonatomic, copy) NSString * _Nullable bindingToken;
 /// Creates default migration parameters.
 ///
 /// returns:
@@ -1718,6 +1752,22 @@ SWIFT_CLASS("_TtC10FuturaeKit19MigrationParameters")
 /// returns:
 /// An instance of <code>MigrationSDKPin</code>.
 + (MigrationSDKPin * _Nonnull)withSdkPin:(NSString * _Nonnull)sdkPin SWIFT_WARN_UNUSED_RESULT;
+/// Creates default migration parameters.
+/// \param bindingToken The token for the flow binding.
+///
+///
+/// returns:
+/// An instance of <code>MigrationDefault</code>.
++ (MigrationDefault * _Nonnull)defaultWithBindingToken:(NSString * _Nonnull)bindingToken SWIFT_WARN_UNUSED_RESULT;
+/// Creates migration parameters with an SDK-specific pin.
+/// \param sdkPin The SDK-specific pin for the migration process.
+///
+/// \param bindingToken The token for the flow binding.
+///
+///
+/// returns:
+/// An instance of <code>MigrationSDKPin</code>.
++ (MigrationSDKPin * _Nonnull)withSdkPin:(NSString * _Nonnull)sdkPin bindingToken:(NSString * _Nonnull)bindingToken SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -1729,6 +1779,10 @@ SWIFT_CLASS("_TtC10FuturaeKit16MigrationDefault")
 /// Initializes a new instance of <code>MigrationDefault</code> with default parameters.
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 + (nonnull instancetype)new;
+/// Initializes a new instance of <code>MigrationDefault</code> with a binding token.
+/// \param bindingToken The token for the flow binding.
+///
+- (nonnull instancetype)initWithBindingToken:(NSString * _Nonnull)bindingToken OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -1740,6 +1794,12 @@ SWIFT_CLASS("_TtC10FuturaeKit15MigrationSDKPin")
 /// \param sdkPin The SDK-specific pin for the migration process.
 ///
 - (nonnull instancetype)initWithSdkPin:(NSString * _Nonnull)sdkPin OBJC_DESIGNATED_INITIALIZER;
+/// Initializes a new instance with the provided SDK-specific pin for the migration process.
+/// \param sdkPin The SDK-specific pin for the migration process.
+///
+/// \param bindingToken The token for the flow binding.
+///
+- (nonnull instancetype)initWithSdkPin:(NSString * _Nonnull)sdkPin bindingToken:(NSString * _Nonnull)bindingToken OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -3202,7 +3262,7 @@ SWIFT_CLASS("_TtC10FuturaeKit16EnrollParameters")
 /// Creates <code>EnrollActivationCode</code> with an activation code.
 /// \param activationCode The activation code for enrollment.
 ///
-/// \param binding The token for the flow binding.
+/// \param bindingToken The token for the flow binding.
 ///
 ///
 /// returns:
@@ -3275,7 +3335,13 @@ SWIFT_CLASS("_TtC10FuturaeKit20EnrollActivationCode")
 /// Initializes a new instance with the provided activation code.
 /// \param code The activation code for enrollment.
 ///
-- (nonnull instancetype)initWithCode:(NSString * _Nonnull)code bindingToken:(NSString * _Nullable)bindingToken OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithCode:(NSString * _Nonnull)code OBJC_DESIGNATED_INITIALIZER;
+/// Initializes a new instance with the provided activation code and binding token..
+/// \param code The activation code for enrollment.
+///
+/// \param bindingToken The token for the flow binding.
+///
+- (nonnull instancetype)initWithCode:(NSString * _Nonnull)code bindingToken:(NSString * _Nonnull)bindingToken OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -3287,7 +3353,15 @@ SWIFT_CLASS("_TtC10FuturaeKit26EnrollActivationCodeSDKPin")
 ///
 /// \param sdkPin An SDK pin used for enrollment.
 ///
-- (nonnull instancetype)initWithCode:(NSString * _Nonnull)code sdkPin:(NSString * _Nonnull)sdkPin bindingToken:(NSString * _Nullable)bindingToken OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithCode:(NSString * _Nonnull)code sdkPin:(NSString * _Nonnull)sdkPin OBJC_DESIGNATED_INITIALIZER;
+/// Initializes a new instance with the provided activation code, SDK pin and binding token.
+/// \param code The activation code for enrollment.
+///
+/// \param sdkPin An SDK pin used for enrollment.
+///
+/// \param bindingToken The token for the flow binding.
+///
+- (nonnull instancetype)initWithCode:(NSString * _Nonnull)code sdkPin:(NSString * _Nonnull)sdkPin bindingToken:(NSString * _Nonnull)bindingToken OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -3298,7 +3372,13 @@ SWIFT_CLASS("_TtC10FuturaeKit15EnrollShortCode")
 /// Initializes a new instance with the provided short code.
 /// \param code The short code for enrollment.
 ///
-- (nonnull instancetype)initWithCode:(NSString * _Nonnull)code bindingToken:(NSString * _Nullable)bindingToken OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithCode:(NSString * _Nonnull)code OBJC_DESIGNATED_INITIALIZER;
+/// Initializes a new instance with the provided short code and binding token.
+/// \param code The activation code for enrollment.
+///
+/// \param bindingToken The token for the flow binding.
+///
+- (nonnull instancetype)initWithCode:(NSString * _Nonnull)code bindingToken:(NSString * _Nonnull)bindingToken OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -3310,7 +3390,15 @@ SWIFT_CLASS("_TtC10FuturaeKit21EnrollShortCodeSDKPin")
 ///
 /// \param sdkPin An SDK pin for enrollment.
 ///
-- (nonnull instancetype)initWithCode:(NSString * _Nonnull)code sdkPin:(NSString * _Nonnull)sdkPin bindingToken:(NSString * _Nullable)bindingToken OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithCode:(NSString * _Nonnull)code sdkPin:(NSString * _Nonnull)sdkPin OBJC_DESIGNATED_INITIALIZER;
+/// Initializes a new instance with the provided short code, SDK pin and binding token..
+/// \param code The short code for enrollment.
+///
+/// \param sdkPin An SDK pin for enrollment.
+///
+/// \param bindingToken The token for the flow binding.
+///
+- (nonnull instancetype)initWithCode:(NSString * _Nonnull)code sdkPin:(NSString * _Nonnull)sdkPin bindingToken:(NSString * _Nonnull)bindingToken OBJC_DESIGNATED_INITIALIZER;
 @end
 
 @class NSDate;
@@ -4014,6 +4102,10 @@ SWIFT_CLASS("_TtC10FuturaeKit20FTRMigratableAccount")
 @property (nonatomic, readonly, copy) NSString * _Nonnull userId;
 /// The username associated with the account. This may be nil if the username is not available.
 @property (nonatomic, readonly, copy) NSString * _Nullable username;
+/// If account has trusted session binding requirement for account migration.
+@property (nonatomic, readonly) BOOL accountRecoveryFlowBindingEnabled;
+/// User device id
+@property (nonatomic, readonly, copy) NSString * _Nonnull deviceId;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -4334,6 +4426,8 @@ SWIFT_CLASS("_TtC10FuturaeKit19MigrationParameters")
 @interface MigrationParameters : NSObject
 /// The SDK-specific pin, used if the migration process involves an SDK-specific pin.
 @property (nonatomic, readonly, copy) NSString * _Nonnull sdkPin;
+/// Optional flow binding token  used during migration.
+@property (nonatomic, copy) NSString * _Nullable bindingToken;
 /// Creates default migration parameters.
 ///
 /// returns:
@@ -4346,6 +4440,22 @@ SWIFT_CLASS("_TtC10FuturaeKit19MigrationParameters")
 /// returns:
 /// An instance of <code>MigrationSDKPin</code>.
 + (MigrationSDKPin * _Nonnull)withSdkPin:(NSString * _Nonnull)sdkPin SWIFT_WARN_UNUSED_RESULT;
+/// Creates default migration parameters.
+/// \param bindingToken The token for the flow binding.
+///
+///
+/// returns:
+/// An instance of <code>MigrationDefault</code>.
++ (MigrationDefault * _Nonnull)defaultWithBindingToken:(NSString * _Nonnull)bindingToken SWIFT_WARN_UNUSED_RESULT;
+/// Creates migration parameters with an SDK-specific pin.
+/// \param sdkPin The SDK-specific pin for the migration process.
+///
+/// \param bindingToken The token for the flow binding.
+///
+///
+/// returns:
+/// An instance of <code>MigrationSDKPin</code>.
++ (MigrationSDKPin * _Nonnull)withSdkPin:(NSString * _Nonnull)sdkPin bindingToken:(NSString * _Nonnull)bindingToken SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -4357,6 +4467,10 @@ SWIFT_CLASS("_TtC10FuturaeKit16MigrationDefault")
 /// Initializes a new instance of <code>MigrationDefault</code> with default parameters.
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 + (nonnull instancetype)new;
+/// Initializes a new instance of <code>MigrationDefault</code> with a binding token.
+/// \param bindingToken The token for the flow binding.
+///
+- (nonnull instancetype)initWithBindingToken:(NSString * _Nonnull)bindingToken OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -4368,6 +4482,12 @@ SWIFT_CLASS("_TtC10FuturaeKit15MigrationSDKPin")
 /// \param sdkPin The SDK-specific pin for the migration process.
 ///
 - (nonnull instancetype)initWithSdkPin:(NSString * _Nonnull)sdkPin OBJC_DESIGNATED_INITIALIZER;
+/// Initializes a new instance with the provided SDK-specific pin for the migration process.
+/// \param sdkPin The SDK-specific pin for the migration process.
+///
+/// \param bindingToken The token for the flow binding.
+///
+- (nonnull instancetype)initWithSdkPin:(NSString * _Nonnull)sdkPin bindingToken:(NSString * _Nonnull)bindingToken OBJC_DESIGNATED_INITIALIZER;
 @end
 
 

@@ -18081,6 +18081,36 @@
           {
             "kind": "Constructor",
             "name": "init",
+            "printedName": "init(code:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "EnrollActivationCode",
+                "printedName": "FuturaeKit.EnrollActivationCode",
+                "usr": "c:@M@FuturaeKit@objc(cs)EnrollActivationCode"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@FuturaeKit@objc(cs)EnrollActivationCode(im)initWithCode:",
+            "mangledName": "$s10FuturaeKit20EnrollActivationCodeC4codeACSS_tcfc",
+            "moduleName": "FuturaeKit",
+            "objc_name": "initWithCode:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
             "printedName": "init(code:bindingToken:)",
             "children": [
               {
@@ -18097,23 +18127,14 @@
               },
               {
                 "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.String?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "hasDefaultArg": true,
-                "usr": "s:Sq"
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
               }
             ],
             "declKind": "Constructor",
             "usr": "c:@M@FuturaeKit@objc(cs)EnrollActivationCode(im)initWithCode:bindingToken:",
-            "mangledName": "$s10FuturaeKit20EnrollActivationCodeC4code12bindingTokenACSS_SSSgtcfc",
+            "mangledName": "$s10FuturaeKit20EnrollActivationCodeC4code12bindingTokenACSS_SStcfc",
             "moduleName": "FuturaeKit",
             "objc_name": "initWithCode:bindingToken:",
             "declAttributes": [
@@ -18221,6 +18242,42 @@
           {
             "kind": "Constructor",
             "name": "init",
+            "printedName": "init(code:sdkPin:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "EnrollActivationCodeSDKPin",
+                "printedName": "FuturaeKit.EnrollActivationCodeSDKPin",
+                "usr": "c:@M@FuturaeKit@objc(cs)EnrollActivationCodeSDKPin"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@FuturaeKit@objc(cs)EnrollActivationCodeSDKPin(im)initWithCode:sdkPin:",
+            "mangledName": "$s10FuturaeKit26EnrollActivationCodeSDKPinC4code6sdkPinACSS_SStcfc",
+            "moduleName": "FuturaeKit",
+            "objc_name": "initWithCode:sdkPin:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
             "printedName": "init(code:sdkPin:bindingToken:)",
             "children": [
               {
@@ -18243,23 +18300,14 @@
               },
               {
                 "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.String?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "hasDefaultArg": true,
-                "usr": "s:Sq"
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
               }
             ],
             "declKind": "Constructor",
             "usr": "c:@M@FuturaeKit@objc(cs)EnrollActivationCodeSDKPin(im)initWithCode:sdkPin:bindingToken:",
-            "mangledName": "$s10FuturaeKit26EnrollActivationCodeSDKPinC4code6sdkPin12bindingTokenACSS_S2SSgtcfc",
+            "mangledName": "$s10FuturaeKit26EnrollActivationCodeSDKPinC4code6sdkPin12bindingTokenACSS_S2Stcfc",
             "moduleName": "FuturaeKit",
             "objc_name": "initWithCode:sdkPin:bindingToken:",
             "declAttributes": [
@@ -18367,6 +18415,36 @@
           {
             "kind": "Constructor",
             "name": "init",
+            "printedName": "init(code:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "EnrollShortCode",
+                "printedName": "FuturaeKit.EnrollShortCode",
+                "usr": "c:@M@FuturaeKit@objc(cs)EnrollShortCode"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@FuturaeKit@objc(cs)EnrollShortCode(im)initWithCode:",
+            "mangledName": "$s10FuturaeKit15EnrollShortCodeC4codeACSS_tcfc",
+            "moduleName": "FuturaeKit",
+            "objc_name": "initWithCode:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
             "printedName": "init(code:bindingToken:)",
             "children": [
               {
@@ -18383,23 +18461,14 @@
               },
               {
                 "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.String?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "hasDefaultArg": true,
-                "usr": "s:Sq"
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
               }
             ],
             "declKind": "Constructor",
             "usr": "c:@M@FuturaeKit@objc(cs)EnrollShortCode(im)initWithCode:bindingToken:",
-            "mangledName": "$s10FuturaeKit15EnrollShortCodeC4code12bindingTokenACSS_SSSgtcfc",
+            "mangledName": "$s10FuturaeKit15EnrollShortCodeC4code12bindingTokenACSS_SStcfc",
             "moduleName": "FuturaeKit",
             "objc_name": "initWithCode:bindingToken:",
             "declAttributes": [
@@ -18507,6 +18576,42 @@
           {
             "kind": "Constructor",
             "name": "init",
+            "printedName": "init(code:sdkPin:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "EnrollShortCodeSDKPin",
+                "printedName": "FuturaeKit.EnrollShortCodeSDKPin",
+                "usr": "c:@M@FuturaeKit@objc(cs)EnrollShortCodeSDKPin"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@FuturaeKit@objc(cs)EnrollShortCodeSDKPin(im)initWithCode:sdkPin:",
+            "mangledName": "$s10FuturaeKit21EnrollShortCodeSDKPinC4code6sdkPinACSS_SStcfc",
+            "moduleName": "FuturaeKit",
+            "objc_name": "initWithCode:sdkPin:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
             "printedName": "init(code:sdkPin:bindingToken:)",
             "children": [
               {
@@ -18529,23 +18634,14 @@
               },
               {
                 "kind": "TypeNominal",
-                "name": "Optional",
-                "printedName": "Swift.String?",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "hasDefaultArg": true,
-                "usr": "s:Sq"
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
               }
             ],
             "declKind": "Constructor",
             "usr": "c:@M@FuturaeKit@objc(cs)EnrollShortCodeSDKPin(im)initWithCode:sdkPin:bindingToken:",
-            "mangledName": "$s10FuturaeKit21EnrollShortCodeSDKPinC4code6sdkPin12bindingTokenACSS_S2SSgtcfc",
+            "mangledName": "$s10FuturaeKit21EnrollShortCodeSDKPinC4code6sdkPin12bindingTokenACSS_S2Stcfc",
             "moduleName": "FuturaeKit",
             "objc_name": "initWithCode:sdkPin:bindingToken:",
             "declAttributes": [
@@ -31494,6 +31590,124 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "bindingToken",
+            "printedName": "bindingToken",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@FuturaeKit@objc(cs)MigrationParameters(py)bindingToken",
+            "mangledName": "$s10FuturaeKit19MigrationParametersC12bindingTokenSSSgvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FuturaeKit@objc(cs)MigrationParameters(im)bindingToken",
+                "mangledName": "$s10FuturaeKit19MigrationParametersC12bindingTokenSSSgvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FuturaeKit@objc(cs)MigrationParameters(im)setBindingToken:",
+                "mangledName": "$s10FuturaeKit19MigrationParametersC12bindingTokenSSSgvs",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10FuturaeKit19MigrationParametersC12bindingTokenSSSgvM",
+                "mangledName": "$s10FuturaeKit19MigrationParametersC12bindingTokenSSSgvM",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
             "kind": "Function",
             "name": "default",
             "printedName": "default()",
@@ -31541,6 +31755,74 @@
             "moduleName": "FuturaeKit",
             "static": true,
             "objc_name": "withSdkPin:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "default",
+            "printedName": "default(bindingToken:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MigrationDefault",
+                "printedName": "FuturaeKit.MigrationDefault",
+                "usr": "c:@M@FuturaeKit@objc(cs)MigrationDefault"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@FuturaeKit@objc(cs)MigrationParameters(cm)defaultWithBindingToken:",
+            "mangledName": "$s10FuturaeKit19MigrationParametersC7default12bindingTokenAA0C7DefaultCSS_tFZ",
+            "moduleName": "FuturaeKit",
+            "static": true,
+            "objc_name": "defaultWithBindingToken:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "with",
+            "printedName": "with(sdkPin:bindingToken:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MigrationSDKPin",
+                "printedName": "FuturaeKit.MigrationSDKPin",
+                "usr": "c:@M@FuturaeKit@objc(cs)MigrationSDKPin"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@FuturaeKit@objc(cs)MigrationParameters(cm)withSdkPin:bindingToken:",
+            "mangledName": "$s10FuturaeKit19MigrationParametersC4with6sdkPin12bindingTokenAA0C6SDKPinCSS_SStFZ",
+            "moduleName": "FuturaeKit",
+            "static": true,
+            "objc_name": "withSdkPin:bindingToken:",
             "declAttributes": [
               "AccessControl",
               "ObjC",
@@ -31690,6 +31972,36 @@
               "RawDocComment"
             ],
             "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(bindingToken:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MigrationDefault",
+                "printedName": "FuturaeKit.MigrationDefault",
+                "usr": "c:@M@FuturaeKit@objc(cs)MigrationDefault"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@FuturaeKit@objc(cs)MigrationDefault(im)initWithBindingToken:",
+            "mangledName": "$s10FuturaeKit16MigrationDefaultC12bindingTokenACSS_tcfc",
+            "moduleName": "FuturaeKit",
+            "objc_name": "initWithBindingToken:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
           }
         ],
         "declKind": "Class",
@@ -31809,6 +32121,42 @@
             "mangledName": "$s10FuturaeKit15MigrationSDKPinC6sdkPinACSS_tcfc",
             "moduleName": "FuturaeKit",
             "objc_name": "initWithSdkPin:",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(sdkPin:bindingToken:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MigrationSDKPin",
+                "printedName": "FuturaeKit.MigrationSDKPin",
+                "usr": "c:@M@FuturaeKit@objc(cs)MigrationSDKPin"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@FuturaeKit@objc(cs)MigrationSDKPin(im)initWithSdkPin:bindingToken:",
+            "mangledName": "$s10FuturaeKit15MigrationSDKPinC6sdkPin12bindingTokenACSS_SStcfc",
+            "moduleName": "FuturaeKit",
+            "objc_name": "initWithSdkPin:bindingToken:",
             "declAttributes": [
               "AccessControl",
               "ObjC",
@@ -36953,6 +37301,108 @@
                 "declKind": "Accessor",
                 "usr": "c:@M@FuturaeKit@objc(cs)FTRMigratableAccount(im)username",
                 "mangledName": "$s10FuturaeKit20FTRMigratableAccountC8usernameSSSgvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "accountRecoveryFlowBindingEnabled",
+            "printedName": "accountRecoveryFlowBindingEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@FuturaeKit@objc(cs)FTRMigratableAccount(py)accountRecoveryFlowBindingEnabled",
+            "mangledName": "$s10FuturaeKit20FTRMigratableAccountC33accountRecoveryFlowBindingEnabledSbvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FuturaeKit@objc(cs)FTRMigratableAccount(im)accountRecoveryFlowBindingEnabled",
+                "mangledName": "$s10FuturaeKit20FTRMigratableAccountC33accountRecoveryFlowBindingEnabledSbvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "deviceId",
+            "printedName": "deviceId",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@FuturaeKit@objc(cs)FTRMigratableAccount(py)deviceId",
+            "mangledName": "$s10FuturaeKit20FTRMigratableAccountC8deviceIdSSvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FuturaeKit@objc(cs)FTRMigratableAccount(im)deviceId",
+                "mangledName": "$s10FuturaeKit20FTRMigratableAccountC8deviceIdSSvg",
                 "moduleName": "FuturaeKit",
                 "implicit": true,
                 "declAttributes": [
@@ -50604,16 +51054,44 @@
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Response\/MigrationCheck.swift",
       "kind": "StringLiteral",
-      "offset": 1151,
+      "offset": 1404,
       "length": 9,
       "value": "\"user_id\""
     },
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Response\/MigrationCheck.swift",
       "kind": "StringLiteral",
-      "offset": 1151,
+      "offset": 1485,
+      "length": 39,
+      "value": "\"account_recovery_flow_binding_enabled\""
+    },
+    {
+      "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Response\/MigrationCheck.swift",
+      "kind": "StringLiteral",
+      "offset": 1549,
+      "length": 16,
+      "value": "\"user_device_id\""
+    },
+    {
+      "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Response\/MigrationCheck.swift",
+      "kind": "StringLiteral",
+      "offset": 1404,
       "length": 9,
       "value": "\"user_id\""
+    },
+    {
+      "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Response\/MigrationCheck.swift",
+      "kind": "StringLiteral",
+      "offset": 1485,
+      "length": 39,
+      "value": "\"account_recovery_flow_binding_enabled\""
+    },
+    {
+      "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Response\/MigrationCheck.swift",
+      "kind": "StringLiteral",
+      "offset": 1549,
+      "length": 16,
+      "value": "\"user_device_id\""
     },
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Enums\/KeychainItemTag.swift",
@@ -50807,28 +51285,28 @@
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/FTRClient\/Parameters\/EnrollmentParameters.swift",
       "kind": "StringLiteral",
-      "offset": 4548,
+      "offset": 4561,
       "length": 20,
       "value": "\"FuturaeKit.EnrollActivationCode\""
     },
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/FTRClient\/Parameters\/EnrollmentParameters.swift",
       "kind": "StringLiteral",
-      "offset": 4996,
+      "offset": 5367,
       "length": 26,
       "value": "\"FuturaeKit.EnrollActivationCodeSDKPin\""
     },
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/FTRClient\/Parameters\/EnrollmentParameters.swift",
       "kind": "StringLiteral",
-      "offset": 5538,
+      "offset": 6358,
       "length": 15,
       "value": "\"FuturaeKit.EnrollShortCode\""
     },
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/FTRClient\/Parameters\/EnrollmentParameters.swift",
       "kind": "StringLiteral",
-      "offset": 5970,
+      "offset": 7147,
       "length": 21,
       "value": "\"FuturaeKit.EnrollShortCodeSDKPin\""
     },
@@ -51797,6 +52275,20 @@
       "offset": 372,
       "length": 10,
       "value": "\"base_url\""
+    },
+    {
+      "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Response\/AccountMigration.swift",
+      "kind": "StringLiteral",
+      "offset": 632,
+      "length": 17,
+      "value": "\"migration_token\""
+    },
+    {
+      "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Response\/AccountMigration.swift",
+      "kind": "StringLiteral",
+      "offset": 632,
+      "length": 17,
+      "value": "\"migration_token\""
     },
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Models\/Errors\/Domains\/SDKLockError.swift",
@@ -53390,7 +53882,7 @@
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/FTRClient\/Parameters\/MigrationParameters.swift",
       "kind": "StringLiteral",
-      "offset": 597,
+      "offset": 700,
       "length": 2,
       "value": "\"\""
     },
@@ -53404,14 +53896,14 @@
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/FTRClient\/Parameters\/MigrationParameters.swift",
       "kind": "StringLiteral",
-      "offset": 1253,
+      "offset": 2148,
       "length": 16,
       "value": "\"FuturaeKit.MigrationDefault\""
     },
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/FTRClient\/Parameters\/MigrationParameters.swift",
       "kind": "StringLiteral",
-      "offset": 1534,
+      "offset": 2713,
       "length": 15,
       "value": "\"FuturaeKit.MigrationSDKPin\""
     },
@@ -57254,126 +57746,126 @@
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Networking\/Params\/MigrationParams.swift",
       "kind": "StringLiteral",
-      "offset": 1803,
+      "offset": 1906,
       "length": 22,
       "value": "\"sdk_lock_config_type\""
     },
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Networking\/Params\/MigrationParams.swift",
       "kind": "StringLiteral",
-      "offset": 1861,
+      "offset": 1964,
       "length": 23,
       "value": "\"migration_device_udid\""
     },
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Networking\/Params\/MigrationParams.swift",
       "kind": "StringLiteral",
-      "offset": 1915,
+      "offset": 2018,
       "length": 17,
       "value": "\"migration_token\""
     },
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Networking\/Params\/MigrationParams.swift",
       "kind": "StringLiteral",
-      "offset": 2003,
+      "offset": 2106,
       "length": 13,
       "value": "\"device_type\""
     },
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Networking\/Params\/MigrationParams.swift",
       "kind": "StringLiteral",
-      "offset": 2044,
+      "offset": 2147,
       "length": 14,
       "value": "\"device_token\""
     },
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Networking\/Params\/MigrationParams.swift",
       "kind": "StringLiteral",
-      "offset": 2085,
+      "offset": 2188,
       "length": 13,
       "value": "\"device_udid\""
     },
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Networking\/Params\/MigrationParams.swift",
       "kind": "StringLiteral",
-      "offset": 2123,
+      "offset": 2226,
       "length": 11,
       "value": "\"pns_token\""
     },
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Networking\/Params\/MigrationParams.swift",
       "kind": "StringLiteral",
-      "offset": 2167,
+      "offset": 2270,
       "length": 20,
       "value": "\"mobile_app_version\""
     },
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Networking\/Params\/MigrationParams.swift",
       "kind": "StringLiteral",
-      "offset": 2213,
+      "offset": 2316,
       "length": 12,
       "value": "\"public_key\""
     },
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Networking\/Params\/MigrationParams.swift",
       "kind": "StringLiteral",
-      "offset": 1803,
+      "offset": 1906,
       "length": 22,
       "value": "\"sdk_lock_config_type\""
     },
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Networking\/Params\/MigrationParams.swift",
       "kind": "StringLiteral",
-      "offset": 1861,
+      "offset": 1964,
       "length": 23,
       "value": "\"migration_device_udid\""
     },
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Networking\/Params\/MigrationParams.swift",
       "kind": "StringLiteral",
-      "offset": 1915,
+      "offset": 2018,
       "length": 17,
       "value": "\"migration_token\""
     },
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Networking\/Params\/MigrationParams.swift",
       "kind": "StringLiteral",
-      "offset": 2003,
+      "offset": 2106,
       "length": 13,
       "value": "\"device_type\""
     },
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Networking\/Params\/MigrationParams.swift",
       "kind": "StringLiteral",
-      "offset": 2044,
+      "offset": 2147,
       "length": 14,
       "value": "\"device_token\""
     },
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Networking\/Params\/MigrationParams.swift",
       "kind": "StringLiteral",
-      "offset": 2085,
+      "offset": 2188,
       "length": 13,
       "value": "\"device_udid\""
     },
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Networking\/Params\/MigrationParams.swift",
       "kind": "StringLiteral",
-      "offset": 2123,
+      "offset": 2226,
       "length": 11,
       "value": "\"pns_token\""
     },
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Networking\/Params\/MigrationParams.swift",
       "kind": "StringLiteral",
-      "offset": 2167,
+      "offset": 2270,
       "length": 20,
       "value": "\"mobile_app_version\""
     },
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk\/FuturaeKit\/Internal\/Networking\/Params\/MigrationParams.swift",
       "kind": "StringLiteral",
-      "offset": 2213,
+      "offset": 2316,
       "length": 12,
       "value": "\"public_key\""
     },
