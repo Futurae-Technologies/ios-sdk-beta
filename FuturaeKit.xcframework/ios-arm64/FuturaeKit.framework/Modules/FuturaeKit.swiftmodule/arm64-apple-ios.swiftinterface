@@ -1,7 +1,6 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)
-// swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name FuturaeKit
-// swift-module-flags-ignorable: -enable-bare-slash-regex
+// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
+// swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name FuturaeKit
 import AVFoundation
 import Combine
 import CommonCrypto
@@ -32,6 +31,9 @@ import _SwiftConcurrencyShims
 @_hasMissingDesignatedInitializers @objc public class FTRAccountsStatus : ObjectiveC.NSObject, Swift.Codable {
   @objc final public let accounts: [FuturaeKit.FTRAccount]
   @objc final public let featureFlags: [FuturaeKit.FTRFeatureFlag]
+  @objc public var asDictionary: [Swift.String : Any] {
+    @objc get
+  }
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
@@ -41,6 +43,9 @@ import _SwiftConcurrencyShims
   @objc final public let enabled: Swift.Bool
   @objc final public let name: Swift.String
   @objc final public let params: [FuturaeKit.FTRParam]?
+  @objc public var asDictionary: [Swift.String : Any] {
+    @objc get
+  }
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
@@ -625,6 +630,9 @@ import _SwiftConcurrencyShims
   @objc public var sessionTimeout: Foundation.NSNumber? {
     @objc get
   }
+  @objc public var asDictionary: [Swift.String : Any] {
+    @objc get
+  }
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
@@ -1071,6 +1079,9 @@ public typealias FTRVerificationCodeHandler = (Swift.String) -> Swift.Void
 @objc public class FTRAccountHistory : ObjectiveC.NSObject, Swift.Codable {
   @objc final public let activity: [FuturaeKit.FTRAccountActivity]
   @objc final public let count: Swift.Int
+  @objc public var asDictionary: [Swift.String : Any] {
+    @objc get
+  }
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
@@ -1103,7 +1114,7 @@ public typealias FTRVerificationCodeHandler = (Swift.String) -> Swift.Void
   @objc public init(userId: Swift.String, sessionToken: Swift.String, mobileAuthRedirectUri: Swift.String? = nil)
   @objc deinit
 }
-@_hasMissingDesignatedInitializers @objc public class FTRAccount : ObjectiveC.NSObject, Swift.Codable {
+@objc public class FTRAccount : ObjectiveC.NSObject, Swift.Codable {
   @objc public var userId: Swift.String
   @objc public var username: Swift.String?
   @objc public var ftApiServerBaseUrl: Swift.String?
@@ -1119,6 +1130,11 @@ public typealias FTRVerificationCodeHandler = (Swift.String) -> Swift.Void
   @objc public var enrolledAt: Foundation.Date? {
     @objc get
     @objc set
+  }
+  @objc public init(userId: Swift.String, username: Swift.String? = nil, ftApiServerBaseUrl: Swift.String? = nil, enrolled: Swift.Bool = true, serviceId: Swift.String? = nil, deviceId: Swift.String? = nil, serviceName: Swift.String? = nil, updatedAt: Foundation.Date? = nil, serviceLogo: Swift.String? = nil, allowedFactors: [Swift.String]? = nil, lockedOut: Swift.Bool = false, sessions: [FuturaeKit.FTRSession]? = nil, enrolledAt: Foundation.Date? = nil)
+  @objc public static func from(dictionary: [Swift.String : Any]) -> FuturaeKit.FTRAccount?
+  @objc public var asDictionary: [Swift.String : Any] {
+    @objc get
   }
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
@@ -1186,7 +1202,7 @@ public typealias FTRVerificationCodeHandler = (Swift.String) -> Swift.Void
   @objc public class func defaultAccessibility() -> FuturaeKit.FTRKeychainItemAccessibility
   @objc deinit
 }
-@_hasMissingDesignatedInitializers @objc public class FTRSession : ObjectiveC.NSObject, Swift.Codable {
+@objc public class FTRSession : ObjectiveC.NSObject, Swift.Codable {
   @objc final public let factor: Swift.String
   @objc final public let userId: Swift.String?
   @objc final public let extraInfo: [FuturaeKit.FTRExtraInfo]?
@@ -1198,6 +1214,10 @@ public typealias FTRVerificationCodeHandler = (Swift.String) -> Swift.Void
   @objc final public let approveCombo: Swift.Bool
   @objc final public let type: Swift.String?
   @objc final public let multiNumberedChallenge: [Swift.Int]?
+  @objc public init(factor: Swift.String, userId: Swift.String? = nil, extraInfo: [FuturaeKit.FTRExtraInfo]? = nil, serviceId: Swift.String? = nil, sessionId: Swift.String? = nil, sessionTimeout: Swift.Int, sessionToken: Swift.String? = nil, timeout: Swift.Int, approveCombo: Swift.Bool, type: Swift.String? = nil, multiNumberedChallenge: [Swift.Int]? = nil)
+  @objc public var asDictionary: [Swift.String : Any] {
+    @objc get
+  }
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
