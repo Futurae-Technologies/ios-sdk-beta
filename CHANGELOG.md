@@ -1,3 +1,9 @@
+# Version 3.1.6-beta
+2024-25-04
+This release focuses on resolving Apple's requirements for usage of private APIs.
+- [Removed] Removed usage of APIs that track disk space. Those were not used by SDK, but the dependency of the SDK.
+- [Updated] Added .xcprivacy declaration for UserPreferences API usage.
+
 # Version 3.1.5-beta
 2024-05-04
 + [Added] Trusted Session Binding for account migration
