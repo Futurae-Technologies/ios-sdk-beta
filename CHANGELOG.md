@@ -1,3 +1,7 @@
+# Version 3.1.7-beta
+2024-09-05
++ [Changed] Privacy manifest file
+
 # Version 3.1.6-beta
 2024-25-04
 This release focuses on resolving Apple's requirements for usage of private APIs.

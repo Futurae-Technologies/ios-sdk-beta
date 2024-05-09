@@ -828,6 +828,20 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) enum SDKStatus sdkSt
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+@class FTRConfig;
+
+@interface FTRClient (SWIFT_EXTENSION(FuturaeKit))
+/// Launches the SDK with the provided configuration.
+/// This method initializes the SDK with the given <code>FTRConfig</code> instance, setting up necessary parameters and configurations. It should be called before using any SDK functionality. The method can throw an error if the configuration is invalid or if there’s an issue during the initialization process.
+/// \param config An <code>FTRConfig</code> object containing the configuration settings for the SDK.
+///
+///
+/// throws:
+/// An error if the SDK fails to launch due to invalid configuration or other initialization issues.
++ (BOOL)launchWithConfig:(FTRConfig * _Nonnull)config error:(NSError * _Nullable * _Nullable)error;
+@end
+
+
 
 @interface FTRClient (SWIFT_EXTENSION(FuturaeKit))
 /// Retrieves a synchronous authentication token for a specified user.
@@ -840,20 +854,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) enum SDKStatus sdkSt
 /// returns:
 /// A string representing the synchronous authentication token.
 - (NSString * _Nullable)getSynchronousAuthTokenWithUserId:(NSString * _Nonnull)userId error:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@class FTRConfig;
-
-@interface FTRClient (SWIFT_EXTENSION(FuturaeKit))
-/// Launches the SDK with the provided configuration.
-/// This method initializes the SDK with the given <code>FTRConfig</code> instance, setting up necessary parameters and configurations. It should be called before using any SDK functionality. The method can throw an error if the configuration is invalid or if there’s an issue during the initialization process.
-/// \param config An <code>FTRConfig</code> object containing the configuration settings for the SDK.
-///
-///
-/// throws:
-/// An error if the SDK fails to launch due to invalid configuration or other initialization issues.
-+ (BOOL)launchWithConfig:(FTRConfig * _Nonnull)config error:(NSError * _Nullable * _Nullable)error;
 @end
 
 @class NSURL;
@@ -874,6 +874,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) enum SDKStatus sdkSt
 
 
 
+
 @class SessionParameters;
 
 @interface FTRClient (SWIFT_EXTENSION(FuturaeKit))
@@ -887,19 +888,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) enum SDKStatus sdkSt
 ///
 - (void)getSessionInfo:(SessionParameters * _Nonnull)parameters success:(void (^ _Nonnull)(FTRSession * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 @end
-
-
-@interface FTRClient (SWIFT_EXTENSION(FuturaeKit))
-/// Reply with approve or reject to an authentication using the provided parameters with success and failure callbacks.
-/// \param parameters The authentication parameters.
-///
-/// \param success A closure called on successful reply operation.
-///
-/// \param failure A closure called if an error occurs during reply operation..
-///
-- (void)replyAuth:(AuthReplyParameters * _Nonnull)parameters success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
-@end
-
 
 
 
@@ -930,6 +918,18 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) enum SDKStatus sdkSt
 - (void)enroll:(EnrollParameters * _Nonnull)parameters success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 @end
 
+
+
+
+@interface FTRClient (SWIFT_EXTENSION(FuturaeKit))
+/// Reset the SDK to a clean installation state. This will irreversibly reset the configuration and remove all accounts, keys, secrets, credentials and lock configurations from the SDK.
+/// \param appGroup The app group parameter used when previously launching the SDK.
+///
++ (void)resetWithAppGroup:(NSString * _Nullable)appGroup;
+- (void)clearDataFromDB:(BOOL)fromDB fromKeychain:(BOOL)fromKeychain;
+@end
+
+
 @class TOTPParameters;
 @class FTRTotp;
 
@@ -949,14 +949,15 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) enum SDKStatus sdkSt
 
 
 @interface FTRClient (SWIFT_EXTENSION(FuturaeKit))
-/// Reset the SDK to a clean installation state. This will irreversibly reset the configuration and remove all accounts, keys, secrets, credentials and lock configurations from the SDK.
-/// \param appGroup The app group parameter used when previously launching the SDK.
+/// Reply with approve or reject to an authentication using the provided parameters with success and failure callbacks.
+/// \param parameters The authentication parameters.
 ///
-+ (void)resetWithAppGroup:(NSString * _Nullable)appGroup;
-- (void)clearDataFromDB:(BOOL)fromDB fromKeychain:(BOOL)fromKeychain;
+/// \param success A closure called on successful reply operation.
+///
+/// \param failure A closure called if an error occurs during reply operation..
+///
+- (void)replyAuth:(AuthReplyParameters * _Nonnull)parameters success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 @end
-
-
 
 
 @interface FTRClient (SWIFT_EXTENSION(FuturaeKit)) <FTRAdaptiveClientDelegate>
@@ -982,7 +983,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) enum SDKStatus sdkSt
 - (BOOL)lockAndReturnError:(NSError * _Nullable * _Nullable)error;
 @end
 
-
 @class NSData;
 @protocol FTRNotificationDelegate;
 
@@ -1003,28 +1003,54 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) enum SDKStatus sdkSt
 
 
 
+
+@class FTRMigrationCheckData;
+@class MigrationParameters;
+
 @interface FTRClient (SWIFT_EXTENSION(FuturaeKit))
-/// Activate the biometric authentication as a means of convenience to verify the user presence, so that the user doesn’t have to enter the Pin to unlock the SDK.
-/// This method is only availble when the SDK lock configuration type is <code>LockConfigurationTypeSDKPinWithBiometricsOptional</code>.
+/// Retrieves a list of accounts that are eligible for migration.
+/// This method checks for accounts that can be migrated and returns the results through the <code>success</code> closure. If there is an error or issue in fetching the migratable accounts, the <code>failure</code> closure is called with an error detailing the issue.
+/// \param success A closure called with <code>FTRMigrationCheckData</code> upon successful retrieval of migratable accounts. This data includes details about the accounts that can be migrated.
 ///
-/// throws:
-/// An error if the activation of biometrics fails.
-- (BOOL)activateBiometricsAndReturnError:(NSError * _Nullable * _Nullable)error;
-/// Deactivate biometrics as an authentication method.
-/// This function revokes the biometric authentication capability for unlocking the SDK. This method is only availble when the SDK lock configuration type is <code>LockConfigurationTypeSDKPinWithBiometricsOptional</code>.
+/// \param failure A closure called in case of a failure in retrieving migratable accounts, providing an error describing the failure reason.
 ///
-/// throws:
-/// An error if the deactivation of biometrics fails.
-- (BOOL)deactivateBiometricsAndReturnError:(NSError * _Nullable * _Nullable)error;
-/// Changes the SDK-specific pin.
-/// This method allows the user to change the SDK-specific pin. On completion, either the <code>success</code> or <code>failure</code> callback is executed based on the outcome of the  process.
-/// \param newSDKPin The new SDK pin to be set.
+- (void)getMigratableAccountsWithSuccess:(void (^ _Nonnull)(FTRMigrationCheckData * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
+/// Function to execute the Automatic Account Migration, and recover accounts enrolled in a previous installation or device.
+/// For this method to succeed, the device must have valid migration data and no accounts were enrolled before calling this method.
+/// This method initiates the migration of accounts using the given <code>MigrationParameters</code>. Upon successful migration, the <code>success</code> closure is executed with relevant data or confirmation. In case of failure during the migration process, the <code>failure</code> closure is called with an error providing details about the failure reason.
+/// \param parameters An instance of <code>MigrationParameters</code> containing the necessary details for the migration process. Defaults to standard parameters if not specified.
 ///
-/// \param success A closure to be called upon successful change of the SDK pin.
+/// \param success A closure to be called upon successful migration of accounts. It may provide additional success-related information or confirmation.
 ///
-/// \param failure A closure to be called in case of a failure in changing the SDK pin, providing an error describing the failure reason.
+/// \param failure A closure to be called in case of a migration failure, providing an error describing the failure reason.
 ///
-- (void)changeSDKPinWithNewSDKPin:(NSString * _Nonnull)newSDKPin success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
+- (void)migrateAccounts:(MigrationParameters * _Nonnull)parameters success:(void (^ _Nonnull)(NSArray<FTRAccount *> * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
+@end
+
+@class SwitchLockParameters;
+@class FTRKeychainConfig;
+
+@interface FTRClient (SWIFT_EXTENSION(FuturaeKit))
+/// Switches to a new lock configuration based on the provided parameters.
+/// This method allows changing the current lock configuration of the SDK to a new one as specified in <code>SwitchLockParameters</code>. This could involve switching to biometrics, passcode, SDK pin, or no lock at all. Upon completion, it calls the appropriate success or failure closure based on the outcome.
+/// \param parameters An instance of <code>SwitchLockParameters</code> containing the new lock configuration and related details.
+///
+/// \param success A closure called upon successful configuration switch.
+///
+/// \param failure A closure called in case of a failure in switching the lock configuration, providing an error describing the failure reason.
+///
+- (void)switchToLockConfiguration:(SwitchLockParameters * _Nonnull)parameters success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
+/// Updates the SDK configuration with new settings for the app group and/or keychain.
+/// This method allows updating the SDK’s operational settings, such as the app group identifier and keychain configuration. It’s useful for dynamically adjusting these settings post-initialization. The method executes either the success or failure closure based on the outcome of the update process.
+/// \param appGroup An optional new app group identifier.
+///
+/// \param keychainConfig An optional new keychain configuration.
+///
+/// \param success A closure to be called upon successful configuration update. It may provide additional success-related information.
+///
+/// \param failure A closure to be called in case of a failure in updating the configuration, providing an error describing the failure reason.
+///
+- (void)updateSDKConfigWithAppGroup:(NSString * _Nullable)appGroup keychainConfig:(FTRKeychainConfig * _Nullable)keychainConfig success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 @end
 
 enum FTRQRCodeType : NSInteger;
@@ -1058,54 +1084,29 @@ enum FTRQRCodeType : NSInteger;
 - (NSArray<FTRExtraInfo *> * _Nonnull)extraInfoFromOfflineQRCode:(NSString * _Nonnull)QRCode SWIFT_WARN_UNUSED_RESULT;
 @end
 
-@class SwitchLockParameters;
-@class FTRKeychainConfig;
 
 @interface FTRClient (SWIFT_EXTENSION(FuturaeKit))
-/// Switches to a new lock configuration based on the provided parameters.
-/// This method allows changing the current lock configuration of the SDK to a new one as specified in <code>SwitchLockParameters</code>. This could involve switching to biometrics, passcode, SDK pin, or no lock at all. Upon completion, it calls the appropriate success or failure closure based on the outcome.
-/// \param parameters An instance of <code>SwitchLockParameters</code> containing the new lock configuration and related details.
+/// Activate the biometric authentication as a means of convenience to verify the user presence, so that the user doesn’t have to enter the Pin to unlock the SDK.
+/// This method is only availble when the SDK lock configuration type is <code>LockConfigurationTypeSDKPinWithBiometricsOptional</code>.
 ///
-/// \param success A closure called upon successful configuration switch.
+/// throws:
+/// An error if the activation of biometrics fails.
+- (BOOL)activateBiometricsAndReturnError:(NSError * _Nullable * _Nullable)error;
+/// Deactivate biometrics as an authentication method.
+/// This function revokes the biometric authentication capability for unlocking the SDK. This method is only availble when the SDK lock configuration type is <code>LockConfigurationTypeSDKPinWithBiometricsOptional</code>.
 ///
-/// \param failure A closure called in case of a failure in switching the lock configuration, providing an error describing the failure reason.
+/// throws:
+/// An error if the deactivation of biometrics fails.
+- (BOOL)deactivateBiometricsAndReturnError:(NSError * _Nullable * _Nullable)error;
+/// Changes the SDK-specific pin.
+/// This method allows the user to change the SDK-specific pin. On completion, either the <code>success</code> or <code>failure</code> callback is executed based on the outcome of the  process.
+/// \param newSDKPin The new SDK pin to be set.
 ///
-- (void)switchToLockConfiguration:(SwitchLockParameters * _Nonnull)parameters success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
-/// Updates the SDK configuration with new settings for the app group and/or keychain.
-/// This method allows updating the SDK’s operational settings, such as the app group identifier and keychain configuration. It’s useful for dynamically adjusting these settings post-initialization. The method executes either the success or failure closure based on the outcome of the update process.
-/// \param appGroup An optional new app group identifier.
+/// \param success A closure to be called upon successful change of the SDK pin.
 ///
-/// \param keychainConfig An optional new keychain configuration.
+/// \param failure A closure to be called in case of a failure in changing the SDK pin, providing an error describing the failure reason.
 ///
-/// \param success A closure to be called upon successful configuration update. It may provide additional success-related information.
-///
-/// \param failure A closure to be called in case of a failure in updating the configuration, providing an error describing the failure reason.
-///
-- (void)updateSDKConfigWithAppGroup:(NSString * _Nullable)appGroup keychainConfig:(FTRKeychainConfig * _Nullable)keychainConfig success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
-@end
-
-
-@class FTRMigrationCheckData;
-@class MigrationParameters;
-
-@interface FTRClient (SWIFT_EXTENSION(FuturaeKit))
-/// Retrieves a list of accounts that are eligible for migration.
-/// This method checks for accounts that can be migrated and returns the results through the <code>success</code> closure. If there is an error or issue in fetching the migratable accounts, the <code>failure</code> closure is called with an error detailing the issue.
-/// \param success A closure called with <code>FTRMigrationCheckData</code> upon successful retrieval of migratable accounts. This data includes details about the accounts that can be migrated.
-///
-/// \param failure A closure called in case of a failure in retrieving migratable accounts, providing an error describing the failure reason.
-///
-- (void)getMigratableAccountsWithSuccess:(void (^ _Nonnull)(FTRMigrationCheckData * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
-/// Function to execute the Automatic Account Migration, and recover accounts enrolled in a previous installation or device.
-/// For this method to succeed, the device must have valid migration data and no accounts were enrolled before calling this method.
-/// This method initiates the migration of accounts using the given <code>MigrationParameters</code>. Upon successful migration, the <code>success</code> closure is executed with relevant data or confirmation. In case of failure during the migration process, the <code>failure</code> closure is called with an error providing details about the failure reason.
-/// \param parameters An instance of <code>MigrationParameters</code> containing the necessary details for the migration process. Defaults to standard parameters if not specified.
-///
-/// \param success A closure to be called upon successful migration of accounts. It may provide additional success-related information or confirmation.
-///
-/// \param failure A closure to be called in case of a migration failure, providing an error describing the failure reason.
-///
-- (void)migrateAccounts:(MigrationParameters * _Nonnull)parameters success:(void (^ _Nonnull)(NSArray<FTRAccount *> * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
+- (void)changeSDKPinWithNewSDKPin:(NSString * _Nonnull)newSDKPin success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 @end
 
 
