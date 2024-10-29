@@ -16,20 +16,70 @@ extension FunctionsViewController {
         }
     }
 
-    @IBAction func enableAdaptive(_ sender: UIButton) {
-        FTRClient.shared.enableAdaptive(delegate: self)
-        UserDefaults.custom.set(true, forKey: SDKConstants.ADAPTIVE_ENABLED_KEY)
-        enableAdaptiveButton.isHidden = true
-        disableAdaptiveButton.isHidden = false
-        UserDefaults.standard.set(true, forKey: "adaptive_enabled")
+    @IBAction func toggleAdaptive(_ sender: UIButton) {
+        if FTRClient.shared.isAdaptiveEnabled {
+            disableAdaptiveCollections()
+        } else {
+            enableAdaptiveCollections()
+        }
     }
-
-    @IBAction func disableAdaptive(_ sender: UIButton) {
-        FTRClient.shared.disableAdaptive()
-        UserDefaults.custom.set(false, forKey: SDKConstants.ADAPTIVE_ENABLED_KEY)
-        enableAdaptiveButton.isHidden = false
-        disableAdaptiveButton.isHidden = true
-        UserDefaults.standard.set(false, forKey: "adaptive_enabled")
+    
+    func disableAdaptiveCollections(){
+        adaptiveAuthButton.isHidden = true
+        adaptiveMigrationButton.isHidden = true
+        
+        FTRClient.shared.disableAdaptiveCollections()
+        UserDefaults.custom.set(false, forKey: SDKConstants.ADAPTIVE_COLLECTIONS_ENABLED_KEY)
+        adaptiveButton.setTitle("Enable adaptive collections", for: .normal)
+    }
+    
+    func enableAdaptiveCollections(){
+        adaptiveAuthButton.isHidden = false
+        adaptiveMigrationButton.isHidden = false
+        
+        FTRClient.shared.enableAdaptiveCollections(delegate: self)
+        UserDefaults.custom.set(true, forKey: SDKConstants.ADAPTIVE_COLLECTIONS_ENABLED_KEY)
+        adaptiveButton.setTitle("Disable adaptive collections", for: .normal)
+    }
+    
+    @IBAction func toggleAdaptiveAuth(_ sender: UIButton) {
+        if FTRClient.shared.isAdaptiveSubmissionOnAuthenticationEnabled {
+            disableAdaptiveAuth()
+        } else {
+            enableAdaptiveAuth()
+        }
+    }
+    
+    func disableAdaptiveAuth(){
+        FTRClient.shared.disableAdaptiveSubmissionOnAuthentication()
+        UserDefaults.custom.set(false, forKey: SDKConstants.ADAPTIVE_ENABLED_AUTH_KEY)
+        adaptiveAuthButton.setTitle("Enable adaptive authentication", for: .normal)
+    }
+    
+    func enableAdaptiveAuth(){
+        try? FTRClient.shared.enableAdaptiveSubmissionOnAuthentication()
+        UserDefaults.custom.set(true, forKey: SDKConstants.ADAPTIVE_ENABLED_AUTH_KEY)
+        adaptiveAuthButton.setTitle("Disable adaptive authentication", for: .normal)
+    }
+    
+    @IBAction func toggleAdaptiveMigration(_ sender: UIButton) {
+        if FTRClient.shared.isAdaptiveSubmissionMigrationEnabled {
+            disableAdaptiveMigration()
+        } else {
+            enableAdaptiveMigration()
+        }
+    }
+    
+    func disableAdaptiveMigration(){
+        FTRClient.shared.disableAdaptiveSubmissionOnAccountMigration()
+        UserDefaults.custom.set(false, forKey: SDKConstants.ADAPTIVE_ENABLED_MIGRATION_KEY)
+        adaptiveMigrationButton.setTitle("Enable adaptive migration", for: .normal)
+    }
+    
+    func enableAdaptiveMigration(){
+        try? FTRClient.shared.enableAdaptiveSubmissionOnAccountMigration()
+        UserDefaults.custom.set(true, forKey: SDKConstants.ADAPTIVE_ENABLED_MIGRATION_KEY)
+        adaptiveMigrationButton.setTitle("Disable adaptive migration", for: .normal)
     }
 }
 

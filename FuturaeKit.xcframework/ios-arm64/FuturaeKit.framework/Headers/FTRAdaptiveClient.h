@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(instancetype)initWithDelegate:(_Nonnull id<FTRAdaptiveClientDelegate>)delegate;
 - (void)startScanningOnce;
+- (void)collectAndSubmitObservations;
 - (void)completeScanning;
 - (void)deleteCollectedData:(NSDictionary<NSString *,id> *)collectedData;
 - (void)enableAdaptiveWithDelegate:(_Nonnull id<FTRAdaptiveSDKDelegate>)delegate;
@@ -25,6 +26,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL)isAdaptiveEnabled;
 - (void)setAdaptiveTimeThreshold: (int)threshold;
 - (NSArray<NSDictionary<NSString *, id> *> *_Nonnull)pendingAdaptiveCollections;
+- (void)enableAdaptiveSubmissionOnAuthentication;
+- (void)enableAdaptiveSubmissionOnAccountMigration;
+- (void)disableAdaptiveSubmissionOnAuthentication;
+- (void)disableAdaptiveSubmissionOnAccountMigration;
+- (BOOL)isAdaptiveSubmissionOnAuthenticationEnabled;
+- (BOOL)isAdaptiveSubmissionMigrationEnabled;
 @end
 
 NS_ASSUME_NONNULL_END

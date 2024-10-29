@@ -33,42 +33,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func showAlert(title: String, message: String) {
+    func showAlert(title: String, message: String, animated: Bool = true) {
         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-        window?.rootViewController?.present(ac, animated: true, completion: nil)
-    }
-    
-    func showLocalNotification(title: String, withBody body: String) {
-        let userInfo: [AnyHashable: Any] = [:] // Define userInfo as needed
-        let request = createNotificationRequest(withBody: body, title: title, soundName: "default", category: "FTCATEGORY_APPROVE", userInfo: userInfo)
-        let center = UNUserNotificationCenter.current()
-        center.add(request, withCompletionHandler: nil)
-    }
-
-    func createNotificationRequest(withBody body: String, title: String, soundName: String, category: String, userInfo: [AnyHashable: Any]) -> UNNotificationRequest {
-        let content = UNMutableNotificationContent()
-        content.title = title
-        content.body = body
-
-        if !category.isEmpty {
-            content.categoryIdentifier = category
-        }
-
-        if !userInfo.isEmpty {
-            content.userInfo = userInfo
-        }
-
-        if !soundName.isEmpty {
-            content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: soundName))
-        }
-
-        return UNNotificationRequest(identifier: "Futurae", content: content, trigger: nil)
+        window?.rootViewController?.present(ac, animated: animated, completion: nil)
     }
     
     func unlockSDK(callback: @escaping () -> Void) {
         guard let method = FTRClient.shared.activeUnlockMethods.first else { return }
-
+        
         switch method {
         case .biometrics, .biometricsOrPasscode:
             unlockWithBiometrics(callback: callback)
@@ -78,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             break
         }
     }
-
+    
     func unlockWithPIN(callback: @escaping () -> Void) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "pinViewController") as! PinViewController
         vc.pinMode = .input
@@ -93,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         window?.rootViewController?.present(vc, animated: true, completion: nil)
     }
-
+    
     func unlockWithBiometrics(callback: @escaping () -> Void) {
         FTRClient.shared.unlock(UnlockParameters.with(biometricsPrompt: "UNLOCK WITH BIOMETRICS"), success: {
             callback()
@@ -101,15 +74,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             callback()
         })
     }
-
 }
 
-
 extension AppDelegate: FTRNotificationDelegate {
+    func notificationDataReceived(_ notificationData: FTRNotificationData) {
+        let body = notificationData.payload.compactMap {
+            "\($0.key): \($0.value)"
+        }.joined(separator: ", ")
+        self.showAlert(title: "Arbitrary Push Notification \(notificationData.notificationId)", message: body, animated: false)
+    }
+    
     func approveAuthenticationReceived(_ authenticationInfo: FTRNotificationAuth) {
         if FTRClient.shared.isLocked {
             let ac = UIAlertController(title: "SDK IS LOCKED", message: "You need to unlock to proceed", preferredStyle: .alert)
-
+            
             ac.addAction(UIAlertAction(title: "UNLOCK", style: .default, handler: { [weak self] _ in
                 self?.unlockSDK {
                     DispatchQueue.main.async {
@@ -118,13 +96,13 @@ extension AppDelegate: FTRNotificationDelegate {
                 }
             }))
             ac.addAction(UIAlertAction(title: "CANCEL", style: .destructive, handler: nil))
-
+            
             window?.rootViewController?.present(ac, animated: false, completion: nil)
             return
         }
-
+        
         print("Received approve authentication: \(authenticationInfo)")
-
+        
         var extraInfoMsg = ""
         if let extraInfo = authenticationInfo.extraInfo {
             extraInfoMsg += "\n"
@@ -132,8 +110,7 @@ extension AppDelegate: FTRNotificationDelegate {
                 extraInfoMsg += "\(pair.key)\n\(pair.value)\n"
             }
         }
-
-        let sessionTimeout = authenticationInfo.sessionTimeout
+        
         let numbersChallenge = authenticationInfo.multiNumberedChallenge
         var message = "Would you like to approve the request? \(extraInfoMsg)."
         
@@ -142,7 +119,7 @@ extension AppDelegate: FTRNotificationDelegate {
         }
         
         if let timestamp = authenticationInfo.timeout?.doubleValue {
-            let date = Date(timeIntervalSince1970: timestamp)            
+            let date = Date(timeIntervalSince1970: timestamp)
             let formatter = DateFormatter()
             formatter.dateStyle = .medium
             formatter.timeStyle = .medium
@@ -155,7 +132,7 @@ extension AppDelegate: FTRNotificationDelegate {
         }
         
         let ac = UIAlertController(title: "Approve", message: message, preferredStyle: .alert)
-
+        
         ac.addAction(UIAlertAction(title: "Approve", style: .cancel, handler: { _ in
             if let numbersChallenge = numbersChallenge {
                 self.pickMultiChallengeNumber(numbersChallenge) { number in
@@ -180,29 +157,29 @@ extension AppDelegate: FTRNotificationDelegate {
                 print("Failed to approve: \(error)")
             })
         }))
-
+        
         window?.rootViewController?.present(ac, animated: false, completion: nil)
     }
-
+    
     func pickMultiChallengeNumber(_ numbers: [Int], callback: @escaping (Int) -> Void) {
         let ac = UIAlertController(title: "Multi Number Challenge", message: "Pick number", preferredStyle: .alert)
-
+        
         for number in numbers {
             ac.addAction(UIAlertAction(title: "\(number)", style: .default, handler: { _ in
                 callback(number)
             }))
         }
-
+        
         window?.rootViewController?.present(ac, animated: false, completion: nil)
     }
-
+    
     
     func unenrollUserReceived(_ userId: String) {
         //
     }
     
     func notificationError(_ error: Error) {
-        //
+        self.showAlert(title: "Notification Error", message: error.localizedDescription, animated: false)
     }
     
     func qrCodeScanRequested(_ sessionId: String, _ userId: String, _ timeout: TimeInterval) {
@@ -227,13 +204,14 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print("Received APN with completionHandler: \(userInfo)")
-            
+        
         FTRClient.shared.handleNotification(userInfo, delegate: self)
-        self.showLocalNotification(title: "Authentication Request", withBody: userInfo["body"] as? String ?? "")
+        completionHandler(.newData)
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         FTRClient.shared.handleNotification(notification.request.content.userInfo, delegate: self)
+        completionHandler(.sound)
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
@@ -245,7 +223,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             }
             
             FTRClient.shared.getSessionInfo(SessionParameters.with(id: sessionId,
-                                                                    userId: userId),
+                                                                   userId: userId),
                                             success: { data in
                 FTRClient.shared.replyAuth(AuthReplyParameters.replyPush(response.actionIdentifier == "approve" ? .approve : .reject,
                                                                          sessionId: sessionId,
@@ -258,11 +236,10 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             }, failure: { error in
                 // Failure handling
             })
-
+            
             return
         }
-        
-        FTRClient.shared.handleNotification(response.notification.request.content.userInfo, delegate: self)
+        completionHandler()
     }
 }
 
@@ -270,32 +247,54 @@ extension AppDelegate: FTROpenURLDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         let sourceApplication = options[.sourceApplication] as? String
         print("Received URL Scheme call from \(String(describing: sourceApplication)): \(url)")
-        
-        guard let vc = window?.rootViewController else { return true }
-
-        switch FTRUtils.typeFromURL(url){
+                
+        switch FTRUtils.typeFromURL(url) {
         case .activation:
-            if let code = FTRUtils.activationDataFromURL(url)?.activationCode {
-                vc.promptForBindingToken(callback: { token in
-                    FTRClient.shared.enroll(token != nil ? EnrollParameters.with(activationCode: code, bindingToken: token!)
-                                            : EnrollParameters.with(activationCode: code), success: {
-                        vc.showAlert(title: "Success", message: "User account enrolled successfully!")
-                    }, failure: { error in
-                        vc.showAlert(title: "Error", message: error.localizedDescription)
-                    })
-                })
-            }
+            enroll(url: url)
+            return true
+        case .authentication:
+            authenticate(url: url, options: options)
+            return true
         default:
-            FTRClient.shared.openURL(url, options: options, delegate: self)
+            break
         }
         
-        return true
+        return false
+    }
+    
+    func application(
+        _ application: UIApplication,
+        continue userActivity: NSUserActivity,
+        restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void
+    ) -> Bool {
+        // Check if the activity type is a Universal Link
+        guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
+              let url = userActivity.webpageURL else { return false }
+        
+        print("Received Universal Link: \(url)")
+
+        // Handle the universal link URL here
+        switch FTRUtils.typeFromURL(url) {
+        case .activation:
+            print("ernoll")
+            enroll(url: url)
+            return true
+        case .authentication:
+            print("authentication")
+            authenticate(url: url)
+            return true
+        default:
+            print("default")
+            break
+        }
+        
+        return false
     }
     
     
     func authenticationURLOpened(_ authenticationInfo: FTRURLAuth) {
         print("authenticationURLOpened: \(authenticationInfo)")
-
+        
         let redirectUri = authenticationInfo.successUrlCallback
         authenticationURLFinished(redirectUri)
     }
@@ -316,17 +315,59 @@ extension AppDelegate: FTROpenURLDelegate {
             window?.rootViewController?.present(ac, animated: false, completion: nil)
         }
     }
-
+    
     func activationURLOpened(_ userId: String) {
         print("activationURLOpened userId: \(userId)")
         showAlert(title: "Success", message: "Successfully enrolled")
     }
-
+    
     func openURLError(_ error: Error) {
         var message = (error as NSError).userInfo["msg"] as? String ?? error.localizedDescription
         message = message.isEmpty ? "Unknown error" : message
         
         print("openURLError: \(error)")
         showAlert(title: "Error", message: message)
+    }
+    
+    private func enroll(url enrollmentUrl: URL) {
+        guard let vc = window?.rootViewController else { return }
+
+        guard let userId = FTRUtils.userId(fromUri: enrollmentUrl.absoluteString) else {
+            self.showAlert(title: "Error", message: "Invalid URL")
+            return
+        }
+        
+        if let code = FTRUtils.activationDataFromURL(enrollmentUrl)?.activationCode {
+            vc.promptForBindingToken(
+                callback: { token in
+                    FTRClient.shared.enroll(
+                        token != nil
+                            ? EnrollParameters.with(activationCode: code, bindingToken: token!)
+                            : EnrollParameters.with(activationCode: code), 
+                        success: {
+                            vc.showAlert(title: "Success", message: "User account enrolled successfully!")
+                        },
+                        failure: { error in
+                            vc.showAlert(title: "Error", message: error.localizedDescription)
+                        }
+                    )
+                }
+            )
+        }
+    }
+    
+    private func authenticate(
+        url authenticationUrl: URL,
+        options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+    ) {
+        guard let vc = window?.rootViewController else { return }
+
+        guard let userId = FTRUtils.userId(fromUri: authenticationUrl.absoluteString),
+              let sessionToken = FTRUtils.sessionToken(fromUri: authenticationUrl.absoluteString) else {
+            vc.showAlert(title: "Error", message: "Invalid URL")
+            return
+        }
+        
+        FTRClient.shared.openURL(authenticationUrl, options: options, delegate: self)
     }
 }
