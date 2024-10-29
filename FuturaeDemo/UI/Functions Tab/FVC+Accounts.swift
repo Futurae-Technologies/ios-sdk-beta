@@ -93,9 +93,75 @@ extension FunctionsViewController {
     }
 
     func createAccountDescription(_ account: FTRAccount) -> String {
-        var info = "username: \(account.userId)\n"
-        info += "  locked_out: \(account.lockedOut ? "YES" : "NO")\n"
-        info += "  enrolled: \(account.enrolled ? "YES" : "NO")\n"
+        var dateString = ""
+        
+        if let date = account.enrolledAt {
+            // Create another DateFormatter for converting to local time
+            let localDateFormatter = DateFormatter()
+            localDateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            localDateFormatter.timeZone = TimeZone.current
+            
+            // Convert the Date object to a string in local time
+            let localDateString = localDateFormatter.string(from: date)
+            dateString = localDateString
+            print("Local Time: \(localDateString)")
+        } else {
+            print("Failed to parse date.")
+        }
+        
+        var info = "userid: \(account.userId)\n"
+        info += "usename: \(account.username ?? "N/A")\n"
+        info += "service name: \(account.serviceName ?? "N/A")\n"
+        info += "locked_out: \(account.lockedOut ? "YES" : "NO")\n"
+        info += "enrolled: \(account.enrolled ? "YES" : "NO")\n"
+        info += "enrolled at: \(dateString)\n"
         return info
+    }
+    
+    @IBAction func getActiveSessions(_ sender: UIButton) {
+        do {
+            let accounts = try FTRClient.shared.getAccounts()
+            FTRClient.shared.getAccountsStatus(accounts, success: { [weak self] responseObject in
+                let ac = UIAlertController(title: "Active sessions", message: "Select a session id", preferredStyle: .actionSheet)
+                
+                let sessions = responseObject.accounts.compactMap { $0.sessions }.joined()
+
+                for session in sessions {
+                    guard let sessionId = session.sessionId, let userId = session.userId else {
+                        continue
+                    }
+                    
+                    ac.addAction(UIAlertAction(title: session.sessionId ?? "No session id", style: .default, handler: { _ in
+                        self?.dismiss(animated: true) {
+                            FTRClient.shared.getSessionInfo(.with(id: sessionId, userId: userId)) { [weak self] session in
+                                FTRClient.shared.replyAuth(.approvePush(sessionId, userId: userId, extraInfo: session.extraInfo)) {
+                                    self?.showAlert(title: "Success", message: "User authenticated successfully!")
+                                } failure: { error in
+                                    let title = "Error"
+                                    let message = error.localizedDescription
+                                    self?.showAlert(title: title, message: message)
+                                }
+                            } failure: { error in
+                                let title = "Error"
+                                let message = error.localizedDescription
+                                self?.showAlert(title: title, message: message)
+                            }
+                        }
+                    }))
+                }
+
+                ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+                self?.dismiss(animated: true) {
+                    self?.present(ac, animated: true, completion: nil)
+                }
+            }, failure: { [weak self] error in
+                let title = "Error"
+                let message = error.localizedDescription
+                self?.showAlert(title: title, message: message)
+            })
+        } catch {
+            print(error)
+        }
     }
 }

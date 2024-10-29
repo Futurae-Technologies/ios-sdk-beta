@@ -28,6 +28,10 @@ final class ConfigViewController: UIViewController {
     @IBOutlet weak var deactivatePinBiometricsBtn: UIButton!
     @IBOutlet weak var changePinBtn: UIButton!
     
+    @IBOutlet weak var pinConfigStack: UIStackView!
+    @IBOutlet weak var allowChangePin: UISwitch!
+    @IBOutlet weak var deactivateBiometricsAfterChangePin: UISwitch!
+    
     var unlockFailureHandler: FTRFailureHandler {
         return { error in
             DispatchQueue.main.async { [unowned self] in
@@ -37,13 +41,27 @@ final class ConfigViewController: UIViewController {
         }
     }
     
-    var unlockSuccessHandler: FTRSuccessHandler{
+    var unlockSuccessHandler: FTRSuccessHandler {
         return {
             DispatchQueue.main.async { [unowned self] in
                 valueTextView.isHidden = false
                 valueTextView.text = "Last operation: " + "Unlocked"
+                sdkClient?.collectAndSubmitObservations()
             }
         }
+    }
+    
+    var config: FTRConfig {
+        let type = selectedConfigOption ?? options[settingsPickerView.selectedRow(inComponent: 0)]
+        return FTRConfig(sdkId: SDKConstants.SDKID,
+                               sdkKey: SDKConstants.SDKKEY,
+                               baseUrl: SDKConstants.SDKURL,
+                         keychain: FTRKeychainConfig(accessGroup: SDKConstants.KEYCHAIN_ACCESS_GROUP, itemsAccessibility: .whenUnlockedThisDeviceOnly),
+                               lockConfiguration: LockConfiguration(type: type,
+                                                                    unlockDuration: 60,
+                                                                    invalidatedByBiometricsChange: true,
+                                                                    pinConfiguration: .init(allowPinChangeWithBiometricUnlock: allowChangePin.isOn, deactivateBiometricsAfterPinChange: deactivateBiometricsAfterChangePin.isOn))
+                               ,appGroup: SDKConstants.APP_GROUP)
     }
     
     var timer: Timer?
@@ -96,37 +114,20 @@ final class ConfigViewController: UIViewController {
         let savedOption = UserDefaults.custom.integer(forKey: SDKConstants.KEY_CONFIG)
         if(savedOption > 0) {
             selectedConfigOption = .init(rawValue: savedOption)
+            
+            allowChangePin.isOn = UserDefaults.custom.bool(forKey: "allowChangePin")
+            deactivateBiometricsAfterChangePin.isOn = UserDefaults.custom.bool(forKey: "deactivateBiometricsAfterChangePin")
+            
             setupConfig()
         } else if(FTRClient.sdkIsLaunched){
             selectedConfigOption = FTRClient.shared.currentLockConfiguration.type
             setupSdkView()
         }
+        
+        pinConfigStack.isHidden = selectedConfigOption != .sdkPinWithBiometricsOptional
     }
     
     func setupConfig(){
-        let type = selectedConfigOption!
-        
-        var config: FTRConfig
-        if UserDefaults(suiteName: SDKConstants.APP_GROUP)?.bool(forKey: SDKConstants.APP_GROUP_ENABLED) == true {
-            config = FTRConfig(sdkId: SDKConstants.SDKID,
-                                   sdkKey: SDKConstants.SDKKEY,
-                                   baseUrl: SDKConstants.SDKURL,
-                                   keychain: FTRKeychainConfig(accessGroup: SDKConstants.KEYCHAIN_ACCESS_GROUP),
-                                   lockConfiguration: LockConfiguration(type: type,
-                                                                        unlockDuration: 60,
-                                                                        invalidatedByBiometricsChange: true)
-                                   ,appGroup: SDKConstants.APP_GROUP
-            )
-        } else {
-            config = FTRConfig(sdkId: SDKConstants.SDKID,
-                                   sdkKey: SDKConstants.SDKKEY,
-                                   baseUrl: SDKConstants.SDKURL,
-                                   lockConfiguration: LockConfiguration(type: type,
-                                                                        unlockDuration: 60,
-                                                                        invalidatedByBiometricsChange: true)
-            )
-        }
-        
         do {
             try FTRClient.launch(config: config)
             
@@ -142,11 +143,30 @@ final class ConfigViewController: UIViewController {
     
     func setupSdkView(){
         sdkClient = FTRClient.shared
-        if(UserDefaults.custom.bool(forKey: SDKConstants.ADAPTIVE_ENABLED_KEY)){
-            if let vc = (tabBarController?.viewControllers?.first { $0 is FunctionsViewController }){
-                sdkClient?.enableAdaptive(delegate: vc as! FTRAdaptiveSDKDelegate)
+        
+        if let vc = (tabBarController?.viewControllers?.first { $0 is FunctionsViewController }) as? FunctionsViewController{
+            // Handle case where adaptive was previously enabled via `enableAdaptive` method to enable everything
+            if(UserDefaults.custom.bool(forKey: SDKConstants.ADAPTIVE_ENABLED_KEY)){
+                UserDefaults.custom.set(true, forKey: SDKConstants.ADAPTIVE_COLLECTIONS_ENABLED_KEY)
+                UserDefaults.custom.set(true, forKey: SDKConstants.ADAPTIVE_ENABLED_AUTH_KEY)
+                UserDefaults.custom.set(true, forKey: SDKConstants.ADAPTIVE_ENABLED_MIGRATION_KEY)
+                
+                UserDefaults.custom.removeObject(forKey: SDKConstants.ADAPTIVE_ENABLED_KEY)
+            }
+            
+            if(UserDefaults.custom.bool(forKey: SDKConstants.ADAPTIVE_COLLECTIONS_ENABLED_KEY)){
+                sdkClient?.enableAdaptiveCollections(delegate: vc as FTRAdaptiveSDKDelegate)
+                
+                if(UserDefaults.custom.bool(forKey: SDKConstants.ADAPTIVE_ENABLED_AUTH_KEY)){
+                    try? sdkClient?.enableAdaptiveSubmissionOnAuthentication()
+                }
+                
+                if(UserDefaults.custom.bool(forKey: SDKConstants.ADAPTIVE_ENABLED_MIGRATION_KEY)){
+                    try? sdkClient?.enableAdaptiveSubmissionOnAccountMigration()
+                }
             }
         }
+       
         
         setupButtonsForOption(selectedConfigOption!)
         if let index = (options.firstIndex { $0 == selectedConfigOption }){
@@ -208,21 +228,38 @@ final class ConfigViewController: UIViewController {
         UserDefaults.custom.set(selectedConfigOption?.rawValue ?? 0,
                                   forKey: SDKConstants.KEY_CONFIG)
         
+        UserDefaults.custom.set(allowChangePin.isOn,
+                                  forKey: "allowChangePin")
+        
+        UserDefaults.custom.set(deactivateBiometricsAfterChangePin.isOn,
+                                  forKey: "deactivateBiometricsAfterChangePin")
+        
         setupConfig()
     }
     
     @IBAction func reset(_ sender: Any) {
         timer?.invalidate()
         timer = nil
-        FTRClient.reset(appGroup: UserDefaults(suiteName: SDKConstants.APP_GROUP)?
-            .bool(forKey: "app_group_enabled") == true ? SDKConstants.KEYCHAIN_ACCESS_GROUP : nil)
+        let configuration = config
+        
         UserDefaults.custom.set(0,
                                   forKey: SDKConstants.KEY_CONFIG)
-        
         UserDefaults.custom.setValue(false, forKey: SDKConstants.ADAPTIVE_ENABLED_KEY)
+        UserDefaults.custom.setValue(false, forKey: SDKConstants.ADAPTIVE_COLLECTIONS_ENABLED_KEY)
+        UserDefaults.custom.setValue(false, forKey: SDKConstants.ADAPTIVE_ENABLED_AUTH_KEY)
+        UserDefaults.custom.setValue(false, forKey: SDKConstants.ADAPTIVE_ENABLED_MIGRATION_KEY)
+        
+        if let vc = (tabBarController?.viewControllers?.first { $0 is FunctionsViewController }) as? FunctionsViewController, vc.isViewLoaded, FTRClient.sdkIsLaunched {
+            vc.disableAdaptiveCollections()
+        }
+        
+        FTRClient.reset(appGroup: configuration.appGroup, keychain: configuration.keychain, lockConfiguration: configuration.lockConfiguration)
+
         selectedConfigOption = nil;
         [pinStack, unlockWithBiometricsBtn, unlockWithBiometricsPasscodeBtn, lockSDKBtn, checkBiometricsBtn].forEach { $0?.isHidden = true }
         statusLabel.text = ""
+        
+        sdkClient = nil
     }
     
     @IBAction func switchConfig(_ sender: Any) {
@@ -327,7 +364,16 @@ final class ConfigViewController: UIViewController {
     @IBAction func unlockWithPin(_ sender: Any) {
         let vc = PinViewController.create(pinMode: .input, title: "UNLOCK WITH PIN") { [unowned self] pin in
             if let pin = pin {
-                sdkClient?.unlock(.with(sdkPin: pin), success: unlockSuccessHandler, failure: unlockFailureHandler)
+                sdkClient?.unlock(.with(sdkPin: pin), success: unlockSuccessHandler, failure: { error in
+                    DispatchQueue.main.async { [unowned self] in
+                        valueTextView.isHidden = false
+                        if let error = error as? SDKApiError, error.sdkCode == .incorrectPin {
+                            valueTextView.text = "Incorrect pin: \(error.pinAttemptsLeft == nil ? "more than three" : "\(error.pinAttemptsLeft!.intValue)") pin attempts left"
+                        } else {
+                            valueTextView.text = "Last operation: " + error.localizedDescription
+                        }
+                    }
+                })
             }
         }
         
@@ -380,6 +426,22 @@ final class ConfigViewController: UIViewController {
     @IBAction func checkBiometricsValidity(_ sender: Any) {
         let haveBiometricsChanged = sdkClient?.haveBiometricsChanged ?? false
         showAlert(title: "", message: haveBiometricsChanged ? "Biometrics have changed" : "Biometrics have not changed")
+    }
+    
+    @IBAction func generateSDKReport(_ sender: Any) {
+        guard let client = sdkClient else {
+            valueTextView.text = "SDK Not launched"
+            return
+        }
+        
+        do {
+            let report = try client.sdkStateReport()
+            let text = "\(report.report) \n\n \(report.logs)"
+            print(text)
+            showAlert(title: "SDK report", message: text)
+        } catch {
+            valueTextView.text = "Last operation: " + error.localizedDescription
+        }
     }
     
     @IBAction func checkBiometricsPermission(_ sender: Any) {
@@ -438,7 +500,9 @@ extension ConfigViewController: FTRClientDelegate {
 }
 
 extension ConfigViewController: UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {}
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        pinConfigStack.isHidden = options[row] != .sdkPinWithBiometricsOptional
+    }
 }
 
 extension ConfigViewController: UIPickerViewDataSource {

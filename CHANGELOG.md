@@ -1,3 +1,8 @@
+# Version 3.4.1-beta
+2024-29-10
++ [Added] Method to retrieve notification data for arbitrary push notification
++ [Added] Support for universal links
+
 # Version 3.1.7-beta
 2024-09-05
 + [Changed] Privacy manifest file

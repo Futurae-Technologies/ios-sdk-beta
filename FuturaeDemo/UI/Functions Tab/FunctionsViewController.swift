@@ -12,8 +12,9 @@ import FuturaeKit
 class FunctionsViewController: UIViewController {
 
     // Outlets
-    @IBOutlet weak var enableAdaptiveButton: UIButton!
-    @IBOutlet weak var disableAdaptiveButton: UIButton!
+    @IBOutlet weak var adaptiveButton: UIButton!
+    @IBOutlet weak var adaptiveAuthButton: UIButton!
+    @IBOutlet weak var adaptiveMigrationButton: UIButton!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var serviceLogoImageView: UIImageView!
@@ -45,8 +46,29 @@ class FunctionsViewController: UIViewController {
         super.viewDidLoad()
         
         QRCodeScanRequestCoordinator.instance.subscribeToQREvent(self)
+        
+        if(UserDefaults.custom.bool(forKey: SDKConstants.ADAPTIVE_COLLECTIONS_ENABLED_KEY)){
+            adaptiveButton.setTitle("Disable adaptive collections", for: .normal)
+            adaptiveAuthButton.isHidden = false
+            adaptiveMigrationButton.isHidden = false
+            
+            if(UserDefaults.custom.bool(forKey: SDKConstants.ADAPTIVE_ENABLED_AUTH_KEY)){
+                adaptiveAuthButton.setTitle("Disable adaptive authentication", for: .normal)
+            } else {
+                adaptiveAuthButton.setTitle("Enable adaptive authentication", for: .normal)
+            }
+            
+            if(UserDefaults.custom.bool(forKey: SDKConstants.ADAPTIVE_ENABLED_MIGRATION_KEY)){
+                adaptiveMigrationButton.setTitle("Disable adaptive migration", for: .normal)
+            } else {
+                adaptiveMigrationButton.setTitle("Enable adaptive migration", for: .normal)
+            }
+        } else {
+            adaptiveButton.setTitle("Enable adaptive collections", for: .normal)
+            adaptiveAuthButton.isHidden = true
+            adaptiveMigrationButton.isHidden = true
+        }
     }
-    
 
     // MARK: - Actions
 
@@ -193,8 +215,8 @@ class FunctionsViewController: UIViewController {
         }
     }
 
-    func presentQRCodeControllerWithQRCodeType(_ QRCodeType: QRCodeType, sender: UIButton) {
-        let title = sender.title(for: .normal) ?? ""
+    func presentQRCodeControllerWithQRCodeType(_ QRCodeType: QRCodeType, sender: UIButton? = nil) {
+        let title = sender?.title(for: .normal) ?? ""
         let qrcodeVC = ExampleQRCodeViewController(title: title, QRCodeType: QRCodeType)
         qrcodeVC.delegate = self
         let navigationController = UINavigationController(rootViewController: qrcodeVC)
@@ -232,7 +254,7 @@ extension FunctionsViewController: ExampleQRCodeReaderDelegate {
 
 extension FunctionsViewController: QRCodeScanRequestDelegate {
     func qrCodeScanRequested() {
-        presentQRCodeControllerWithQRCodeType(.onlineAuth, sender: disableAdaptiveButton)
+        presentQRCodeControllerWithQRCodeType(.onlineAuth)
     }
 }
 
