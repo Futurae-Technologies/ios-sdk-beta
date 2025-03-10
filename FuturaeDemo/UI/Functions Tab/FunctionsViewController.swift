@@ -12,6 +12,7 @@ import FuturaeKit
 class FunctionsViewController: UIViewController {
 
     // Outlets
+    @IBOutlet weak var sessionMethod: UIButton!
     @IBOutlet weak var adaptiveButton: UIButton!
     @IBOutlet weak var adaptiveAuthButton: UIButton!
     @IBOutlet weak var adaptiveMigrationButton: UIButton!
@@ -68,6 +69,10 @@ class FunctionsViewController: UIViewController {
             adaptiveAuthButton.isHidden = true
             adaptiveMigrationButton.isHidden = true
         }
+        
+        
+        sessionMethod.setTitle(UserDefaults.custom.bool(forKey: SDKConstants.USE_UNPROTECTED_SESSION) ?
+                               "Use protected session" : "Use unprotected session", for: .normal)
     }
 
     // MARK: - Actions

@@ -81,7 +81,7 @@ extension AppDelegate: FTRNotificationDelegate {
         let body = notificationData.payload.compactMap {
             "\($0.key): \($0.value)"
         }.joined(separator: ", ")
-        self.showAlert(title: "Arbitrary Push Notification \(notificationData.notificationId)", message: body, animated: false)
+        self.showAlert(title: "Arbitrary Push Notification \(notificationData.notificationId), \(notificationData.userId)", message: body, animated: false)
     }
     
     func approveAuthenticationReceived(_ authenticationInfo: FTRNotificationAuth) {
@@ -103,23 +103,36 @@ extension AppDelegate: FTRNotificationDelegate {
         
         print("Received approve authentication: \(authenticationInfo)")
         
+        
+        
+        presentAuthenticationAlert(numbersChallenge: authenticationInfo.multiNumberedChallenge,
+                                   sessionId: authenticationInfo.sessionId,
+                                   userId: authenticationInfo.userId,
+                                   extraInfo: authenticationInfo.extraInfo,
+                                   sessionTimeout: authenticationInfo.sessionTimeout?.intValue,
+                                   timeout: authenticationInfo.timeout?.intValue,
+                                   type: authenticationInfo.type
+        )
+    }
+    
+    func presentAuthenticationAlert(numbersChallenge: [Int]?, sessionId: String, userId: String, extraInfo: [FTRExtraInfo]?, sessionTimeout: Int?, timeout: Int?, type: String?){
         var extraInfoMsg = ""
-        if let extraInfo = authenticationInfo.extraInfo {
+        if let extraInfo = extraInfo {
             extraInfoMsg += "\n"
             for pair in extraInfo {
                 extraInfoMsg += "\(pair.key)\n\(pair.value)\n"
             }
         }
         
-        let numbersChallenge = authenticationInfo.multiNumberedChallenge
+        let numbersChallenge = numbersChallenge
         var message = "Would you like to approve the request? \(extraInfoMsg)."
         
-        if let sessionTimeout = authenticationInfo.sessionTimeout {
-            message.append("\n\nSession timeout:\n\(sessionTimeout.intValue)")
+        if let sessionTimeout = sessionTimeout {
+            message.append("\n\nSession timeout:\n\(sessionTimeout)")
         }
         
-        if let timestamp = authenticationInfo.timeout?.doubleValue {
-            let date = Date(timeIntervalSince1970: timestamp)
+        if let timestamp = timeout {
+            let date = Date(timeIntervalSince1970: Double(timestamp))
             let formatter = DateFormatter()
             formatter.dateStyle = .medium
             formatter.timeStyle = .medium
@@ -127,7 +140,7 @@ extension AppDelegate: FTRNotificationDelegate {
             message.append("\n\nTimeout at:\n\(dateString)")
         }
         
-        if let authType = authenticationInfo.type {
+        if let authType = type {
             message.append("\n\nType:\n\(authType)")
         }
         
@@ -136,14 +149,14 @@ extension AppDelegate: FTRNotificationDelegate {
         ac.addAction(UIAlertAction(title: "Approve", style: .cancel, handler: { _ in
             if let numbersChallenge = numbersChallenge {
                 self.pickMultiChallengeNumber(numbersChallenge) { number in
-                    FTRClient.shared.replyAuth(AuthReplyParameters.approvePushMultiNumber(number, sessionId: authenticationInfo.sessionId, userId: authenticationInfo.userId, extraInfo: authenticationInfo.extraInfo), success: {
+                    FTRClient.shared.replyAuth(AuthReplyParameters.approvePushMultiNumber(number, sessionId: sessionId, userId: userId, extraInfo: extraInfo), success: {
                         // Success handling
                     }, failure: { error in
                         print("Failed to approve: \(error)")
                     })
                 }
             } else {
-                FTRClient.shared.replyAuth(AuthReplyParameters.approvePush(authenticationInfo.sessionId, userId: authenticationInfo.userId, extraInfo: authenticationInfo.extraInfo), success: {
+                FTRClient.shared.replyAuth(AuthReplyParameters.approvePush(sessionId, userId: userId, extraInfo: extraInfo), success: {
                     // Success handling
                 }, failure: { error in
                     print("Failed to approve: \(error)")
@@ -151,7 +164,7 @@ extension AppDelegate: FTRNotificationDelegate {
             }
         }))
         ac.addAction(UIAlertAction(title: "Deny", style: .destructive, handler: { _ in
-            FTRClient.shared.replyAuth(AuthReplyParameters.rejectPush(authenticationInfo.sessionId, userId: authenticationInfo.userId, isFraud: false, extraInfo: authenticationInfo.extraInfo), success: {
+            FTRClient.shared.replyAuth(AuthReplyParameters.rejectPush(sessionId, userId: userId, isFraud: false, extraInfo: extraInfo), success: {
                 // Success handling
             }, failure: { error in
                 print("Failed to approve: \(error)")
@@ -205,12 +218,12 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print("Received APN with completionHandler: \(userInfo)")
         
-        FTRClient.shared.handleNotification(userInfo, delegate: self)
+        handleNotification(userInfo)
         completionHandler(.newData)
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        FTRClient.shared.handleNotification(notification.request.content.userInfo, delegate: self)
+        handleNotification(notification.request.content.userInfo)
         completionHandler(.sound)
     }
     
@@ -240,6 +253,32 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
             return
         }
         completionHandler()
+    }
+    
+    func handleNotification(_ userInfo: [AnyHashable: Any]){
+        let data = FTRUtils.notificationInfoFromPayload(userInfo)
+        
+        if data.type == .reply && data.hasExtra {
+            guard let sessionId = data.sessionId,
+                  let userId = data.userId else {
+                return
+            }
+            
+            FTRClient.shared.sessionInfo(SessionParameters.with(id: sessionId,
+                                                                   userId: userId),
+                                            success: { session in
+                self.presentAuthenticationAlert(numbersChallenge: data.multiNumberedChallenge,
+                                                sessionId: sessionId, userId: userId,
+                                                extraInfo: session.extraInfo,
+                                                sessionTimeout: session.sessionTimeout,
+                                                timeout: session.timeout,
+                                                type: data.authType)
+            }, failure: { error in
+                self.showAlert(title: "Error", message: error.localizedDescription)
+            })
+        } else {
+            FTRClient.shared.handleNotification(userInfo, delegate: self)
+        }
     }
 }
 

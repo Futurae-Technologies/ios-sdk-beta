@@ -30,7 +30,16 @@ final class ConfigViewController: UIViewController {
     
     @IBOutlet weak var pinConfigStack: UIStackView!
     @IBOutlet weak var allowChangePin: UISwitch!
+    
+    @IBOutlet weak var sslPinning: UISwitch!
+    
     @IBOutlet weak var deactivateBiometricsAfterChangePin: UISwitch!
+    
+    @IBOutlet weak var invalidatedByBiometricsChange: UISwitch!
+    @IBOutlet weak var whenUnlockedThisDeviceOnly: UISwitch!
+    
+    @IBOutlet weak var setKeychainAccessGroup: UISwitch!
+    @IBOutlet weak var setAppGroup: UISwitch!
     
     var unlockFailureHandler: FTRFailureHandler {
         return { error in
@@ -56,12 +65,15 @@ final class ConfigViewController: UIViewController {
         return FTRConfig(sdkId: SDKConstants.SDKID,
                                sdkKey: SDKConstants.SDKKEY,
                                baseUrl: SDKConstants.SDKURL,
-                         keychain: FTRKeychainConfig(accessGroup: SDKConstants.KEYCHAIN_ACCESS_GROUP, itemsAccessibility: .whenUnlockedThisDeviceOnly),
+                         keychain: FTRKeychainConfig(accessGroup: setKeychainAccessGroup.isOn ? SDKConstants.KEYCHAIN_ACCESS_GROUP : nil,
+                                                     itemsAccessibility: whenUnlockedThisDeviceOnly.isOn ? .whenUnlockedThisDeviceOnly : .afterFirstUnlockThisDeviceOnly),
                                lockConfiguration: LockConfiguration(type: type,
                                                                     unlockDuration: 60,
-                                                                    invalidatedByBiometricsChange: true,
-                                                                    pinConfiguration: .init(allowPinChangeWithBiometricUnlock: allowChangePin.isOn, deactivateBiometricsAfterPinChange: deactivateBiometricsAfterChangePin.isOn))
-                               ,appGroup: SDKConstants.APP_GROUP)
+                                                                    invalidatedByBiometricsChange: invalidatedByBiometricsChange.isOn,
+                                                                    pinConfiguration: .init(allowPinChangeWithBiometricUnlock: allowChangePin.isOn, deactivateBiometricsAfterPinChange: deactivateBiometricsAfterChangePin.isOn)),
+                         appGroup: setAppGroup.isOn ? SDKConstants.APP_GROUP : nil,
+                         sslPinning: sslPinning.isOn
+        )
     }
     
     var timer: Timer?
@@ -115,8 +127,13 @@ final class ConfigViewController: UIViewController {
         if(savedOption > 0) {
             selectedConfigOption = .init(rawValue: savedOption)
             
-            allowChangePin.isOn = UserDefaults.custom.bool(forKey: "allowChangePin")
-            deactivateBiometricsAfterChangePin.isOn = UserDefaults.custom.bool(forKey: "deactivateBiometricsAfterChangePin")
+            allowChangePin.isOn = UserDefaults.custom.bool(forKey: SDKConstants.ALLOW_CHANGE_PIN)
+            invalidatedByBiometricsChange.isOn = UserDefaults.custom.bool(forKey: SDKConstants.INVALIDATED_BY_BIOMETRICS_CHANGE)
+            setKeychainAccessGroup.isOn = UserDefaults.custom.bool(forKey: SDKConstants.SET_KEYCHAIN_ACCESS_GROUP)
+            setAppGroup.isOn = UserDefaults.custom.bool(forKey: SDKConstants.SET_APP_GROUP)
+            whenUnlockedThisDeviceOnly.isOn = UserDefaults.custom.bool(forKey: SDKConstants.WHEN_UNLOCKED_THIS_DEVICE_ONLY)
+            deactivateBiometricsAfterChangePin.isOn = UserDefaults.custom.bool(forKey: SDKConstants.DEACTIVATE_BIOMETRICS_AFTER_CHANGE_PIN)
+            sslPinning.isOn = UserDefaults.custom.bool(forKey: SDKConstants.SSL_PINNING)
             
             setupConfig()
         } else if(FTRClient.sdkIsLaunched){
@@ -222,6 +239,11 @@ final class ConfigViewController: UIViewController {
     }
     
     @IBAction func saveSettings(_ sender: Any) {
+        saveInUserDefaults()
+        setupConfig()
+    }
+    
+    func saveInUserDefaults(){
         let row = settingsPickerView.selectedRow(inComponent: 0)
         selectedConfigOption = options[row]
         
@@ -229,12 +251,25 @@ final class ConfigViewController: UIViewController {
                                   forKey: SDKConstants.KEY_CONFIG)
         
         UserDefaults.custom.set(allowChangePin.isOn,
-                                  forKey: "allowChangePin")
+                                forKey: SDKConstants.ALLOW_CHANGE_PIN)
+        
+        UserDefaults.custom.set(invalidatedByBiometricsChange.isOn,
+                                forKey: SDKConstants.INVALIDATED_BY_BIOMETRICS_CHANGE)
+        
+        UserDefaults.custom.set(setKeychainAccessGroup.isOn,
+                                forKey: SDKConstants.SET_KEYCHAIN_ACCESS_GROUP)
+        
+        UserDefaults.custom.set(setAppGroup.isOn,
+                                forKey: SDKConstants.SET_APP_GROUP)
+        
+        UserDefaults.custom.set(whenUnlockedThisDeviceOnly.isOn,
+                                forKey: SDKConstants.WHEN_UNLOCKED_THIS_DEVICE_ONLY)
         
         UserDefaults.custom.set(deactivateBiometricsAfterChangePin.isOn,
-                                  forKey: "deactivateBiometricsAfterChangePin")
+                                forKey: SDKConstants.DEACTIVATE_BIOMETRICS_AFTER_CHANGE_PIN)
         
-        setupConfig()
+        UserDefaults.custom.set(sslPinning.isOn,
+                                forKey: SDKConstants.SSL_PINNING)
     }
     
     @IBAction func reset(_ sender: Any) {
@@ -267,13 +302,12 @@ final class ConfigViewController: UIViewController {
         selectedConfigOption = options[row]
         let lockConfig = LockConfiguration(type: selectedConfigOption!,
                                            unlockDuration: 60,
-                                          invalidatedByBiometricsChange: true)
+                                           invalidatedByBiometricsChange: invalidatedByBiometricsChange.isOn)
         let successCallback: FTRSuccessHandler = { [unowned self] in
             valueTextView.isHidden = false
             valueTextView.text = "Last operation: " + "Success"
             
-            UserDefaults.custom.set(selectedConfigOption?.rawValue ?? 0,
-                                      forKey: SDKConstants.KEY_CONFIG)
+            saveInUserDefaults()
             setupSdkView()
         }
         
@@ -307,6 +341,11 @@ final class ConfigViewController: UIViewController {
                                                  success: successCallback,
                                                  failure: failureCallback)
         }
+    }
+    
+    @IBAction func switchSslPinning(_ sender: UISwitch) {
+        UserDefaults.custom.set(sslPinning.isOn,
+                                forKey: SDKConstants.SSL_PINNING)
     }
     
     @IBAction func lockSDK(_ sender: Any) {
@@ -453,26 +492,36 @@ final class ConfigViewController: UIViewController {
         }
     }
     
-    @IBAction func launchWithAppGroup(_ sender: Any) {
-        UserDefaults.custom.set(true, forKey: SDKConstants.APP_GROUP_ENABLED)
-        saveSettings(sender)
-    }
-
-
-    @IBAction func clearLaunchConfigDefault(_ sender: Any) {
-        UserDefaults.custom.removeObject(forKey: SDKConstants.KEY_CONFIG)
-        valueTextView.isHidden = false
-        valueTextView.text = "Launch config option cleared"
+    @IBAction func updateSDKConfig(_ sender: Any) {
+        let successCallback: FTRSuccessHandler = { [unowned self] in
+            valueTextView.isHidden = false
+            valueTextView.text = "Last operation: " + "Success"
+            
+            saveInUserDefaults()
+            setupSdkView()
+        }
+        
+        let failureCallback: FTRFailureHandler = { [unowned self] error in
+            valueTextView.isHidden = false
+            valueTextView.text = "Last operation: " + error.localizedDescription
+        }
+        
+        FTRClient.shared.updateSDKConfig(appGroup: setAppGroup.isOn ? SDKConstants.APP_GROUP : nil,
+                                         keychainConfig: .init(accessGroup: setKeychainAccessGroup.isOn ? SDKConstants.KEYCHAIN_ACCESS_GROUP : nil, itemsAccessibility: whenUnlockedThisDeviceOnly.isOn ? .whenUnlockedThisDeviceOnly : .afterFirstUnlockThisDeviceOnly),
+                                         success: successCallback,
+                                         failure: failureCallback)
     }
     
-    @IBAction func checkAppGroupDataExists(_ sender: Any) {
+    @IBAction func checkConfigDataExists(_ sender: Any) {
         let row = settingsPickerView.selectedRow(inComponent: 0)
         selectedConfigOption = options[row]
-        let dataExists = FTRClient.checkDataExists(forAppGroup: SDKConstants.APP_GROUP,
-                                                   keychainConfig: FTRKeychainConfig(accessGroup: SDKConstants.APP_GROUP),
+        let dataExists = FTRClient.checkDataExists(forAppGroup: setAppGroup.isOn ? SDKConstants.APP_GROUP: nil,
+                                                   keychainConfig: FTRKeychainConfig(accessGroup: setKeychainAccessGroup.isOn ? SDKConstants.APP_GROUP : nil,
+                                                                                     itemsAccessibility: whenUnlockedThisDeviceOnly.isOn ? .whenUnlockedThisDeviceOnly : .afterFirstUnlockThisDeviceOnly
+                                                                                    ),
                                                    lockConfiguration: .init(type: selectedConfigOption!,
                                                                             unlockDuration: 60,
-                                                                            invalidatedByBiometricsChange: true)
+                                                                            invalidatedByBiometricsChange: invalidatedByBiometricsChange.isOn)
         )
         valueTextView.isHidden = false
         valueTextView.text = dataExists ? "Data exists" : "No data present"

@@ -1,8 +1,9 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.0 effective-5.10 (swiftlang-6.0.0.9.10 clang-1600.0.26.2)
+// swift-compiler-version: Apple Swift version 6.0.3 effective-5.10 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
 // swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name FuturaeKit
 // swift-module-flags-ignorable: -no-verify-emitted-module-interface
 import AVFoundation
+import SystemConfiguration.CaptiveNetwork
 import Combine
 import CommonCrypto
 import Compression
@@ -11,6 +12,7 @@ import CryptoKit
 import Darwin
 import DeviceCheck
 import Dispatch
+import ExternalAccessory
 import Foundation
 @_exported import FuturaeKit
 import LocalAuthentication
@@ -19,6 +21,7 @@ import ObjectiveC
 import SQLite3
 import Security
 import Swift
+import SystemConfiguration
 import UIKit
 import _Concurrency
 import _StringProcessing
@@ -32,6 +35,7 @@ import _SwiftConcurrencyShims
 @_hasMissingDesignatedInitializers @objc public class FTRAccountsStatus : ObjectiveC.NSObject, Swift.Codable {
   @objc final public let accounts: [FuturaeKit.FTRAccount]
   @objc final public let featureFlags: [FuturaeKit.FTRFeatureFlag]
+  @objc final public let messages: [FuturaeKit.FTRApiMessage]
   @objc public var asDictionary: [Swift.String : Any] {
     @objc get
   }
@@ -57,6 +61,31 @@ import _SwiftConcurrencyShims
   @objc deinit
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers @objc public class FTRApiMessage : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public let code: Swift.Int
+  @objc final public let level: FuturaeKit.FTRMessageLevel
+  @objc final public let type: Swift.String?
+  @objc final public let message: Swift.String?
+  @objc public var asDictionary: [Swift.String : Any] {
+    @objc get
+  }
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@objc public enum FTRMessageLevel : Swift.Int, Swift.Codable {
+  case unknown
+  case info
+  case warning
+  case dialog
+  case banner
+  case error
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
 }
 @objc public enum FTRQRCodeType : Swift.Int {
   case enrollment
@@ -371,6 +400,11 @@ import _SwiftConcurrencyShims
   case enrollUrlInvalid = 19
   case adaptiveNotEnabled = 20
   case initialEnrollmentRequired = 21
+  case configChangedInvalidatedByBiometrics = 22
+  case configChangedLockType = 23
+  case configChangedAppGroup = 24
+  case configChangedKeychainAccessGroup = 25
+  case configChangedKeychainItemsAccessibility = 26
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
@@ -416,8 +450,9 @@ import _SwiftConcurrencyShims
 }
 @objc public class FTRNotificationData : ObjectiveC.NSObject, Swift.Codable {
   @objc final public let notificationId: Swift.String
+  @objc final public let userId: Swift.String
   @objc final public let payload: [Swift.String : Any]
-  public init(notificationId: Swift.String, payload: [Swift.String : Any])
+  public init(notificationId: Swift.String, payload: [Swift.String : Any], userId: Swift.String)
   public func encode(to encoder: any Swift.Encoder) throws
   required public init(from decoder: any Swift.Decoder) throws
   @objc deinit
@@ -469,7 +504,7 @@ import _SwiftConcurrencyShims
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class RejectAuthQRCode : FuturaeKit.AuthReplyParameters {
-  @objc public init(_ qrCode: Swift.String, isFraud: Swift.Bool, extraInfo: [FuturaeKit.FTRExtraInfo]? = nil)
+  @objc public init(_ qrCode: Swift.String, isFraud: Swift.Bool = false, extraInfo: [FuturaeKit.FTRExtraInfo]? = nil)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class ApproveAuthUsernameless : FuturaeKit.AuthReplyParameters {
@@ -631,6 +666,8 @@ import _SwiftConcurrencyShims
   @objc public static func typeFromURL(_ url: Foundation.URL) -> FuturaeKit.FTRURLType
   @objc public static func activationDataFromURL(_ url: Foundation.URL) -> FuturaeKit.ActivationURLData?
   @objc public static func authenticationDataFromURL(_ url: Foundation.URL) -> FuturaeKit.AuthenticationURLData?
+  @objc public static func typeFromNotificationPayload(_ payload: [Swift.AnyHashable : Any]) -> FuturaeKit.NotificationPayloadDataType
+  @objc public static func notificationInfoFromPayload(_ payload: [Swift.AnyHashable : Any]) -> FuturaeKit.NotificationPayloadData
   @objc override dynamic public init()
   @objc deinit
 }
@@ -657,6 +694,8 @@ extension FuturaeKit.FTRClient {
   @objc dynamic public var baseURL: Swift.String {
     @objc get
   }
+  @objc dynamic public class func enableLogging()
+  @objc dynamic public class func disableLogging()
   @objc dynamic public func logAnalyticsData(_ analyticsData: [Swift.String : Any], success: @escaping FuturaeKit.FTRSuccessHandler, failure: @escaping FuturaeKit.FTRFailureHandler)
   @nonobjc public func logAnalyticsData(_ analyticsData: [Swift.String : Any]) -> FuturaeKit.AsyncTask
   @objc dynamic public func setUserPresenceDelegate(_ delegate: (any FuturaeKit.FTRUserPresenceDelegate)?)
@@ -807,8 +846,7 @@ extension FuturaeKit.FTRClient {
   case sdkPinEmpty = 9
   case sdkPinNotAvailable = 10
   case sdkPinEnrollRequired = 11
-  case unlockNotAvailableDuringMigration = 12
-  case invalidUnlockDuration = 13
+  case invalidUnlockDuration = 12
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
@@ -992,6 +1030,14 @@ public struct AnyCodable : Swift.Codable {
   case columnsToUpdateEmpty = 2
   case columnNotFound = 3
   case initFail = 4
+  case fetchFail = 5
+  case iteratorFail = 6
+  case runFail = 7
+  case executeFail = 8
+  case prepareFail = 9
+  case insertFail = 10
+  case deleteFail = 11
+  case updateFail = 12
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
@@ -1043,6 +1089,34 @@ public enum SDKErrorAssociatedType {
     get
   }
 }
+@_hasMissingDesignatedInitializers @objc public class NotificationPayloadData : ObjectiveC.NSObject {
+  @objc final public let notificationId: Swift.String?
+  @objc final public let userId: Swift.String?
+  @objc final public let sessionId: Swift.String?
+  @objc final public let timeout: Foundation.NSNumber?
+  @objc final public let sessionTimeout: Foundation.NSNumber?
+  @objc final public let multiNumberedChallenge: [Swift.Int]?
+  @objc final public let authType: Swift.String?
+  @objc final public let action: Swift.String?
+  @objc final public let hasExtra: Swift.Bool
+  @objc final public let encryptedExtraInfo: Swift.String?
+  @objc public var type: FuturaeKit.NotificationPayloadDataType {
+    @objc get
+  }
+  @objc deinit
+}
+@objc public enum NotificationPayloadDataType : Swift.Int {
+  case unknown = 0
+  case reply = 1
+  case qrCode = 2
+  case unenroll = 3
+  case arbitraryNotification = 4
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
 @objc public class FTRConfig : ObjectiveC.NSObject {
   @objc final public let sdkKey: Swift.String
   @objc final public let sdkId: Swift.String
@@ -1052,8 +1126,9 @@ public enum SDKErrorAssociatedType {
   @objc final public let capabilities: [Swift.String]
   @objc final public let keychain: FuturaeKit.FTRKeychainConfig
   @objc final public let lockConfiguration: FuturaeKit.LockConfiguration
+  @objc final public let sslPinning: Swift.Bool
   @objc public static let defaultBaseUrl: Swift.String
-  @objc public init(sdkId: Swift.String, sdkKey: Swift.String, baseUrl: Swift.String = FTRConfig.defaultBaseUrl, keychain: FuturaeKit.FTRKeychainConfig = .defaultConfig(), lockConfiguration: FuturaeKit.LockConfiguration, appGroup: Swift.String? = nil)
+  @objc public init(sdkId: Swift.String, sdkKey: Swift.String, baseUrl: Swift.String = FTRConfig.defaultBaseUrl, keychain: FuturaeKit.FTRKeychainConfig = .defaultConfig(), lockConfiguration: FuturaeKit.LockConfiguration, appGroup: Swift.String? = nil, sslPinning: Swift.Bool = true)
   @objc public func isValid() -> Swift.Bool
   @objc deinit
 }
@@ -1135,6 +1210,8 @@ public typealias FTRVerificationCodeHandler = (Swift.String) -> Swift.Void
 @objc extension FuturaeKit.FTRClient {
   @objc dynamic public func getSessionInfo(_ parameters: FuturaeKit.SessionParameters, success: @escaping FuturaeKit.FTRSessionHandler, failure: @escaping FuturaeKit.FTRFailureHandler)
   @nonobjc public func getSessionInfo(_ parameters: FuturaeKit.SessionParameters) -> FuturaeKit.AsyncTaskResult<FuturaeKit.FTRSession>
+  @objc dynamic public func getSessionInfoUnprotected(_ parameters: FuturaeKit.SessionParameters, success: @escaping FuturaeKit.FTRSessionHandler, failure: @escaping FuturaeKit.FTRFailureHandler)
+  @nonobjc public func getSessionInfoUnprotected(_ parameters: FuturaeKit.SessionParameters) -> FuturaeKit.AsyncTaskResult<FuturaeKit.FTRSession>
 }
 @objc public class FTRAccountHistory : ObjectiveC.NSObject, Swift.Codable {
   @objc final public let activity: [FuturaeKit.FTRAccountActivity]
@@ -1312,7 +1389,7 @@ public typealias FTRVerificationCodeHandler = (Swift.String) -> Swift.Void
   @objc final public let httpCode: Foundation.NSNumber?
   @objc final public let recoveryHint: Swift.String?
   @objc final public let failureHint: Swift.String?
-  @objc final public let underlyingError: (any Swift.Error)?
+  @objc public var underlyingError: (any Swift.Error)?
   @objc deinit
 }
 extension FuturaeKit.SDKBaseError {
@@ -1328,6 +1405,9 @@ extension FuturaeKit.SDKBaseError {
     @objc get
   }
 }
+extension FuturaeKit.FTRMessageLevel : Swift.Equatable {}
+extension FuturaeKit.FTRMessageLevel : Swift.Hashable {}
+extension FuturaeKit.FTRMessageLevel : Swift.RawRepresentable {}
 extension FuturaeKit.FTRQRCodeType : Swift.Equatable {}
 extension FuturaeKit.FTRQRCodeType : Swift.Hashable {}
 extension FuturaeKit.FTRQRCodeType : Swift.RawRepresentable {}
@@ -1388,6 +1468,9 @@ extension FuturaeKit.SDKDatabaseErrorCode : Swift.RawRepresentable {}
 extension FuturaeKit.SDKErrorType : Swift.Equatable {}
 extension FuturaeKit.SDKErrorType : Swift.Hashable {}
 extension FuturaeKit.SDKErrorType : Swift.RawRepresentable {}
+extension FuturaeKit.NotificationPayloadDataType : Swift.Equatable {}
+extension FuturaeKit.NotificationPayloadDataType : Swift.Hashable {}
+extension FuturaeKit.NotificationPayloadDataType : Swift.RawRepresentable {}
 extension FuturaeKit.SDKStatus : Swift.Equatable {}
 extension FuturaeKit.SDKStatus : Swift.Hashable {}
 extension FuturaeKit.SDKStatus : Swift.RawRepresentable {}

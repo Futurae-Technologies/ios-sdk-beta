@@ -29,24 +29,11 @@ extension FunctionsViewController {
         let status = FTRClient.shared.jailbreakStatus
         showAlert(title: status.jailbroken ? "Device is jailbroken" : "Jailbreak not detected", message: status.message ?? "")
     }
-
-    @IBAction func updateAppGroup(_ sender: UIButton) {
-        FTRClient.shared.updateSDKConfig(appGroup: SDKConstants.APP_GROUP,
-                                         keychainConfig: FTRKeychainConfig(accessGroup: SDKConstants.APP_GROUP),
-                                         success: { [weak self] in
-            self?.showAlert(title: "App group updated", message: "")
-            UserDefaults(suiteName: SDKConstants.APP_GROUP)?.set(true, forKey: "app_group_enabled")
-        }, failure: { [weak self] error in
-            self?.showAlert(title: "Failed to update", message: error.localizedDescription)
-        })
-    }
-
-    @IBAction func removeAppGroup(_ sender: UIButton) {
-        FTRClient.shared.updateSDKConfig(appGroup: nil, keychainConfig: nil, success: { [weak self] in
-            self?.showAlert(title: "App group updated", message: "")
-            UserDefaults(suiteName: SDKConstants.APP_GROUP)?.set(false, forKey: "app_group_enabled")
-        }, failure: { [weak self] error in
-            self?.showAlert(title: "Failed to update", message: error.localizedDescription)
-        })
+    
+    @IBAction func sessionMethod(_ sender: UIButton) {
+        let newValue = !UserDefaults.custom.bool(forKey: SDKConstants.USE_UNPROTECTED_SESSION)
+        UserDefaults.custom.set(newValue, forKey: SDKConstants.USE_UNPROTECTED_SESSION)
+        
+        sessionMethod.setTitle(newValue ? "Use protected session" : "Use unprotected session", for: .normal)
     }
 }

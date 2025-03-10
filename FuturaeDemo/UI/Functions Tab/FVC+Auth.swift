@@ -43,7 +43,7 @@ extension FunctionsViewController {
             return
         }
         
-        FTRClient.shared.getSessionInfo(.with(token: sessionToken, userId: userId)) { [weak self] session in
+        FTRClient.shared.sessionInfo(.with(token: sessionToken, userId: userId)) { [weak self] session in
             let extras = session.extraInfo ?? []
             let mutableFormattedExtraInfo = extras.reduce("") { result, extraInfo in
                 result + "\(extraInfo.key): \(extraInfo.value)\n"
@@ -85,7 +85,7 @@ extension FunctionsViewController {
             return
         }
         
-        FTRClient.shared.getSessionInfo(.with(token: sessionToken, userId: userId)) { [weak self] session in
+        FTRClient.shared.sessionInfo(.with(token: sessionToken, userId: userId)) { [weak self] session in
             let extras = session.extraInfo ?? []
             let mutableFormattedExtraInfo = extras.reduce("") { result, extraInfo in
                 result + "\(extraInfo.key): \(extraInfo.value)\n"
@@ -183,6 +183,20 @@ extension FunctionsViewController {
             })
         } catch {
             print(error)
+        }
+    }
+}
+
+
+extension FTRClient {
+    func sessionInfo(_ parameters: SessionParameters,
+                     success: @escaping FTRSessionHandler,
+                     failure: @escaping FTRFailureHandler){
+        let unprotected = UserDefaults.custom.bool(forKey: SDKConstants.USE_UNPROTECTED_SESSION)
+        if unprotected {
+            getSessionInfoUnprotected(parameters, success: success, failure: failure)
+        } else {
+            getSessionInfo(parameters, success: success, failure: failure)
         }
     }
 }

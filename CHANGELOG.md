@@ -1,3 +1,8 @@
+# Version 3.7.0-beta
+2025-10-03
+- [Added] Support fetching extra info of an authentication session without prior unlocking the SDK, by exposing a new method `getSessionInfoUnprotected`. Please note that this functionality needs to be enabled for the respective Futurae Service(s) which this SDK is associated with. For further details contact the Futurae support at support@futurae.com.
+- [Added] Added new methods in `FTRUtils` class for extracting information from a push notification payload
+
 # Version 3.4.1-beta
 2024-29-10
 + [Added] Method to retrieve notification data for arbitrary push notification

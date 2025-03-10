@@ -133,7 +133,7 @@ extension FunctionsViewController {
                     
                     ac.addAction(UIAlertAction(title: session.sessionId ?? "No session id", style: .default, handler: { _ in
                         self?.dismiss(animated: true) {
-                            FTRClient.shared.getSessionInfo(.with(id: sessionId, userId: userId)) { [weak self] session in
+                            FTRClient.shared.sessionInfo(.with(id: sessionId, userId: userId)) { [weak self] session in
                                 FTRClient.shared.replyAuth(.approvePush(sessionId, userId: userId, extraInfo: session.extraInfo)) {
                                     self?.showAlert(title: "Success", message: "User authenticated successfully!")
                                 } failure: { error in
