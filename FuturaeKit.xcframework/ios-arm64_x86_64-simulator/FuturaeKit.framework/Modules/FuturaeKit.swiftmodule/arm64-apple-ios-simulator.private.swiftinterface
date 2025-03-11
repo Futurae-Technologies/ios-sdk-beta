@@ -1212,6 +1212,8 @@ public typealias FTRVerificationCodeHandler = (Swift.String) -> Swift.Void
   @nonobjc public func getSessionInfo(_ parameters: FuturaeKit.SessionParameters) -> FuturaeKit.AsyncTaskResult<FuturaeKit.FTRSession>
   @objc dynamic public func getSessionInfoUnprotected(_ parameters: FuturaeKit.SessionParameters, success: @escaping FuturaeKit.FTRSessionHandler, failure: @escaping FuturaeKit.FTRFailureHandler)
   @nonobjc public func getSessionInfoUnprotected(_ parameters: FuturaeKit.SessionParameters) -> FuturaeKit.AsyncTaskResult<FuturaeKit.FTRSession>
+  @objc dynamic public func getSessionInfoWithoutUnlock(_ parameters: FuturaeKit.SessionParameters, success: @escaping FuturaeKit.FTRSessionHandler, failure: @escaping FuturaeKit.FTRFailureHandler)
+  @nonobjc public func getSessionInfoWithoutUnlock(_ parameters: FuturaeKit.SessionParameters) -> FuturaeKit.AsyncTaskResult<FuturaeKit.FTRSession>
 }
 @objc public class FTRAccountHistory : ObjectiveC.NSObject, Swift.Codable {
   @objc final public let activity: [FuturaeKit.FTRAccountActivity]

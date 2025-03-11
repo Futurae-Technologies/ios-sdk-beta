@@ -33190,6 +33190,108 @@
             ],
             "isFromExtension": true,
             "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getSessionInfoWithoutUnlock",
+            "printedName": "getSessionInfoWithoutUnlock(_:success:failure:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SessionParameters",
+                "printedName": "FuturaeKit.SessionParameters",
+                "usr": "c:@M@FuturaeKit@objc(cs)SessionParameters"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FuturaeKit.FTRSession) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "FTRSession",
+                    "printedName": "FuturaeKit.FTRSession",
+                    "usr": "c:@M@FuturaeKit@objc(cs)FTRSession"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(any Swift.Error) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Error",
+                    "printedName": "any Swift.Error",
+                    "usr": "s:s5ErrorP"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@FuturaeKit@objc(cs)FTRClient(im)getSessionInfoWithoutUnlock:success:failure:",
+            "mangledName": "$s10FuturaeKit9FTRClientC27getSessionInfoWithoutUnlock_7success7failureyAA0E10ParametersC_yAA10FTRSessionCcys5Error_pctF",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getSessionInfoWithoutUnlock",
+            "printedName": "getSessionInfoWithoutUnlock(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AsyncTaskResult",
+                "printedName": "FuturaeKit.AsyncTaskResult<FuturaeKit.FTRSession>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "FTRSession",
+                    "printedName": "FuturaeKit.FTRSession",
+                    "usr": "c:@M@FuturaeKit@objc(cs)FTRSession"
+                  }
+                ],
+                "usr": "s:10FuturaeKit15AsyncTaskResultC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SessionParameters",
+                "printedName": "FuturaeKit.SessionParameters",
+                "usr": "c:@M@FuturaeKit@objc(cs)SessionParameters"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:10FuturaeKit9FTRClientC27getSessionInfoWithoutUnlockyAA15AsyncTaskResultCyAA10FTRSessionCGAA0E10ParametersCF",
+            "mangledName": "$s10FuturaeKit9FTRClientC27getSessionInfoWithoutUnlockyAA15AsyncTaskResultCyAA10FTRSessionCGAA0E10ParametersCF",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "NonObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
           }
         ],
         "declKind": "Class",
@@ -65135,7 +65237,7 @@
     {
       "filePath": "\/Users\/armendh\/repos\/futurae\/futurae-ios-sdk-2\/FuturaeKit\/Internal\/FTRClient\/Public\/FTRClient+Session.swift",
       "kind": "BooleanLiteral",
-      "offset": 4473,
+      "offset": 6869,
       "length": 4,
       "value": "true"
     },

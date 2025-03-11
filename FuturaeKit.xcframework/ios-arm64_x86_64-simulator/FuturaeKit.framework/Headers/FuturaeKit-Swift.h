@@ -1018,6 +1018,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) enum SDKStatus sdkSt
 - (BOOL)lockAndReturnError:(NSError * _Nullable * _Nullable)error;
 @end
 
+
 @class FTRMigrationCheckData;
 @class MigrationParameters;
 
@@ -1097,30 +1098,6 @@ enum FTRQRCodeType : NSInteger;
 - (void)updateSDKConfigWithAppGroup:(NSString * _Nullable)appGroup keychainConfig:(FTRKeychainConfig * _Nullable)keychainConfig success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 @end
 
-@class SessionParameters;
-
-@interface FTRClient (SWIFT_EXTENSION(FuturaeKit))
-/// Retrieves information for a specific session based on the given parameters.
-/// This protected method fetches the details of a session identified by <code>SessionParameters</code>. Upon successful retrieval, the <code>success</code> closure is called with an <code>FTRSession</code> object containing the session details. In case of failure during the retrieval process, the <code>failure</code> closure is executed with an error providing details about the failure reason.
-/// \param parameters An instance of <code>SessionParameters</code> containing the session ID or token and associated user ID for which the session information is requested.
-///
-/// \param success A closure to be called upon successful retrieval of session information. It provides an <code>FTRSession</code> object containing the session details.
-///
-/// \param failure A closure to be called in case of a failure in retrieving session information, providing an error describing the failure reason.
-///
-- (void)getSessionInfo:(SessionParameters * _Nonnull)parameters success:(void (^ _Nonnull)(FTRSession * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
-/// Retrieves information for a specific session based on the given parameters. This is a non-protected operation, but in order to be successful the respective FF must be true,
-/// otherwise, this is going to fail with error code <code>SDKApiErrorCode.authorizationFailed</code>.
-/// This method fetches the details of a session identified by <code>SessionParameters</code>. Upon successful retrieval, the <code>success</code> closure is called with an <code>FTRSession</code> object containing the session details. In case of failure during the retrieval process, the <code>failure</code> closure is executed with an error providing details about the failure reason.
-/// \param parameters An instance of <code>SessionParameters</code> containing the session ID or token and associated user ID for which the session information is requested.
-///
-/// \param success A closure to be called upon successful retrieval of session information. It provides an <code>FTRSession</code> object containing the session details.
-///
-/// \param failure A closure to be called in case of a failure in retrieving session information, providing an error describing the failure reason.
-///
-- (void)getSessionInfoUnprotected:(SessionParameters * _Nonnull)parameters success:(void (^ _Nonnull)(FTRSession * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
-@end
-
 
 @interface FTRClient (SWIFT_EXTENSION(FuturaeKit))
 /// Activate the biometric authentication as a means of convenience to verify the user presence, so that the user doesn’t have to enter the Pin to unlock the SDK.
@@ -1146,7 +1123,6 @@ enum FTRQRCodeType : NSInteger;
 - (void)changeSDKPinWithNewSDKPin:(NSString * _Nonnull)newSDKPin success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 @end
 
-
 @class FTRNotificationData;
 @class NSData;
 @protocol FTRNotificationDelegate;
@@ -1167,6 +1143,43 @@ enum FTRQRCodeType : NSInteger;
 /// \param delegate delegate to be notified about the operation result.
 ///
 - (void)handleNotification:(NSDictionary * _Nonnull)payload delegate:(id <FTRNotificationDelegate> _Nullable)delegate;
+@end
+
+@class SessionParameters;
+
+@interface FTRClient (SWIFT_EXTENSION(FuturaeKit))
+/// Retrieves information for a specific session based on the given parameters.
+/// This protected method fetches the details of a session identified by <code>SessionParameters</code>. Upon successful retrieval, the <code>success</code> closure is called with an <code>FTRSession</code> object containing the session details. In case of failure during the retrieval process, the <code>failure</code> closure is executed with an error providing details about the failure reason.
+/// \param parameters An instance of <code>SessionParameters</code> containing the session ID or token and associated user ID for which the session information is requested.
+///
+/// \param success A closure to be called upon successful retrieval of session information. It provides an <code>FTRSession</code> object containing the session details.
+///
+/// \param failure A closure to be called in case of a failure in retrieving session information, providing an error describing the failure reason.
+///
+- (void)getSessionInfo:(SessionParameters * _Nonnull)parameters success:(void (^ _Nonnull)(FTRSession * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
+/// This method is deprecated.
+/// warning:
+/// Deprecated. Use <code>getSessionInfoWithoutUnlock</code> instead.
+/// Retrieves information for a specific session based on the given parameters. This is a non-protected operation, but in order to be successful the respective FF must be true,
+/// otherwise, this is going to fail with error code <code>SDKApiErrorCode.authorizationFailed</code>.
+/// This method fetches the details of a session identified by <code>SessionParameters</code>. Upon successful retrieval, the <code>success</code> closure is called with an <code>FTRSession</code> object containing the session details. In case of failure during the retrieval process, the <code>failure</code> closure is executed with an error providing details about the failure reason.
+/// \param parameters An instance of <code>SessionParameters</code> containing the session ID or token and associated user ID for which the session information is requested.
+///
+/// \param success A closure to be called upon successful retrieval of session information. It provides an <code>FTRSession</code> object containing the session details.
+///
+/// \param failure A closure to be called in case of a failure in retrieving session information, providing an error describing the failure reason.
+///
+- (void)getSessionInfoUnprotected:(SessionParameters * _Nonnull)parameters success:(void (^ _Nonnull)(FTRSession * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
+/// Retrieves information for a specific session based on the given parameters. This is a non-protected operation, but in order to be successful the respective FF must be true,
+/// otherwise, this is going to fail with error code <code>SDKApiErrorCode.authorizationFailed</code>.
+/// This method fetches the details of a session identified by <code>SessionParameters</code>. Upon successful retrieval, the <code>success</code> closure is called with an <code>FTRSession</code> object containing the session details. In case of failure during the retrieval process, the <code>failure</code> closure is executed with an error providing details about the failure reason.
+/// \param parameters An instance of <code>SessionParameters</code> containing the session ID or token and associated user ID for which the session information is requested.
+///
+/// \param success A closure to be called upon successful retrieval of session information. It provides an <code>FTRSession</code> object containing the session details.
+///
+/// \param failure A closure to be called in case of a failure in retrieving session information, providing an error describing the failure reason.
+///
+- (void)getSessionInfoWithoutUnlock:(SessionParameters * _Nonnull)parameters success:(void (^ _Nonnull)(FTRSession * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 @end
 
 
@@ -4237,6 +4250,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) enum SDKStatus sdkSt
 - (BOOL)lockAndReturnError:(NSError * _Nullable * _Nullable)error;
 @end
 
+
 @class FTRMigrationCheckData;
 @class MigrationParameters;
 
@@ -4316,30 +4330,6 @@ enum FTRQRCodeType : NSInteger;
 - (void)updateSDKConfigWithAppGroup:(NSString * _Nullable)appGroup keychainConfig:(FTRKeychainConfig * _Nullable)keychainConfig success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 @end
 
-@class SessionParameters;
-
-@interface FTRClient (SWIFT_EXTENSION(FuturaeKit))
-/// Retrieves information for a specific session based on the given parameters.
-/// This protected method fetches the details of a session identified by <code>SessionParameters</code>. Upon successful retrieval, the <code>success</code> closure is called with an <code>FTRSession</code> object containing the session details. In case of failure during the retrieval process, the <code>failure</code> closure is executed with an error providing details about the failure reason.
-/// \param parameters An instance of <code>SessionParameters</code> containing the session ID or token and associated user ID for which the session information is requested.
-///
-/// \param success A closure to be called upon successful retrieval of session information. It provides an <code>FTRSession</code> object containing the session details.
-///
-/// \param failure A closure to be called in case of a failure in retrieving session information, providing an error describing the failure reason.
-///
-- (void)getSessionInfo:(SessionParameters * _Nonnull)parameters success:(void (^ _Nonnull)(FTRSession * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
-/// Retrieves information for a specific session based on the given parameters. This is a non-protected operation, but in order to be successful the respective FF must be true,
-/// otherwise, this is going to fail with error code <code>SDKApiErrorCode.authorizationFailed</code>.
-/// This method fetches the details of a session identified by <code>SessionParameters</code>. Upon successful retrieval, the <code>success</code> closure is called with an <code>FTRSession</code> object containing the session details. In case of failure during the retrieval process, the <code>failure</code> closure is executed with an error providing details about the failure reason.
-/// \param parameters An instance of <code>SessionParameters</code> containing the session ID or token and associated user ID for which the session information is requested.
-///
-/// \param success A closure to be called upon successful retrieval of session information. It provides an <code>FTRSession</code> object containing the session details.
-///
-/// \param failure A closure to be called in case of a failure in retrieving session information, providing an error describing the failure reason.
-///
-- (void)getSessionInfoUnprotected:(SessionParameters * _Nonnull)parameters success:(void (^ _Nonnull)(FTRSession * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
-@end
-
 
 @interface FTRClient (SWIFT_EXTENSION(FuturaeKit))
 /// Activate the biometric authentication as a means of convenience to verify the user presence, so that the user doesn’t have to enter the Pin to unlock the SDK.
@@ -4365,7 +4355,6 @@ enum FTRQRCodeType : NSInteger;
 - (void)changeSDKPinWithNewSDKPin:(NSString * _Nonnull)newSDKPin success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 @end
 
-
 @class FTRNotificationData;
 @class NSData;
 @protocol FTRNotificationDelegate;
@@ -4386,6 +4375,43 @@ enum FTRQRCodeType : NSInteger;
 /// \param delegate delegate to be notified about the operation result.
 ///
 - (void)handleNotification:(NSDictionary * _Nonnull)payload delegate:(id <FTRNotificationDelegate> _Nullable)delegate;
+@end
+
+@class SessionParameters;
+
+@interface FTRClient (SWIFT_EXTENSION(FuturaeKit))
+/// Retrieves information for a specific session based on the given parameters.
+/// This protected method fetches the details of a session identified by <code>SessionParameters</code>. Upon successful retrieval, the <code>success</code> closure is called with an <code>FTRSession</code> object containing the session details. In case of failure during the retrieval process, the <code>failure</code> closure is executed with an error providing details about the failure reason.
+/// \param parameters An instance of <code>SessionParameters</code> containing the session ID or token and associated user ID for which the session information is requested.
+///
+/// \param success A closure to be called upon successful retrieval of session information. It provides an <code>FTRSession</code> object containing the session details.
+///
+/// \param failure A closure to be called in case of a failure in retrieving session information, providing an error describing the failure reason.
+///
+- (void)getSessionInfo:(SessionParameters * _Nonnull)parameters success:(void (^ _Nonnull)(FTRSession * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
+/// This method is deprecated.
+/// warning:
+/// Deprecated. Use <code>getSessionInfoWithoutUnlock</code> instead.
+/// Retrieves information for a specific session based on the given parameters. This is a non-protected operation, but in order to be successful the respective FF must be true,
+/// otherwise, this is going to fail with error code <code>SDKApiErrorCode.authorizationFailed</code>.
+/// This method fetches the details of a session identified by <code>SessionParameters</code>. Upon successful retrieval, the <code>success</code> closure is called with an <code>FTRSession</code> object containing the session details. In case of failure during the retrieval process, the <code>failure</code> closure is executed with an error providing details about the failure reason.
+/// \param parameters An instance of <code>SessionParameters</code> containing the session ID or token and associated user ID for which the session information is requested.
+///
+/// \param success A closure to be called upon successful retrieval of session information. It provides an <code>FTRSession</code> object containing the session details.
+///
+/// \param failure A closure to be called in case of a failure in retrieving session information, providing an error describing the failure reason.
+///
+- (void)getSessionInfoUnprotected:(SessionParameters * _Nonnull)parameters success:(void (^ _Nonnull)(FTRSession * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
+/// Retrieves information for a specific session based on the given parameters. This is a non-protected operation, but in order to be successful the respective FF must be true,
+/// otherwise, this is going to fail with error code <code>SDKApiErrorCode.authorizationFailed</code>.
+/// This method fetches the details of a session identified by <code>SessionParameters</code>. Upon successful retrieval, the <code>success</code> closure is called with an <code>FTRSession</code> object containing the session details. In case of failure during the retrieval process, the <code>failure</code> closure is executed with an error providing details about the failure reason.
+/// \param parameters An instance of <code>SessionParameters</code> containing the session ID or token and associated user ID for which the session information is requested.
+///
+/// \param success A closure to be called upon successful retrieval of session information. It provides an <code>FTRSession</code> object containing the session details.
+///
+/// \param failure A closure to be called in case of a failure in retrieving session information, providing an error describing the failure reason.
+///
+- (void)getSessionInfoWithoutUnlock:(SessionParameters * _Nonnull)parameters success:(void (^ _Nonnull)(FTRSession * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 @end
 
 

@@ -194,7 +194,7 @@ extension FTRClient {
                      failure: @escaping FTRFailureHandler){
         let unprotected = UserDefaults.custom.bool(forKey: SDKConstants.USE_UNPROTECTED_SESSION)
         if unprotected {
-            getSessionInfoUnprotected(parameters, success: success, failure: failure)
+            getSessionInfoWithoutUnlock(parameters, success: success, failure: failure)
         } else {
             getSessionInfo(parameters, success: success, failure: failure)
         }

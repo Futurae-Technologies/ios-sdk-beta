@@ -1,3 +1,7 @@
+# Version 3.7.1-beta
+2025-11-03
+- [Changed] Added method `getSessionInfoWithoutUnlock` for retrieving session information without prior unlocking and deprecated `getSessionInfoUnprotected`
+
 # Version 3.7.0-beta
 2025-10-03
 - [Added] Support fetching extra info of an authentication session without prior unlocking the SDK, by exposing a new method `getSessionInfoUnprotected`. Please note that this functionality needs to be enabled for the respective Futurae Service(s) which this SDK is associated with. For further details contact the Futurae support at support@futurae.com.
