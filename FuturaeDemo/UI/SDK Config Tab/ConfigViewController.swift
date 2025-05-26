@@ -146,6 +146,7 @@ final class ConfigViewController: UIViewController {
     
     func setupConfig(){
         do {
+            FTRClient.enableLogging()
             try FTRClient.launch(config: config)
             
             setupSdkView()
@@ -481,6 +482,12 @@ final class ConfigViewController: UIViewController {
         } catch {
             valueTextView.text = "Last operation: " + error.localizedDescription
         }
+    }
+    
+    @IBAction func generateSDKLogs(_ sender: Any) {
+        let text = FTRClient.logsReport() ?? "N/A"
+        print(text)
+        showAlert(title: "SDK logs", message: text)
     }
     
     @IBAction func checkBiometricsPermission(_ sender: Any) {

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ibc-J1-55c">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ibc-J1-55c">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -997,7 +997,7 @@
                                 <rect key="frame" x="0.0" y="30" width="375" height="72.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ex8-cS-kWs">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="178"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pd0-up-q0i" customClass="CustomDemoButton" customModule="FuturaeDemo" customModuleProvider="target">
                                                 <rect key="frame" x="105.5" y="0.0" width="164" height="37"/>
@@ -1047,8 +1047,32 @@
                                                     <action selector="generateSDKReport:" destination="FqC-QZ-eSk" eventType="touchUpInside" id="xbr-uY-I3y"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbp-TO-LMj" customClass="CustomDemoButton" customModule="FuturaeDemo" customModuleProvider="target">
+                                                <rect key="frame" x="142" y="94" width="91" height="37"/>
+                                                <color key="backgroundColor" red="0.2470588088" green="0.24313727020000001" blue="0.32941177490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="SDK Logs">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="generateSDKLogs:" destination="FqC-QZ-eSk" eventType="touchUpInside" id="Vs5-I0-w4L"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldB-5s-WK8" customClass="CustomDemoButton" customModule="FuturaeDemo" customModuleProvider="target">
-                                                <rect key="frame" x="95" y="94" width="185" height="37"/>
+                                                <rect key="frame" x="95" y="141" width="185" height="37"/>
                                                 <color key="backgroundColor" red="0.2470588088" green="0.24313727020000001" blue="0.32941177490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
@@ -1072,7 +1096,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nNT-gE-imm" customClass="CustomDemoButton" customModule="FuturaeDemo" customModuleProvider="target">
-                                                <rect key="frame" x="83.5" y="141" width="208" height="37"/>
+                                                <rect key="frame" x="83.5" y="188" width="208" height="37"/>
                                                 <color key="backgroundColor" red="0.2470588088" green="0.24313727020000001" blue="0.32941177490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
@@ -1096,7 +1120,7 @@
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rzg-JL-Xel" customClass="CustomDemoButton" customModule="FuturaeDemo" customModuleProvider="target">
-                                                <rect key="frame" x="92" y="178" width="191" height="0.0"/>
+                                                <rect key="frame" x="92" y="225" width="191" height="0.0"/>
                                                 <color key="backgroundColor" red="0.2470588088" green="0.24313727020000001" blue="0.32941177490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
@@ -1120,7 +1144,7 @@
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6e-9S-z0F" customClass="CustomDemoButton" customModule="FuturaeDemo" customModuleProvider="target">
-                                                <rect key="frame" x="39" y="178" width="297" height="0.0"/>
+                                                <rect key="frame" x="39" y="225" width="297" height="0.0"/>
                                                 <color key="backgroundColor" red="0.2470588088" green="0.24313727020000001" blue="0.32941177490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
@@ -1144,7 +1168,7 @@
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p1K-S3-N5J" customClass="CustomDemoButton" customModule="FuturaeDemo" customModuleProvider="target">
-                                                <rect key="frame" x="142.5" y="178" width="90" height="0.0"/>
+                                                <rect key="frame" x="142.5" y="225" width="90" height="0.0"/>
                                                 <color key="backgroundColor" red="0.2470588088" green="0.24313727020000001" blue="0.32941177490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
@@ -1168,7 +1192,7 @@
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmp-Fi-12E" customClass="CustomDemoButton" customModule="FuturaeDemo" customModuleProvider="target">
-                                                <rect key="frame" x="76.5" y="178" width="222" height="0.0"/>
+                                                <rect key="frame" x="76.5" y="225" width="222" height="0.0"/>
                                                 <color key="backgroundColor" red="0.2470588088" green="0.24313727020000001" blue="0.32941177490000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
@@ -1192,7 +1216,7 @@
                                                 </connections>
                                             </button>
                                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nBD-4Q-ClI">
-                                                <rect key="frame" x="96" y="178" width="183" height="30"/>
+                                                <rect key="frame" x="96" y="225" width="183" height="30"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QvK-Kr-irh" customClass="CustomDemoButton" customModule="FuturaeDemo" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="183" height="0.0"/>

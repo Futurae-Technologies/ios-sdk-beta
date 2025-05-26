@@ -1,3 +1,7 @@
+# Version 3.8.0-beta
+2025-26-05
+- Added new supported URI `FTRURLType.usernamelessAuth` to handle usernameless authentication and transaction confirmation. `FTRUtils` has been enhanced to support this new URI.
+
 # Version 3.7.1-beta
 2025-11-03
 - [Changed] Added method `getSessionInfoWithoutUnlock` for retrieving session information without prior unlocking and deprecated `getSessionInfoUnprotected`

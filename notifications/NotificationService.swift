@@ -87,6 +87,7 @@ class NotificationService: UNNotificationServiceExtension {
         }
         
         do {
+            FTRClient.enableLogging()
             try FTRClient.launch(config: config)
             return true
         } catch let error {

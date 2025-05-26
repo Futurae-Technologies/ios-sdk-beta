@@ -11,7 +11,7 @@ import Foundation
 class SDKConstants: NSObject {
     static let SDKID = ""
     static let SDKKEY = ""
-    static let SDKURL = "https://api-test.futurae.com"
+    static let SDKURL = ""
     
     static let APP_GROUP = "group.futuraedemo"
     static let APP_ID = "T82Z6CGNMT.com.futurae.FuturaeDemo"

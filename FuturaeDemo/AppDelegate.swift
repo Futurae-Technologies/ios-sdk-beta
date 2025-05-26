@@ -294,6 +294,9 @@ extension AppDelegate: FTROpenURLDelegate {
         case .authentication:
             authenticate(url: url, options: options)
             return true
+        case .usernamelessAuth:
+            usernamelessAuthenticate(url: url)
+            return true
         default:
             break
         }
@@ -306,24 +309,24 @@ extension AppDelegate: FTROpenURLDelegate {
         continue userActivity: NSUserActivity,
         restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void
     ) -> Bool {
+        print("Received Universal Link: \(userActivity.webpageURL)")
+        
         // Check if the activity type is a Universal Link
         guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
               let url = userActivity.webpageURL else { return false }
-        
-        print("Received Universal Link: \(url)")
 
         // Handle the universal link URL here
         switch FTRUtils.typeFromURL(url) {
         case .activation:
-            print("ernoll")
             enroll(url: url)
             return true
         case .authentication:
-            print("authentication")
             authenticate(url: url)
             return true
+        case .usernamelessAuth:
+            usernamelessAuthenticate(url: url)
+            return true
         default:
-            print("default")
             break
         }
         
@@ -392,6 +395,69 @@ extension AppDelegate: FTROpenURLDelegate {
                     )
                 }
             )
+        }
+    }
+    
+    private func usernamelessAuthenticate(url: URL) {
+        guard let data = FTRUtils.usernamelessAuthDataFromURL(url),
+              let userId = try? FTRClient.shared.getAccounts().first?.userId,
+              let vc = window?.rootViewController else { return }
+        
+        guard FTRUtils.typeFromURL(url) == .usernamelessAuth,
+              let usernamelessData = FTRUtils.usernamelessAuthDataFromURL(url)
+        else { return }
+        
+        FTRClient.shared.sessionInfo(.with(token: data.sessionToken, userId: userId)) { session in
+            let extras = session.extraInfo ?? []
+            let mutableFormattedExtraInfo = extras.reduce("") { result, extraInfo in
+                result + "\(extraInfo.key): \(extraInfo.value)\n"
+            }
+
+            let title = "Approve"
+            let message = "Request Information\n\(mutableFormattedExtraInfo)"
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Deny", style: .destructive, handler: nil))
+            alert.addAction(UIAlertAction(title: "Approve", style: .default, handler: { _ in
+                do {
+                    let accounts = try FTRClient.shared.getAccounts()
+                    let ac = UIAlertController(title: "Usernameless Auth", message: "Select an account", preferredStyle: .actionSheet)
+
+                    for account in accounts {
+                        ac.addAction(UIAlertAction(title: account.username ?? "Username N/A", style: .default, handler: { _ in
+                            FTRClient.shared.replyAuth(AuthReplyParameters.approveUsernamelessAuth(data.sessionToken, userId: account.userId, extraInfo: extras), success: {
+                                vc.dismiss(animated: true) {
+                                    vc.showAlert(title: "Success", message: "User authenticated successfully!") { _ in
+                                        if let redirect = data.mobileAuthRedirectUri {
+                                            self.authenticationURLFinished(redirect)
+                                        }
+                                    }
+                                }
+                            }, failure: { error in
+                                vc.dismiss(animated: true) {
+                                    vc.showAlert(title: "Error", message: error.localizedDescription){ _ in
+                                        if let redirect = data.mobileAuthRedirectUri {
+                                            self.authenticationURLFinished(redirect)
+                                        }
+                                    }
+                                }
+                            })
+                        }))
+                    }
+
+                    ac.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+                    vc.dismiss(animated: true) {
+                        vc.present(ac, animated: true, completion: nil)
+                    }
+                } catch {
+                    vc.showAlert(title: "Error", message: error.localizedDescription)
+                }
+            }))
+            vc.present(alert, animated: true, completion: nil)
+        } failure: { error in
+            vc.dismiss(animated: true) {
+                self.showAlert(title: "Error", message: error.localizedDescription)
+            }
         }
     }
     

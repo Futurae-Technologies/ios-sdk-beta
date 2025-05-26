@@ -7,24 +7,13 @@ let package = Package(
         .iOS(.v12)
     ],
     products: [
-        .library(name: "FuturaeKit", targets: ["FuturaeKit", "FuturaeKitUmbrella"]),
-    ],
-    dependencies: [
-        .package(url: "https://github.com/stephencelis/SQLite.swift.git", .upToNextMajor(from: "0.14.1")),
-        .package(url: "https://github.com/ReactiveX/RxSwift.git", .upToNextMajor(from: "6.6.0")),
+        .library(name: "FuturaeKit", targets: ["FuturaeKit"]),
     ],
     targets: [
         .binaryTarget(
             name: "FuturaeKit",
-            url: "https://github.com/Futurae-Technologies/ios-sdk-beta/releases/download/v3.7.1-beta/FuturaeKit-v3.7.1.xcframework.zip",
-            checksum: "c9550fd5a771abf9522beca488b8300354d8476f06d2e20d66f376ab8b0bc307"
-        ),
-        .target(
-            name: "FuturaeKitUmbrella",
-            dependencies: [
-                .product(name: "RxSwift", package: "RxSwift"),
-                .product(name: "SQLite", package: "SQLite.swift"),
-            ]
+            url: "https://github.com/Futurae-Technologies/ios-sdk-beta/releases/download/v3.8.0-beta/FuturaeKit-v3.8.0.xcframework.zip",
+            checksum: "272c574e938c7e44e284b32fdf10a8c065af93c6271194214f271709a62b2edb"
         )
     ]
 )

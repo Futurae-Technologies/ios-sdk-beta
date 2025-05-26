@@ -1,12 +1,11 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.0.3 effective-5.10 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
-// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name FuturaeKit
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+// swift-compiler-version: Apple Swift version 6.1 effective-5.10 (swiftlang-6.1.0.110.21 clang-1700.0.13.3)
+// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name FuturaeKit
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1
 import AVFoundation
 import SystemConfiguration.CaptiveNetwork
 import Combine
 import CommonCrypto
-import Compression
 import CoreTelephony
 import CryptoKit
 import Darwin
@@ -225,6 +224,12 @@ import _SwiftConcurrencyShims
   @objc final public let remainingSecs: Swift.String
   @objc deinit
 }
+@objc public class UsernamelessURLData : ObjectiveC.NSObject {
+  @objc final public let sessionToken: Swift.String
+  @objc final public let mobileAuthRedirectUri: Swift.String?
+  @objc public init(sessionToken: Swift.String, mobileAuthRedirectUri: Swift.String? = nil)
+  @objc deinit
+}
 @objc extension FuturaeKit.FTRClient {
   @objc dynamic public func getNotificationData(_ notificationId: Swift.String, success: @escaping FuturaeKit.FTRNotificationHandler, failure: @escaping FuturaeKit.FTRFailureHandler)
   @nonobjc public func getNotificationData(_ notificationId: Swift.String) -> FuturaeKit.AsyncTaskResult<FuturaeKit.FTRNotificationData>
@@ -234,6 +239,7 @@ import _SwiftConcurrencyShims
 }
 @objc extension FuturaeKit.FTRClient {
   @objc dynamic public func sdkStateReport() throws -> FuturaeKit.SDKReport
+  @objc dynamic public class func logsReport() -> Swift.String?
 }
 @_hasMissingDesignatedInitializers @objc public class SDKAppAttestError : FuturaeKit.SDKBaseError {
   @objc override public class var sdkDomainError: Swift.String {
@@ -282,6 +288,7 @@ import _SwiftConcurrencyShims
   case invalidEncodingActivationCode = 5
   case unknownURLType = 6
   case invalidUrlLink = 7
+  case accountNotFound = 8
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
@@ -483,19 +490,26 @@ import _SwiftConcurrencyShims
   @objc final public let qrCode: Swift.String
   @objc final public let userId: Swift.String
   @objc final public let sessionId: Swift.String
+  @objc final public let sessionToken: Swift.String
   @objc final public let multiNumberChoice: Swift.Int
   @objc final public let extraInfo: [FuturaeKit.FTRExtraInfo]?
   @objc final public let reply: FuturaeKit.AuthReplyType
   @objc public class func replyPush(_ reply: FuturaeKit.AuthReplyType, sessionId: Swift.String, userId: Swift.String, extraInfo: [FuturaeKit.FTRExtraInfo]? = nil) -> FuturaeKit.AuthReplyParameters
   @objc public class func replyQRCode(_ reply: FuturaeKit.AuthReplyType, qrCode: Swift.String, extraInfo: [FuturaeKit.FTRExtraInfo]? = nil) -> FuturaeKit.AuthReplyParameters
   @objc public class func replyUsernamelessQRCode(_ reply: FuturaeKit.AuthReplyType, qrCode: Swift.String, userId: Swift.String, extraInfo: [FuturaeKit.FTRExtraInfo]? = nil) -> FuturaeKit.AuthReplyParameters
+  @objc public class func replyUsernamelessAuth(_ reply: FuturaeKit.AuthReplyType, sessionToken: Swift.String, userId: Swift.String, extraInfo: [FuturaeKit.FTRExtraInfo]? = nil) -> FuturaeKit.AuthReplyParameters
   @objc public class func replyMultiNumber(_ reply: FuturaeKit.AuthReplyType, multiNumberChoice: Swift.Int = 0, sessionId: Swift.String, userId: Swift.String, extraInfo: [FuturaeKit.FTRExtraInfo]? = nil) -> FuturaeKit.AuthReplyParameters
+  @objc public class func replyMobileAuth(_ reply: FuturaeKit.AuthReplyType, sessionToken: Swift.String, userId: Swift.String, extraInfo: [FuturaeKit.FTRExtraInfo]? = nil) -> FuturaeKit.AuthReplyParameters
   @objc public class func approveQRCode(_ qrCode: Swift.String, extraInfo: [FuturaeKit.FTRExtraInfo]? = nil) -> FuturaeKit.ApproveAuthQRCode
   @objc public class func approveUsernamelessQRCode(_ qrCode: Swift.String, userId: Swift.String, extraInfo: [FuturaeKit.FTRExtraInfo]? = nil) -> FuturaeKit.ApproveAuthUsernameless
+  @objc public class func approveUsernamelessAuth(_ sessionToken: Swift.String, userId: Swift.String, extraInfo: [FuturaeKit.FTRExtraInfo]? = nil) -> FuturaeKit.ApproveAuthUsernameless
   @objc public class func approvePush(_ sessionId: Swift.String, userId: Swift.String, extraInfo: [FuturaeKit.FTRExtraInfo]? = nil) -> FuturaeKit.ApproveAuthPush
   @objc public class func approvePushMultiNumber(_ multiNumberChoice: Swift.Int, sessionId: Swift.String, userId: Swift.String, extraInfo: [FuturaeKit.FTRExtraInfo]? = nil) -> FuturaeKit.ApproveAuthMultiNumber
+  @objc public class func approveMobileAuth(sessionToken: Swift.String, userId: Swift.String, extraInfo: [FuturaeKit.FTRExtraInfo]? = nil) -> FuturaeKit.ApproveMobileAuth
+  @objc public class func rejectMobileAuth(sessionToken: Swift.String, userId: Swift.String, isFraud: Swift.Bool = false, extraInfo: [FuturaeKit.FTRExtraInfo]? = nil) -> FuturaeKit.RejectMobileAuth
   @objc public class func rejectQRCode(_ qrCode: Swift.String, isFraud: Swift.Bool = false, extraInfo: [FuturaeKit.FTRExtraInfo]? = nil) -> FuturaeKit.RejectAuthQRCode
   @objc public class func rejectUsernamelessQRCode(_ qrCode: Swift.String, userId: Swift.String, isFraud: Swift.Bool = false, extraInfo: [FuturaeKit.FTRExtraInfo]? = nil) -> FuturaeKit.RejectAuthUsernameless
+  @objc public class func rejectUsernamelessAuth(_ sessionToken: Swift.String, userId: Swift.String, isFraud: Swift.Bool = false, extraInfo: [FuturaeKit.FTRExtraInfo]? = nil) -> FuturaeKit.RejectAuthUsernameless
   @objc public class func rejectPush(_ sessionId: Swift.String, userId: Swift.String, isFraud: Swift.Bool = false, extraInfo: [FuturaeKit.FTRExtraInfo]? = nil) -> FuturaeKit.RejectAuthPush
   @objc deinit
 }
@@ -507,8 +521,17 @@ import _SwiftConcurrencyShims
   @objc public init(_ qrCode: Swift.String, isFraud: Swift.Bool = false, extraInfo: [FuturaeKit.FTRExtraInfo]? = nil)
   @objc deinit
 }
+@_hasMissingDesignatedInitializers @objc public class ApproveMobileAuth : FuturaeKit.AuthReplyParameters {
+  @objc public init(_ sessionToken: Swift.String, userId: Swift.String, extraInfo: [FuturaeKit.FTRExtraInfo]? = nil)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class RejectMobileAuth : FuturaeKit.AuthReplyParameters {
+  @objc public init(_ sessionToken: Swift.String, userId: Swift.String, isFraud: Swift.Bool = false, extraInfo: [FuturaeKit.FTRExtraInfo]? = nil)
+  @objc deinit
+}
 @_hasMissingDesignatedInitializers @objc public class ApproveAuthUsernameless : FuturaeKit.AuthReplyParameters {
   @objc public init(_ qrCode: Swift.String, userId: Swift.String, extraInfo: [FuturaeKit.FTRExtraInfo]? = nil)
+  @objc public init(sessionToken: Swift.String, userId: Swift.String, extraInfo: [FuturaeKit.FTRExtraInfo]? = nil)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class ApproveAuthPush : FuturaeKit.AuthReplyParameters {
@@ -521,6 +544,7 @@ import _SwiftConcurrencyShims
 }
 @_hasMissingDesignatedInitializers @objc public class RejectAuthUsernameless : FuturaeKit.AuthReplyParameters {
   @objc public init(_ qrCode: Swift.String, userId: Swift.String, isFraud: Swift.Bool = false, extraInfo: [FuturaeKit.FTRExtraInfo]? = nil)
+  @objc public init(sessionToken: Swift.String, userId: Swift.String, isFraud: Swift.Bool = false, extraInfo: [FuturaeKit.FTRExtraInfo]? = nil)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers @objc public class RejectAuthPush : FuturaeKit.AuthReplyParameters {
@@ -546,6 +570,7 @@ import _SwiftConcurrencyShims
   case activation = 0
   case authentication = 1
   case unknown = 2
+  case usernamelessAuth = 3
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
@@ -666,6 +691,7 @@ import _SwiftConcurrencyShims
   @objc public static func typeFromURL(_ url: Foundation.URL) -> FuturaeKit.FTRURLType
   @objc public static func activationDataFromURL(_ url: Foundation.URL) -> FuturaeKit.ActivationURLData?
   @objc public static func authenticationDataFromURL(_ url: Foundation.URL) -> FuturaeKit.AuthenticationURLData?
+  @objc public static func usernamelessAuthDataFromURL(_ url: Foundation.URL) -> FuturaeKit.UsernamelessURLData?
   @objc public static func typeFromNotificationPayload(_ payload: [Swift.AnyHashable : Any]) -> FuturaeKit.NotificationPayloadDataType
   @objc public static func notificationInfoFromPayload(_ payload: [Swift.AnyHashable : Any]) -> FuturaeKit.NotificationPayloadData
   @objc override dynamic public init()
