@@ -1,3 +1,7 @@
+# Version 3.8.1-beta
+2025-02-06
+- [Changed]  SDK will track biometrics changes only under biometrics lock configuration or in SDK PIN lock configuration when biometrics are activated
+
 # Version 3.8.0-beta
 2025-26-05
 - Added new supported URI `FTRURLType.usernamelessAuth` to handle usernameless authentication and transaction confirmation. `FTRUtils` has been enhanced to support this new URI.
