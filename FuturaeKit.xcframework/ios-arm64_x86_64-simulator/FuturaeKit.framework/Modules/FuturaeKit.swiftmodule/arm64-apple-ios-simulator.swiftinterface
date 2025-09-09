@@ -34,6 +34,7 @@ import _SwiftConcurrencyShims
 @_hasMissingDesignatedInitializers @objc public class FTRAccountsStatus : ObjectiveC.NSObject, Swift.Codable {
   @objc final public let accounts: [FuturaeKit.FTRAccount]
   @objc final public let featureFlags: [FuturaeKit.FTRFeatureFlag]
+  @objc final public let sdkFeatureFlags: [Swift.String : Swift.Bool]
   @objc final public let messages: [FuturaeKit.FTRApiMessage]
   @objc public var asDictionary: [Swift.String : Any] {
     @objc get
@@ -412,6 +413,7 @@ import _SwiftConcurrencyShims
   case configChangedAppGroup = 24
   case configChangedKeychainAccessGroup = 25
   case configChangedKeychainItemsAccessibility = 26
+  case invalidBlockingIVCollectionTimeoutOnAuthMillis = 27
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
@@ -1153,8 +1155,9 @@ public enum SDKErrorAssociatedType {
   @objc final public let keychain: FuturaeKit.FTRKeychainConfig
   @objc final public let lockConfiguration: FuturaeKit.LockConfiguration
   @objc final public let sslPinning: Swift.Bool
+  @objc final public let integrityVerdictConfiguration: FuturaeKit.IntegrityVerdictConfiguration?
   @objc public static let defaultBaseUrl: Swift.String
-  @objc public init(sdkId: Swift.String, sdkKey: Swift.String, baseUrl: Swift.String = FTRConfig.defaultBaseUrl, keychain: FuturaeKit.FTRKeychainConfig = .defaultConfig(), lockConfiguration: FuturaeKit.LockConfiguration, appGroup: Swift.String? = nil, sslPinning: Swift.Bool = true)
+  @objc public init(sdkId: Swift.String, sdkKey: Swift.String, baseUrl: Swift.String = FTRConfig.defaultBaseUrl, keychain: FuturaeKit.FTRKeychainConfig = .defaultConfig(), lockConfiguration: FuturaeKit.LockConfiguration, appGroup: Swift.String? = nil, sslPinning: Swift.Bool = true, integrityVerdictConfiguration: FuturaeKit.IntegrityVerdictConfiguration? = nil)
   @objc public func isValid() -> Swift.Bool
   @objc deinit
 }
@@ -1418,6 +1421,9 @@ public typealias FTRVerificationCodeHandler = (Swift.String) -> Swift.Void
   @objc final public let recoveryHint: Swift.String?
   @objc final public let failureHint: Swift.String?
   @objc public var underlyingError: (any Swift.Error)?
+  @objc public var errorType: FuturaeKit.SDKErrorType {
+    @objc get
+  }
   @objc deinit
 }
 extension FuturaeKit.SDKBaseError {
@@ -1429,9 +1435,13 @@ extension FuturaeKit.SDKBaseError {
   public var errorAssociatedType: FuturaeKit.SDKErrorAssociatedType {
     get
   }
-  @objc dynamic public var errorType: FuturaeKit.SDKErrorType {
-    @objc get
-  }
+}
+@objc public class IntegrityVerdictConfiguration : ObjectiveC.NSObject {
+  @objc final public let production: Swift.Bool
+  @objc final public let teamID: Swift.String
+  @objc final public let blockingIVCollectionTimeoutOnAuthMillis: Foundation.NSNumber
+  @objc required public init(teamID: Swift.String, production: Swift.Bool, blockingIVCollectionTimeoutOnAuthMillis: Foundation.NSNumber? = nil)
+  @objc deinit
 }
 extension FuturaeKit.FTRMessageLevel : Swift.Equatable {}
 extension FuturaeKit.FTRMessageLevel : Swift.Hashable {}

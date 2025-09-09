@@ -1,3 +1,7 @@
+# Version 3.8.2-beta
+2025-09-09
+- [Added] In-Flow Integrity Verdict feature which automatically transmits integrity verdict information to the backend during during enrollment and authentication. To enable In-flow Integrity Verdict feature, contact the Futurae support at support@futurae.com.
+
 # Version 3.8.1-beta
 2025-02-06
 - [Changed]  SDK will track biometrics changes only under biometrics lock configuration or in SDK PIN lock configuration when biometrics are activated
