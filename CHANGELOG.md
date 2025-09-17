@@ -1,3 +1,7 @@
+# Version 3.9.0-beta
+2025-17-09
+- [Added] Application Integrity Check feature which automatically transmits integrity verdict information to the backend during during enrollment and authentication. To enable Application Integrity Check Embedded into Enrollment and Authentication flow feature, contact the Futurae support at support@futurae.com.
+
 # Version 3.8.1-beta
 2025-02-06
 - [Changed]  SDK will track biometrics changes only under biometrics lock configuration or in SDK PIN lock configuration when biometrics are activated
