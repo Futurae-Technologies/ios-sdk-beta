@@ -978,18 +978,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) enum SDKStatus sdkSt
 - (void)appAttestationWithAppId:(NSString * _Nonnull)appId production:(BOOL)production success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure SWIFT_AVAILABILITY(ios,introduced=14.0);
 @end
 
-@interface FTRClient (SWIFT_EXTENSION(FuturaeKit))
-/// Enrolls a user with the provided parameters.
-/// This method initiates the enrollment process using the given <code>EnrollParameters</code>. On completion, either the <code>success</code> or <code>failure</code> callback is executed based on the outcome of the enrollment process.
-/// \param parameters An instance of <code>EnrollParameters</code> containing the necessary details for enrollment.
-///
-/// \param success A closure to be called upon successful enrollment.
-///
-/// \param failure A closure to be called in case of an enrollment failure, providing an error describing the failure reason.
-///
-- (void)enroll:(EnrollParameters * _Nonnull)parameters success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
-@end
-
 @class TOTPParameters;
 @class FTRTotp;
 @interface FTRClient (SWIFT_EXTENSION(FuturaeKit))
@@ -1095,6 +1083,27 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) enum SDKStatus sdkSt
 /// \param failure A closure to be called in case of a failure in changing the SDK pin, providing an error describing the failure reason.
 ///
 - (void)changeSDKPinWithNewSDKPin:(NSString * _Nonnull)newSDKPin success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
+@end
+
+@interface FTRClient (SWIFT_EXTENSION(FuturaeKit))
+/// Enrolls a user with the provided parameters.
+/// This method initiates the enrollment process using the given <code>EnrollParameters</code>. On completion, either the <code>success</code> or <code>failure</code> callback is executed based on the outcome of the enrollment process.
+/// \param parameters An instance of <code>EnrollParameters</code> containing the necessary details for enrollment.
+///
+/// \param success A closure to be called upon successful enrollment.
+///
+/// \param failure A closure to be called in case of an enrollment failure, providing an error describing the failure reason.
+///
+- (void)enroll:(EnrollParameters * _Nonnull)parameters success:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
+/// Enrolls a user with the provided parameters and returns an account instance.
+/// This method initiates the enrollment process using the given <code>EnrollParameters</code>. On completion, either the <code>success</code> or <code>failure</code> callback is executed based on the outcome of the enrollment process.
+/// \param parameters An instance of <code>EnrollParameters</code> containing the necessary details for enrollment.
+///
+/// \param success A closure to be called upon successful enrollment which includes the account instance.
+///
+/// \param failure A closure to be called in case of an enrollment failure, providing an error describing the failure reason.
+///
+- (void)enrollAndGetAccount:(EnrollParameters * _Nonnull)parameters success:(void (^ _Nonnull)(FTRAccount * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 @end
 
 @class FTRMigrationCheckData;
@@ -1290,6 +1299,23 @@ enum FTRQRCodeType : NSInteger;
 - (void)getAccountHistory:(FTRAccount * _Nonnull)account success:(void (^ _Nonnull)(FTRAccountHistory * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 @end
 
+@interface FTRClient (SWIFT_EXTENSION(FuturaeKit))
+/// Submit user location data to the server.
+/// \param success A closure to be called upon successful user location submission.
+///
+/// \param failure A closure to be called in case of a user location submission  failure, providing an error describing the failure reason.
+///
+- (void)submitUserLocationWithSuccess:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
+@property (nonatomic, readonly) NSInteger locationCollectionTimeout;
+@property (nonatomic, readonly) BOOL isLocationCollectionEnabled;
+/// Set user location collection timeout.
+- (void)setLocationCollection:(NSInteger)timeout;
+/// Enable user location collection feature.
+- (void)enableLocationCollection;
+/// Disable the user location collection feature.
+- (void)disableLocationCollection;
+@end
+
 @protocol FTRUserPresenceDelegate;
 @interface FTRClient (SWIFT_EXTENSION(FuturaeKit))
 @property (nonatomic, readonly, copy) NSString * _Nonnull baseURL;
@@ -1460,6 +1486,7 @@ SWIFT_CLASS("_TtC10FuturaeKit9FTRConfig")
 @property (nonatomic, readonly, copy) NSString * _Nonnull sdkKey;
 @property (nonatomic, readonly, copy) NSString * _Nonnull sdkId;
 @property (nonatomic, readonly, copy) NSString * _Nonnull baseUrl;
+@property (nonatomic, readonly, copy) NSString * _Nullable trustSignalsServiceUrl;
 @property (nonatomic, readonly, copy) NSString * _Nonnull locale;
 @property (nonatomic, readonly, copy) NSString * _Nullable appGroup;
 @property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull capabilities;
@@ -1476,6 +1503,8 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 ///
 /// \param baseUrl The base URL for network requests, defaulting to <code>FTRConfig.defaultBaseUrl</code>.
 ///
+/// \param trustSignalsServiceUrl The base URL for network requests targeting trust signals service`.
+///
 /// \param keychain Configuration settings for keychain access, defaulting to default configuration.
 ///
 /// \param lockConfiguration Lock configuration settings.
@@ -1488,7 +1517,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 ///
 /// \param integrityVerdictConfiguration Configuration settings for integrity verdict functionality.
 ///
-- (nonnull instancetype)initWithSdkId:(NSString * _Nonnull)sdkId sdkKey:(NSString * _Nonnull)sdkKey baseUrl:(NSString * _Nonnull)baseUrl keychain:(FTRKeychainConfig * _Nonnull)keychain lockConfiguration:(LockConfiguration * _Nonnull)lockConfiguration appGroup:(NSString * _Nullable)appGroup sslPinning:(BOOL)sslPinning integrityVerdictConfiguration:(IntegrityVerdictConfiguration * _Nullable)integrityVerdictConfiguration OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithSdkId:(NSString * _Nonnull)sdkId sdkKey:(NSString * _Nonnull)sdkKey baseUrl:(NSString * _Nonnull)baseUrl trustSignalsServiceUrl:(NSString * _Nullable)trustSignalsServiceUrl keychain:(FTRKeychainConfig * _Nonnull)keychain lockConfiguration:(LockConfiguration * _Nonnull)lockConfiguration appGroup:(NSString * _Nullable)appGroup sslPinning:(BOOL)sslPinning integrityVerdictConfiguration:(IntegrityVerdictConfiguration * _Nullable)integrityVerdictConfiguration OBJC_DESIGNATED_INITIALIZER;
 /// Validates the current configuration.
 ///
 /// returns:
@@ -2051,6 +2080,7 @@ typedef SWIFT_ENUM(NSInteger, NotificationPayloadDataType, open) {
   NotificationPayloadDataTypeQrCode = 2,
   NotificationPayloadDataTypeUnenroll = 3,
   NotificationPayloadDataTypeArbitraryNotification = 4,
+  NotificationPayloadDataTypeRequestUserLocation = 5,
 };
 
 @class OfflineQRCodeDefault;
@@ -2610,6 +2640,12 @@ typedef SWIFT_ENUM(NSInteger, SDKErrorCode, open) {
   SDKErrorCodeConfigChangedKeychainItemsAccessibility = 26,
 /// Blocking integrity verdict collection timeout on authentication is not within allowed range.
   SDKErrorCodeInvalidBlockingIVCollectionTimeoutOnAuthMillis = 27,
+/// TOTP seed string is empty
+  SDKErrorCodeTotpSeedIsEmpty = 28,
+/// Trust signal service url is not set
+  SDKErrorCodeTrustSignalServiceUrlNotSet = 29,
+/// Updating SDK configuration failed because no initial enrollment data was found
+  SDKErrorCodeUpdateConfigEnrollmentRequired = 30,
 };
 
 SWIFT_CLASS("_TtC10FuturaeKit14SDKErrorDomain")
