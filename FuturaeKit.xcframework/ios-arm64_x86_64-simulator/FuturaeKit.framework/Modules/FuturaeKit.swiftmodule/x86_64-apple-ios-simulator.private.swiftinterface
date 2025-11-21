@@ -3,9 +3,11 @@
 // swift-module-flags: -target x86_64-apple-ios13-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name FuturaeKit
 // swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2
 import AVFoundation
+import AdaptiveKit
 import SystemConfiguration.CaptiveNetwork
 import Combine
 import CommonCrypto
+import CoreLocation
 import CoreTelephony
 import CryptoKit
 import Darwin
@@ -232,6 +234,19 @@ import _SwiftConcurrencyShims
   @objc final public let haveBiometricsChanged: Swift.Bool
   @objc deinit
 }
+@objc extension FuturaeKit.FTRClient {
+  @objc dynamic public func submitUserLocation(success: @escaping FuturaeKit.FTRSuccessHandler, failure: @escaping FuturaeKit.FTRFailureHandler)
+  @nonobjc public func submitUserLocation() -> FuturaeKit.AsyncTask
+  @objc dynamic public var locationCollectionTimeout: Swift.Int {
+    @objc get
+  }
+  @objc dynamic public var isLocationCollectionEnabled: Swift.Bool {
+    @objc get
+  }
+  @objc dynamic public func setLocationCollection(_ timeout: Swift.Int)
+  @objc dynamic public func enableLocationCollection()
+  @objc dynamic public func disableLocationCollection()
+}
 @_hasMissingDesignatedInitializers @objc public class FTRTotp : ObjectiveC.NSObject {
   @objc final public let totp: Swift.String
   @objc final public let remainingSecs: Swift.String
@@ -442,6 +457,9 @@ import _SwiftConcurrencyShims
   case configChangedKeychainAccessGroup = 25
   case configChangedKeychainItemsAccessibility = 26
   case invalidBlockingIVCollectionTimeoutOnAuthMillis = 27
+  case totpSeedIsEmpty = 28
+  case trustSignalServiceUrlNotSet = 29
+  case updateConfigEnrollmentRequired = 30
   #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
   #endif
@@ -1029,6 +1047,8 @@ extension FuturaeKit.FTRClient {
 @objc extension FuturaeKit.FTRClient {
   @objc dynamic public func enroll(_ parameters: FuturaeKit.EnrollParameters, success: @escaping FuturaeKit.FTRSuccessHandler, failure: @escaping FuturaeKit.FTRFailureHandler)
   @nonobjc public func enroll(parameters: FuturaeKit.EnrollParameters) -> FuturaeKit.AsyncTask
+  @objc dynamic public func enrollAndGetAccount(_ parameters: FuturaeKit.EnrollParameters, success: @escaping FuturaeKit.FTREnrollHandler, failure: @escaping FuturaeKit.FTRFailureHandler)
+  @nonobjc public func enrollAndGetAccount(parameters: FuturaeKit.EnrollParameters) -> FuturaeKit.AsyncTaskResult<FuturaeKit.FTRAccount>
 }
 @objc extension FuturaeKit.FTRClient {
   @objc dynamic public func disableAdaptive()
@@ -1279,6 +1299,7 @@ public enum SDKErrorAssociatedType {
   case qrCode = 2
   case unenroll = 3
   case arbitraryNotification = 4
+  case requestUserLocation = 5
   #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
   #endif
@@ -1291,6 +1312,7 @@ public enum SDKErrorAssociatedType {
   @objc final public let sdkKey: Swift.String
   @objc final public let sdkId: Swift.String
   @objc final public let baseUrl: Swift.String
+  @objc final public let trustSignalsServiceUrl: Swift.String?
   @objc final public let locale: Swift.String
   @objc final public let appGroup: Swift.String?
   @objc final public let capabilities: [Swift.String]
@@ -1300,7 +1322,7 @@ public enum SDKErrorAssociatedType {
   @objc final public let integrityVerdictConfiguration: FuturaeKit.IntegrityVerdictConfiguration?
   @objc public static let defaultBaseUrl: Swift.String
   #if compiler(>=5.3) && $NonescapableTypes
-  @objc public init(sdkId: Swift.String, sdkKey: Swift.String, baseUrl: Swift.String = FTRConfig.defaultBaseUrl, keychain: FuturaeKit.FTRKeychainConfig = .defaultConfig(), lockConfiguration: FuturaeKit.LockConfiguration, appGroup: Swift.String? = nil, sslPinning: Swift.Bool = true, integrityVerdictConfiguration: FuturaeKit.IntegrityVerdictConfiguration? = nil)
+  @objc public init(sdkId: Swift.String, sdkKey: Swift.String, baseUrl: Swift.String = FTRConfig.defaultBaseUrl, trustSignalsServiceUrl: Swift.String? = nil, keychain: FuturaeKit.FTRKeychainConfig = .defaultConfig(), lockConfiguration: FuturaeKit.LockConfiguration, appGroup: Swift.String? = nil, sslPinning: Swift.Bool = true, integrityVerdictConfiguration: FuturaeKit.IntegrityVerdictConfiguration? = nil)
   #endif
   @objc public func isValid() -> Swift.Bool
   @objc deinit
@@ -1320,6 +1342,7 @@ public enum QueryError : Swift.Error, Swift.CustomStringConvertible {
   #endif
 }
 public typealias FTRSuccessHandler = () -> Swift.Void
+public typealias FTREnrollHandler = (FuturaeKit.FTRAccount) -> Swift.Void
 public typealias FTRFailureHandler = (any Swift.Error) -> Swift.Void
 public typealias FTRTotpHandler = (FuturaeKit.FTRTotp) -> Swift.Void
 public typealias FTRSessionHandler = (FuturaeKit.FTRSession) -> Swift.Void

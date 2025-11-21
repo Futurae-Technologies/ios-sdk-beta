@@ -7536,6 +7536,30 @@
       },
       {
         "kind": "Import",
+        "name": "AdaptiveKit",
+        "printedName": "AdaptiveKit",
+        "declKind": "Import",
+        "moduleName": "FuturaeKit"
+      },
+      {
+        "kind": "Import",
+        "name": "CoreLocation",
+        "printedName": "CoreLocation",
+        "declKind": "Import",
+        "moduleName": "FuturaeKit"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FuturaeKit",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
         "declKind": "Import",
@@ -13869,6 +13893,132 @@
               "ObjC"
             ],
             "fixedbinaryorder": 26
+          },
+          {
+            "kind": "Var",
+            "name": "totpSeedIsEmpty",
+            "printedName": "totpSeedIsEmpty",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FuturaeKit.SDKErrorCode.Type) -> FuturaeKit.SDKErrorCode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKErrorCode",
+                    "printedName": "FuturaeKit.SDKErrorCode",
+                    "usr": "c:@M@FuturaeKit@E@SDKErrorCode"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FuturaeKit.SDKErrorCode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKErrorCode",
+                        "printedName": "FuturaeKit.SDKErrorCode",
+                        "usr": "c:@M@FuturaeKit@E@SDKErrorCode"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@FuturaeKit@E@SDKErrorCode@SDKErrorCodeTotpSeedIsEmpty",
+            "mangledName": "$s10FuturaeKit12SDKErrorCodeO15totpSeedIsEmptyyA2CmF",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 27
+          },
+          {
+            "kind": "Var",
+            "name": "trustSignalServiceUrlNotSet",
+            "printedName": "trustSignalServiceUrlNotSet",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FuturaeKit.SDKErrorCode.Type) -> FuturaeKit.SDKErrorCode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKErrorCode",
+                    "printedName": "FuturaeKit.SDKErrorCode",
+                    "usr": "c:@M@FuturaeKit@E@SDKErrorCode"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FuturaeKit.SDKErrorCode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKErrorCode",
+                        "printedName": "FuturaeKit.SDKErrorCode",
+                        "usr": "c:@M@FuturaeKit@E@SDKErrorCode"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@FuturaeKit@E@SDKErrorCode@SDKErrorCodeTrustSignalServiceUrlNotSet",
+            "mangledName": "$s10FuturaeKit12SDKErrorCodeO27trustSignalServiceUrlNotSetyA2CmF",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 28
+          },
+          {
+            "kind": "Var",
+            "name": "updateConfigEnrollmentRequired",
+            "printedName": "updateConfigEnrollmentRequired",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FuturaeKit.SDKErrorCode.Type) -> FuturaeKit.SDKErrorCode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SDKErrorCode",
+                    "printedName": "FuturaeKit.SDKErrorCode",
+                    "usr": "c:@M@FuturaeKit@E@SDKErrorCode"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FuturaeKit.SDKErrorCode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SDKErrorCode",
+                        "printedName": "FuturaeKit.SDKErrorCode",
+                        "usr": "c:@M@FuturaeKit@E@SDKErrorCode"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@FuturaeKit@E@SDKErrorCode@SDKErrorCodeUpdateConfigEnrollmentRequired",
+            "mangledName": "$s10FuturaeKit12SDKErrorCodeO30updateConfigEnrollmentRequiredyA2CmF",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "RawDocComment",
+              "ObjC"
+            ],
+            "fixedbinaryorder": 29
           },
           {
             "kind": "Constructor",
@@ -29082,6 +29232,30 @@
         ]
       },
       {
+        "kind": "Import",
+        "name": "CoreLocation",
+        "printedName": "CoreLocation",
+        "declKind": "Import",
+        "moduleName": "FuturaeKit"
+      },
+      {
+        "kind": "Import",
+        "name": "AdaptiveKit",
+        "printedName": "AdaptiveKit",
+        "declKind": "Import",
+        "moduleName": "FuturaeKit"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FuturaeKit",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
         "kind": "TypeDecl",
         "name": "SDKLockError",
         "printedName": "SDKLockError",
@@ -30445,6 +30619,257 @@
             "moduleName": "FuturaeKit",
             "declAttributes": [
               "NonObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "submitUserLocation",
+            "printedName": "submitUserLocation(success:failure:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "() -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(any Swift.Error) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Error",
+                    "printedName": "any Swift.Error",
+                    "usr": "s:s5ErrorP"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@FuturaeKit@objc(cs)FTRClient(im)submitUserLocationWithSuccess:failure:",
+            "mangledName": "$s10FuturaeKit9FTRClientC18submitUserLocation7success7failureyyyc_ys5Error_pctF",
+            "moduleName": "FuturaeKit",
+            "objc_name": "submitUserLocationWithSuccess:failure:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "submitUserLocation",
+            "printedName": "submitUserLocation()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AsyncTask",
+                "printedName": "FuturaeKit.AsyncTask",
+                "usr": "s:10FuturaeKit9AsyncTaskC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:10FuturaeKit9FTRClientC18submitUserLocationAA9AsyncTaskCyF",
+            "mangledName": "$s10FuturaeKit9FTRClientC18submitUserLocationAA9AsyncTaskCyF",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "NonObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "locationCollectionTimeout",
+            "printedName": "locationCollectionTimeout",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@CM@FuturaeKit@objc(cs)FTRClient(py)locationCollectionTimeout",
+            "mangledName": "$s10FuturaeKit9FTRClientC25locationCollectionTimeoutSivp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@FuturaeKit@objc(cs)FTRClient(im)locationCollectionTimeout",
+                "mangledName": "$s10FuturaeKit9FTRClientC25locationCollectionTimeoutSivg",
+                "moduleName": "FuturaeKit",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isLocationCollectionEnabled",
+            "printedName": "isLocationCollectionEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@CM@FuturaeKit@objc(cs)FTRClient(py)isLocationCollectionEnabled",
+            "mangledName": "$s10FuturaeKit9FTRClientC27isLocationCollectionEnabledSbvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@FuturaeKit@objc(cs)FTRClient(im)isLocationCollectionEnabled",
+                "mangledName": "$s10FuturaeKit9FTRClientC27isLocationCollectionEnabledSbvg",
+                "moduleName": "FuturaeKit",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "setLocationCollection",
+            "printedName": "setLocationCollection(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@FuturaeKit@objc(cs)FTRClient(im)setLocationCollection:",
+            "mangledName": "$s10FuturaeKit9FTRClientC21setLocationCollectionyySiF",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "enableLocationCollection",
+            "printedName": "enableLocationCollection()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@FuturaeKit@objc(cs)FTRClient(im)enableLocationCollection",
+            "mangledName": "$s10FuturaeKit9FTRClientC24enableLocationCollectionyyF",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "disableLocationCollection",
+            "printedName": "disableLocationCollection()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@FuturaeKit@objc(cs)FTRClient(im)disableLocationCollection",
+            "mangledName": "$s10FuturaeKit9FTRClientC25disableLocationCollectionyyF",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
               "RawDocComment"
             ],
             "isFromExtension": true,
@@ -32571,6 +32996,108 @@
             "declKind": "Func",
             "usr": "s:10FuturaeKit9FTRClientC6enroll10parametersAA9AsyncTaskCAA16EnrollParametersC_tF",
             "mangledName": "$s10FuturaeKit9FTRClientC6enroll10parametersAA9AsyncTaskCAA16EnrollParametersC_tF",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "NonObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "enrollAndGetAccount",
+            "printedName": "enrollAndGetAccount(_:success:failure:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "EnrollParameters",
+                "printedName": "FuturaeKit.EnrollParameters",
+                "usr": "c:@M@FuturaeKit@objc(cs)EnrollParameters"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FuturaeKit.FTRAccount) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "FTRAccount",
+                    "printedName": "FuturaeKit.FTRAccount",
+                    "usr": "c:@M@FuturaeKit@objc(cs)FTRAccount"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(any Swift.Error) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Error",
+                    "printedName": "any Swift.Error",
+                    "usr": "s:s5ErrorP"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@FuturaeKit@objc(cs)FTRClient(im)enrollAndGetAccount:success:failure:",
+            "mangledName": "$s10FuturaeKit9FTRClientC19enrollAndGetAccount_7success7failureyAA16EnrollParametersC_yAA10FTRAccountCcys5Error_pctF",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "enrollAndGetAccount",
+            "printedName": "enrollAndGetAccount(parameters:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AsyncTaskResult",
+                "printedName": "FuturaeKit.AsyncTaskResult<FuturaeKit.FTRAccount>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "FTRAccount",
+                    "printedName": "FuturaeKit.FTRAccount",
+                    "usr": "c:@M@FuturaeKit@objc(cs)FTRAccount"
+                  }
+                ],
+                "usr": "s:10FuturaeKit15AsyncTaskResultC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "EnrollParameters",
+                "printedName": "FuturaeKit.EnrollParameters",
+                "usr": "c:@M@FuturaeKit@objc(cs)EnrollParameters"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:10FuturaeKit9FTRClientC19enrollAndGetAccount10parametersAA15AsyncTaskResultCyAA10FTRAccountCGAA16EnrollParametersC_tF",
+            "mangledName": "$s10FuturaeKit9FTRClientC19enrollAndGetAccount10parametersAA15AsyncTaskResultCyAA10FTRAccountCGAA16EnrollParametersC_tF",
             "moduleName": "FuturaeKit",
             "declAttributes": [
               "NonObjC",
@@ -34749,6 +35276,23 @@
         "declAttributes": [
           "RawDocComment"
         ]
+      },
+      {
+        "kind": "Import",
+        "name": "CoreLocation",
+        "printedName": "CoreLocation",
+        "declKind": "Import",
+        "moduleName": "FuturaeKit",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "AdaptiveKit",
+        "printedName": "AdaptiveKit",
+        "declKind": "Import",
+        "moduleName": "FuturaeKit"
       },
       {
         "kind": "Import",
@@ -41274,6 +41818,47 @@
             "fixedbinaryorder": 4
           },
           {
+            "kind": "Var",
+            "name": "requestUserLocation",
+            "printedName": "requestUserLocation",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FuturaeKit.NotificationPayloadDataType.Type) -> FuturaeKit.NotificationPayloadDataType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NotificationPayloadDataType",
+                    "printedName": "FuturaeKit.NotificationPayloadDataType",
+                    "usr": "c:@M@FuturaeKit@E@NotificationPayloadDataType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FuturaeKit.NotificationPayloadDataType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "NotificationPayloadDataType",
+                        "printedName": "FuturaeKit.NotificationPayloadDataType",
+                        "usr": "c:@M@FuturaeKit@E@NotificationPayloadDataType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@FuturaeKit@E@NotificationPayloadDataType@NotificationPayloadDataTypeRequestUserLocation",
+            "mangledName": "$s10FuturaeKit27NotificationPayloadDataTypeO19requestUserLocationyA2CmF",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 5
+          },
+          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init(rawValue:)",
@@ -41604,6 +42189,72 @@
                 "declKind": "Accessor",
                 "usr": "c:@M@FuturaeKit@objc(cs)FTRConfig(im)baseUrl",
                 "mangledName": "$s10FuturaeKit9FTRConfigC7baseUrlSSvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "trustSignalsServiceUrl",
+            "printedName": "trustSignalsServiceUrl",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@FuturaeKit@objc(cs)FTRConfig(py)trustSignalsServiceUrl",
+            "mangledName": "$s10FuturaeKit9FTRConfigC22trustSignalsServiceUrlSSSgvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.String?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FuturaeKit@objc(cs)FTRConfig(im)trustSignalsServiceUrl",
+                "mangledName": "$s10FuturaeKit9FTRConfigC22trustSignalsServiceUrlSSSgvg",
                 "moduleName": "FuturaeKit",
                 "implicit": true,
                 "declAttributes": [
@@ -42071,7 +42722,7 @@
           {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init(sdkId:sdkKey:baseUrl:keychain:lockConfiguration:appGroup:sslPinning:integrityVerdictConfiguration:)",
+            "printedName": "init(sdkId:sdkKey:baseUrl:trustSignalsServiceUrl:keychain:lockConfiguration:appGroup:sslPinning:integrityVerdictConfiguration:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -42097,6 +42748,21 @@
                 "printedName": "Swift.String",
                 "hasDefaultArg": true,
                 "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
               },
               {
                 "kind": "TypeNominal",
@@ -42150,10 +42816,10 @@
               }
             ],
             "declKind": "Constructor",
-            "usr": "c:@M@FuturaeKit@objc(cs)FTRConfig(im)initWithSdkId:sdkKey:baseUrl:keychain:lockConfiguration:appGroup:sslPinning:integrityVerdictConfiguration:",
-            "mangledName": "$s10FuturaeKit9FTRConfigC5sdkId0D3Key7baseUrl8keychain17lockConfiguration8appGroup10sslPinning016integrityVerdictK0ACSS_S2SAA17FTRKeychainConfigCAA04LockK0CSSSgSbAA09IntegrityqK0CSgtcfc",
+            "usr": "c:@M@FuturaeKit@objc(cs)FTRConfig(im)initWithSdkId:sdkKey:baseUrl:trustSignalsServiceUrl:keychain:lockConfiguration:appGroup:sslPinning:integrityVerdictConfiguration:",
+            "mangledName": "$s10FuturaeKit9FTRConfigC5sdkId0D3Key7baseUrl019trustSignalsServiceH08keychain17lockConfiguration8appGroup10sslPinning016integrityVerdictN0ACSS_S3SSgAA17FTRKeychainConfigCAA04LockN0CAMSbAA09IntegritytN0CSgtcfc",
             "moduleName": "FuturaeKit",
-            "objc_name": "initWithSdkId:sdkKey:baseUrl:keychain:lockConfiguration:appGroup:sslPinning:integrityVerdictConfiguration:",
+            "objc_name": "initWithSdkId:sdkKey:baseUrl:trustSignalsServiceUrl:keychain:lockConfiguration:appGroup:sslPinning:integrityVerdictConfiguration:",
             "declAttributes": [
               "AccessControl",
               "ObjC",
@@ -57716,6 +58382,13 @@
       "value": "false"
     },
     {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/FTRClient\/Public\/FTRClient+UserLocation.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1311,
+      "length": 2,
+      "value": "60"
+    },
+    {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Libraries\/RxSwift\/Subjects\/ReplaySubject.swift",
       "kind": "BooleanLiteral",
       "offset": 869,
@@ -58033,21 +58706,21 @@
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Response\/Account.swift",
       "kind": "StringLiteral",
-      "offset": 4200,
+      "offset": 4492,
       "length": 11,
       "value": "\"device_id\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Response\/Account.swift",
       "kind": "StringLiteral",
-      "offset": 4236,
+      "offset": 4528,
       "length": 11,
       "value": "\"totp_seed\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Response\/Account.swift",
       "kind": "StringLiteral",
-      "offset": 4275,
+      "offset": 4567,
       "length": 14,
       "value": "\"sync_counter\""
     },
@@ -58612,6 +59285,27 @@
       "value": "27"
     },
     {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Errors\/Domains\/SDKError.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3984,
+      "length": 2,
+      "value": "28"
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Errors\/Domains\/SDKError.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4070,
+      "length": 2,
+      "value": "29"
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Errors\/Domains\/SDKError.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4202,
+      "length": 2,
+      "value": "30"
+    },
+    {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/FTRMigrationCheckData.swift",
       "kind": "IntegerLiteral",
       "offset": 1021,
@@ -59076,140 +59770,147 @@
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 2677,
+      "offset": 2669,
+      "length": 29,
+      "value": "\"request_location_collection\""
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
+      "kind": "StringLiteral",
+      "offset": 2738,
       "length": 19,
       "value": "\"FTRApiErrorDomain\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 2722,
+      "offset": 2783,
       "length": 20,
       "value": "\"FTRLockErrorDomain\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 2773,
+      "offset": 2834,
       "length": 21,
       "value": "\"FTRLockErrorInfoKey\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 2825,
+      "offset": 2886,
       "length": 25,
       "value": "\"FTRAppAttestErrorDomain\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 2878,
+      "offset": 2939,
       "length": 22,
       "value": "\"FTRClientErrorDomain\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "IntegerLiteral",
-      "offset": 2935,
+      "offset": 2996,
       "length": 3,
       "value": "500"
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "IntegerLiteral",
-      "offset": 2987,
+      "offset": 3048,
       "length": 3,
       "value": "501"
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "IntegerLiteral",
-      "offset": 3042,
+      "offset": 3103,
       "length": 3,
       "value": "502"
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "IntegerLiteral",
-      "offset": 3093,
+      "offset": 3154,
       "length": 3,
       "value": "503"
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "IntegerLiteral",
-      "offset": 3135,
+      "offset": 3196,
       "length": 3,
       "value": "504"
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "IntegerLiteral",
-      "offset": 3192,
+      "offset": 3253,
       "length": 3,
       "value": "505"
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "IntegerLiteral",
-      "offset": 3233,
+      "offset": 3294,
       "length": 3,
       "value": "506"
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "IntegerLiteral",
-      "offset": 3284,
+      "offset": 3345,
       "length": 3,
       "value": "507"
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "IntegerLiteral",
-      "offset": 3338,
+      "offset": 3399,
       "length": 3,
       "value": "508"
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "IntegerLiteral",
-      "offset": 3387,
+      "offset": 3448,
       "length": 3,
       "value": "509"
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "IntegerLiteral",
-      "offset": 3435,
+      "offset": 3496,
       "length": 3,
       "value": "510"
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 3485,
+      "offset": 3546,
       "length": 22,
       "value": "\"FTRNotificationError\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 3557,
+      "offset": 3618,
       "length": 25,
       "value": "\"FTRNotificationUnEnroll\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 3631,
+      "offset": 3692,
       "length": 24,
       "value": "\"FTRNotificationApprove\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "FloatLiteral",
-      "offset": 3698,
+      "offset": 3759,
       "length": 4,
       "value": "20.0"
     },
@@ -61025,6 +61726,97 @@
       "offset": 808,
       "length": 17,
       "value": "\"migration_token\""
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/FTRClient\/Parameters\/UserLocation.swift",
+      "kind": "StringLiteral",
+      "offset": 724,
+      "length": 15,
+      "value": "\"device_rooted\""
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/FTRClient\/Parameters\/UserLocation.swift",
+      "kind": "StringLiteral",
+      "offset": 788,
+      "length": 33,
+      "value": "\"ios_full_accuracy_authorization\""
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/FTRClient\/Parameters\/UserLocation.swift",
+      "kind": "IntegerLiteral",
+      "offset": 894,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/FTRClient\/Parameters\/UserLocation.swift",
+      "kind": "IntegerLiteral",
+      "offset": 930,
+      "length": 3,
+      "value": "100"
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/FTRClient\/Parameters\/UserLocation.swift",
+      "kind": "IntegerLiteral",
+      "offset": 964,
+      "length": 3,
+      "value": "101"
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/FTRClient\/Parameters\/UserLocation.swift",
+      "kind": "IntegerLiteral",
+      "offset": 999,
+      "length": 3,
+      "value": "102"
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/FTRClient\/Parameters\/UserLocation.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1030,
+      "length": 3,
+      "value": "103"
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/FTRClient\/Parameters\/UserLocation.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1060,
+      "length": 3,
+      "value": "104"
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/FTRClient\/Parameters\/UserLocation.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1088,
+      "length": 3,
+      "value": "105"
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/FTRClient\/Parameters\/UserLocation.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1116,
+      "length": 3,
+      "value": "106"
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/FTRClient\/Parameters\/UserLocation.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1149,
+      "length": 3,
+      "value": "107"
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/FTRClient\/Parameters\/UserLocation.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1186,
+      "length": 3,
+      "value": "108"
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/FTRClient\/Parameters\/UserLocation.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1213,
+      "length": 3,
+      "value": "109"
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Errors\/Domains\/SDKLockError.swift",
@@ -63157,37 +63949,44 @@
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/NotificationPayloadData.swift",
       "kind": "IntegerLiteral",
-      "offset": 1838,
+      "offset": 1920,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/NotificationPayloadData.swift",
       "kind": "IntegerLiteral",
-      "offset": 1857,
+      "offset": 1939,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/NotificationPayloadData.swift",
       "kind": "IntegerLiteral",
-      "offset": 1877,
+      "offset": 1959,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/NotificationPayloadData.swift",
       "kind": "IntegerLiteral",
-      "offset": 1899,
+      "offset": 1981,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/NotificationPayloadData.swift",
       "kind": "IntegerLiteral",
-      "offset": 1934,
+      "offset": 2016,
       "length": 1,
       "value": "4"
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/NotificationPayloadData.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2049,
+      "length": 1,
+      "value": "5"
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Libraries\/RxSwift\/Subjects\/AsyncSubject.swift",
@@ -64494,35 +65293,35 @@
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Configuration\/FTRConfig.swift",
       "kind": "StringLiteral",
-      "offset": 434,
+      "offset": 487,
       "length": 4,
       "value": "\"en\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Configuration\/FTRConfig.swift",
       "kind": "Array",
-      "offset": 524,
+      "offset": 577,
       "length": 60,
       "value": "[\"approve\", \"mobile_auth\", \"mobile_totp\", \"qr_code\", \"sync\"]"
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Configuration\/FTRConfig.swift",
       "kind": "StringLiteral",
-      "offset": 919,
+      "offset": 972,
       "length": 29,
       "value": "\"https:\/\/api.futurae.com:443\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Configuration\/FTRConfig.swift",
       "kind": "IntegerLiteral",
-      "offset": 995,
+      "offset": 1048,
       "length": 3,
       "value": "500"
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Configuration\/FTRConfig.swift",
       "kind": "BooleanLiteral",
-      "offset": 2154,
+      "offset": 2372,
       "length": 4,
       "value": "true"
     },
@@ -65232,6 +66031,34 @@
       "offset": 974,
       "length": 37,
       "value": "\"config_keychain_items_accessibility\""
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Persistence\/KeyValueStoreKey.swift",
+      "kind": "StringLiteral",
+      "offset": 1054,
+      "length": 29,
+      "value": "\"location_collection_timeout\""
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Persistence\/KeyValueStoreKey.swift",
+      "kind": "StringLiteral",
+      "offset": 1114,
+      "length": 21,
+      "value": "\"location_collection\""
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Persistence\/KeyValueStoreKey.swift",
+      "kind": "StringLiteral",
+      "offset": 1176,
+      "length": 22,
+      "value": "\"config_app_group_nil\""
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Persistence\/KeyValueStoreKey.swift",
+      "kind": "StringLiteral",
+      "offset": 1245,
+      "length": 34,
+      "value": "\"config_keychain_access_group_nil\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Libraries\/RxSwift\/Rx.swift",
