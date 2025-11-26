@@ -1299,23 +1299,6 @@ enum FTRQRCodeType : NSInteger;
 - (void)getAccountHistory:(FTRAccount * _Nonnull)account success:(void (^ _Nonnull)(FTRAccountHistory * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 @end
 
-@interface FTRClient (SWIFT_EXTENSION(FuturaeKit))
-/// Submit user location data to the server.
-/// \param success A closure to be called upon successful user location submission.
-///
-/// \param failure A closure to be called in case of a user location submission  failure, providing an error describing the failure reason.
-///
-- (void)submitUserLocationWithSuccess:(void (^ _Nonnull)(void))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
-@property (nonatomic, readonly) NSInteger locationCollectionTimeout;
-@property (nonatomic, readonly) BOOL isLocationCollectionEnabled;
-/// Set user location collection timeout.
-- (void)setLocationCollection:(NSInteger)timeout;
-/// Enable user location collection feature.
-- (void)enableLocationCollection;
-/// Disable the user location collection feature.
-- (void)disableLocationCollection;
-@end
-
 @protocol FTRUserPresenceDelegate;
 @interface FTRClient (SWIFT_EXTENSION(FuturaeKit))
 @property (nonatomic, readonly, copy) NSString * _Nonnull baseURL;

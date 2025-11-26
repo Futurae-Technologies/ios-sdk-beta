@@ -3,11 +3,9 @@
 // swift-module-flags: -target x86_64-apple-ios13-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name FuturaeKit
 // swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2
 import AVFoundation
-import AdaptiveKit
 import SystemConfiguration.CaptiveNetwork
 import Combine
 import CommonCrypto
-import CoreLocation
 import CoreTelephony
 import CryptoKit
 import Darwin
@@ -233,19 +231,6 @@ import _SwiftConcurrencyShims
   @objc final public let error: (any Swift.Error)?
   @objc final public let haveBiometricsChanged: Swift.Bool
   @objc deinit
-}
-@objc extension FuturaeKit.FTRClient {
-  @objc dynamic public func submitUserLocation(success: @escaping FuturaeKit.FTRSuccessHandler, failure: @escaping FuturaeKit.FTRFailureHandler)
-  @nonobjc public func submitUserLocation() -> FuturaeKit.AsyncTask
-  @objc dynamic public var locationCollectionTimeout: Swift.Int {
-    @objc get
-  }
-  @objc dynamic public var isLocationCollectionEnabled: Swift.Bool {
-    @objc get
-  }
-  @objc dynamic public func setLocationCollection(_ timeout: Swift.Int)
-  @objc dynamic public func enableLocationCollection()
-  @objc dynamic public func disableLocationCollection()
 }
 @_hasMissingDesignatedInitializers @objc public class FTRTotp : ObjectiveC.NSObject {
   @objc final public let totp: Swift.String
