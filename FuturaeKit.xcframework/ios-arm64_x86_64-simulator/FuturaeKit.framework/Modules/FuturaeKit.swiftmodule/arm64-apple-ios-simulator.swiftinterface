@@ -865,6 +865,8 @@ extension FuturaeKit.FTRClient {
   @objc dynamic public func deleteAccount(_ account: FuturaeKit.FTRAccount) throws
   @objc dynamic public func getAccountsStatus(_ accounts: [FuturaeKit.FTRAccount], success: @escaping FuturaeKit.FTRAccountsStatusHandler, failure: @escaping FuturaeKit.FTRFailureHandler)
   @nonobjc public func getAccountsStatus(_ accounts: [FuturaeKit.FTRAccount]) -> FuturaeKit.AsyncTaskResult<FuturaeKit.FTRAccountsStatus>
+  @objc dynamic public func getPendingSessions(_ accounts: [FuturaeKit.FTRAccount], success: @escaping FuturaeKit.FTRPendingSessionsHandler, failure: @escaping FuturaeKit.FTRFailureHandler)
+  @nonobjc public func getPendingSessions(_ accounts: [FuturaeKit.FTRAccount]) -> FuturaeKit.AsyncTaskResult<FuturaeKit.FTRPendingSessions>
   @objc dynamic public func getAccountHistory(_ account: FuturaeKit.FTRAccount, success: @escaping FuturaeKit.FTRAccountHistoryHandler, failure: @escaping FuturaeKit.FTRFailureHandler)
   @nonobjc public func getAccountHistory(_ account: FuturaeKit.FTRAccount) -> FuturaeKit.AsyncTaskResult<FuturaeKit.FTRAccountHistory>
 }
@@ -1067,6 +1069,30 @@ extension FuturaeKit.FTRClient {
   @objc dynamic public func appAttestation(appId: Swift.String, production: Swift.Bool, success: @escaping FuturaeKit.FTRSuccessHandler, failure: @escaping FuturaeKit.FTRFailureHandler)
   @available(iOS 14.0, *)
   @nonobjc public func appAttestation(appId: Swift.String, production: Swift.Bool) -> FuturaeKit.AsyncTask
+}
+@_hasMissingDesignatedInitializers @objc public class FTRPendingSessions : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public let pendingSessions: [FuturaeKit.FTRPendingSession]
+  @objc public var asDictionary: [Swift.String : Any] {
+    @objc get
+  }
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
+}
+@_hasMissingDesignatedInitializers @objc public class FTRPendingSession : ObjectiveC.NSObject, Swift.Codable {
+  @objc final public let factor: Swift.String
+  @objc final public let sessionIdHash: Swift.String
+  @objc final public let serviceId: Swift.String
+  @objc final public let userId: Swift.String
+  @objc final public let type: Swift.String
+  @objc final public let sessionTimeout: Swift.Int
+  @objc final public let offline: Swift.Bool
+  @objc public var asDictionary: [Swift.String : Any] {
+    @objc get
+  }
+  @objc deinit
+  public func encode(to encoder: any Swift.Encoder) throws
+  required public init(from decoder: any Swift.Decoder) throws
 }
 precedencegroup ColumnAssignment {
   associativity: left
@@ -1332,6 +1358,7 @@ public typealias FTRFailureHandler = (any Swift.Error) -> Swift.Void
 public typealias FTRTotpHandler = (FuturaeKit.FTRTotp) -> Swift.Void
 public typealias FTRSessionHandler = (FuturaeKit.FTRSession) -> Swift.Void
 public typealias FTRAccountsStatusHandler = (FuturaeKit.FTRAccountsStatus) -> Swift.Void
+public typealias FTRPendingSessionsHandler = (FuturaeKit.FTRPendingSessions) -> Swift.Void
 public typealias FTRNotificationHandler = (FuturaeKit.FTRNotificationData) -> Swift.Void
 public typealias FTRAccountHistoryHandler = (FuturaeKit.FTRAccountHistory) -> Swift.Void
 public typealias FTRMigrationCheckHandler = (FuturaeKit.FTRMigrationCheckData) -> Swift.Void

@@ -6461,6 +6461,16 @@
       },
       {
         "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FuturaeKit",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
         "name": "LocalAuthentication",
         "printedName": "LocalAuthentication",
         "declKind": "Import",
@@ -32129,6 +32139,124 @@
           },
           {
             "kind": "Function",
+            "name": "getPendingSessions",
+            "printedName": "getPendingSessions(_:success:failure:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[FuturaeKit.FTRAccount]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "FTRAccount",
+                    "printedName": "FuturaeKit.FTRAccount",
+                    "usr": "c:@M@FuturaeKit@objc(cs)FTRAccount"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FuturaeKit.FTRPendingSessions) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "FTRPendingSessions",
+                    "printedName": "FuturaeKit.FTRPendingSessions",
+                    "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSessions"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(any Swift.Error) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Error",
+                    "printedName": "any Swift.Error",
+                    "usr": "s:s5ErrorP"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@FuturaeKit@objc(cs)FTRClient(im)getPendingSessions:success:failure:",
+            "mangledName": "$s10FuturaeKit9FTRClientC18getPendingSessions_7success7failureySayAA10FTRAccountCG_yAA010FTRPendingF0Ccys5Error_pctF",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getPendingSessions",
+            "printedName": "getPendingSessions(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AsyncTaskResult",
+                "printedName": "FuturaeKit.AsyncTaskResult<FuturaeKit.FTRPendingSessions>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "FTRPendingSessions",
+                    "printedName": "FuturaeKit.FTRPendingSessions",
+                    "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSessions"
+                  }
+                ],
+                "usr": "s:10FuturaeKit15AsyncTaskResultC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[FuturaeKit.FTRAccount]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "FTRAccount",
+                    "printedName": "FuturaeKit.FTRAccount",
+                    "usr": "c:@M@FuturaeKit@objc(cs)FTRAccount"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:10FuturaeKit9FTRClientC18getPendingSessionsyAA15AsyncTaskResultCyAA010FTRPendingF0CGSayAA10FTRAccountCGF",
+            "mangledName": "$s10FuturaeKit9FTRClientC18getPendingSessionsyAA15AsyncTaskResultCyAA010FTRPendingF0CGSayAA10FTRAccountCGF",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "NonObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "getAccountHistory",
             "printedName": "getAccountHistory(_:success:failure:)",
             "children": [
@@ -34867,6 +34995,940 @@
         "printedName": "Foundation",
         "declKind": "Import",
         "moduleName": "FuturaeKit"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FuturaeKit",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "FTRPendingSessions",
+        "printedName": "FTRPendingSessions",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "pendingSessions",
+            "printedName": "pendingSessions",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[FuturaeKit.FTRPendingSession]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "FTRPendingSession",
+                    "printedName": "FuturaeKit.FTRPendingSession",
+                    "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSession"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSessions(py)pendingSessions",
+            "mangledName": "$s10FuturaeKit18FTRPendingSessionsC07pendingD0SayAA0C7SessionCGvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[FuturaeKit.FTRPendingSession]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "FTRPendingSession",
+                        "printedName": "FuturaeKit.FTRPendingSession",
+                        "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSession"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSessions(im)pendingSessions",
+                "mangledName": "$s10FuturaeKit18FTRPendingSessionsC07pendingD0SayAA0C7SessionCGvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "asDictionary",
+            "printedName": "asDictionary",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSessions(py)asDictionary",
+            "mangledName": "$s10FuturaeKit18FTRPendingSessionsC12asDictionarySDySSypGvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSessions(im)asDictionary",
+                "mangledName": "$s10FuturaeKit18FTRPendingSessionsC12asDictionarySDySSypGvg",
+                "moduleName": "FuturaeKit",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "FTRPendingSessions",
+                "printedName": "FuturaeKit.FTRPendingSessions",
+                "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSessions"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSessions(im)init",
+            "mangledName": "$s10FuturaeKit18FTRPendingSessionsCACycfc",
+            "moduleName": "FuturaeKit",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "FTRPendingSessions",
+                "printedName": "FuturaeKit.FTRPendingSessions",
+                "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSessions"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:10FuturaeKit18FTRPendingSessionsC4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s10FuturaeKit18FTRPendingSessionsC4fromACs7Decoder_p_tKcfc",
+            "moduleName": "FuturaeKit",
+            "implicit": true,
+            "declAttributes": [
+              "Required"
+            ],
+            "throwing": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "encode",
+            "printedName": "encode(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Encoder",
+                "printedName": "any Swift.Encoder",
+                "usr": "s:s7EncoderP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:10FuturaeKit18FTRPendingSessionsC6encode2toys7Encoder_p_tKF",
+            "mangledName": "$s10FuturaeKit18FTRPendingSessionsC6encode2toys7Encoder_p_tKF",
+            "moduleName": "FuturaeKit",
+            "implicit": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSessions",
+        "mangledName": "$s10FuturaeKit18FTRPendingSessionsC",
+        "moduleName": "FuturaeKit",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "hasMissingDesignatedInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "FTRPendingSession",
+        "printedName": "FTRPendingSession",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "factor",
+            "printedName": "factor",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSession(py)factor",
+            "mangledName": "$s10FuturaeKit17FTRPendingSessionC6factorSSvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSession(im)factor",
+                "mangledName": "$s10FuturaeKit17FTRPendingSessionC6factorSSvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "sessionIdHash",
+            "printedName": "sessionIdHash",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSession(py)sessionIdHash",
+            "mangledName": "$s10FuturaeKit17FTRPendingSessionC13sessionIdHashSSvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSession(im)sessionIdHash",
+                "mangledName": "$s10FuturaeKit17FTRPendingSessionC13sessionIdHashSSvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "serviceId",
+            "printedName": "serviceId",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSession(py)serviceId",
+            "mangledName": "$s10FuturaeKit17FTRPendingSessionC9serviceIdSSvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSession(im)serviceId",
+                "mangledName": "$s10FuturaeKit17FTRPendingSessionC9serviceIdSSvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userId",
+            "printedName": "userId",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSession(py)userId",
+            "mangledName": "$s10FuturaeKit17FTRPendingSessionC6userIdSSvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSession(im)userId",
+                "mangledName": "$s10FuturaeKit17FTRPendingSessionC6userIdSSvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "type",
+            "printedName": "type",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSession(py)type",
+            "mangledName": "$s10FuturaeKit17FTRPendingSessionC4typeSSvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSession(im)type",
+                "mangledName": "$s10FuturaeKit17FTRPendingSessionC4typeSSvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "sessionTimeout",
+            "printedName": "sessionTimeout",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSession(py)sessionTimeout",
+            "mangledName": "$s10FuturaeKit17FTRPendingSessionC14sessionTimeoutSivp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSession(im)sessionTimeout",
+                "mangledName": "$s10FuturaeKit17FTRPendingSessionC14sessionTimeoutSivg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "offline",
+            "printedName": "offline",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSession(py)offline",
+            "mangledName": "$s10FuturaeKit17FTRPendingSessionC7offlineSbvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSession(im)offline",
+                "mangledName": "$s10FuturaeKit17FTRPendingSessionC7offlineSbvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "asDictionary",
+            "printedName": "asDictionary",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSession(py)asDictionary",
+            "mangledName": "$s10FuturaeKit17FTRPendingSessionC12asDictionarySDySSypGvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "AccessControl",
+              "ObjC"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSession(im)asDictionary",
+                "mangledName": "$s10FuturaeKit17FTRPendingSessionC12asDictionarySDySSypGvg",
+                "moduleName": "FuturaeKit",
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "FTRPendingSession",
+                "printedName": "FuturaeKit.FTRPendingSession",
+                "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSession"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSession(im)init",
+            "mangledName": "$s10FuturaeKit17FTRPendingSessionCACycfc",
+            "moduleName": "FuturaeKit",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "FTRPendingSession",
+                "printedName": "FuturaeKit.FTRPendingSession",
+                "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSession"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:10FuturaeKit17FTRPendingSessionC4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s10FuturaeKit17FTRPendingSessionC4fromACs7Decoder_p_tKcfc",
+            "moduleName": "FuturaeKit",
+            "implicit": true,
+            "declAttributes": [
+              "Required"
+            ],
+            "throwing": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "encode",
+            "printedName": "encode(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Encoder",
+                "printedName": "any Swift.Encoder",
+                "usr": "s:s7EncoderP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:10FuturaeKit17FTRPendingSessionC6encode2toys7Encoder_p_tKF",
+            "mangledName": "$s10FuturaeKit17FTRPendingSessionC6encode2toys7Encoder_p_tKF",
+            "moduleName": "FuturaeKit",
+            "implicit": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@FuturaeKit@objc(cs)FTRPendingSession",
+        "mangledName": "$s10FuturaeKit17FTRPendingSessionC",
+        "moduleName": "FuturaeKit",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "hasMissingDesignatedInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
       },
       {
         "kind": "Import",
@@ -57996,6 +59058,13 @@
       "value": "\"device_status\""
     },
     {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Networking\/Params\/UserIdsParam.swift",
+      "kind": "StringLiteral",
+      "offset": 420,
+      "length": 10,
+      "value": "\"user_ids\""
+    },
+    {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/FTRClient\/Parameters\/UnlockParameters.swift",
       "kind": "IntegerLiteral",
       "offset": 224,
@@ -62243,6 +63312,62 @@
       "offset": 1805,
       "length": 4,
       "value": "true"
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/FTRPendingSessions.swift",
+      "kind": "StringLiteral",
+      "offset": 631,
+      "length": 10,
+      "value": "\"sessions\""
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/FTRPendingSessions.swift",
+      "kind": "StringLiteral",
+      "offset": 1773,
+      "length": 8,
+      "value": "\"factor\""
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/FTRPendingSessions.swift",
+      "kind": "StringLiteral",
+      "offset": 1811,
+      "length": 17,
+      "value": "\"session_id_hash\""
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/FTRPendingSessions.swift",
+      "kind": "StringLiteral",
+      "offset": 1854,
+      "length": 12,
+      "value": "\"service_id\""
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/FTRPendingSessions.swift",
+      "kind": "StringLiteral",
+      "offset": 1889,
+      "length": 9,
+      "value": "\"user_id\""
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/FTRPendingSessions.swift",
+      "kind": "StringLiteral",
+      "offset": 1929,
+      "length": 9,
+      "value": "\"timeout\""
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/FTRPendingSessions.swift",
+      "kind": "StringLiteral",
+      "offset": 1962,
+      "length": 9,
+      "value": "\"offline\""
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/FTRPendingSessions.swift",
+      "kind": "StringLiteral",
+      "offset": 1992,
+      "length": 6,
+      "value": "\"type\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Libraries\/SQLite\/Typed\/Expression.swift",

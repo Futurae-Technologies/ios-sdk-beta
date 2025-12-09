@@ -1239,6 +1239,7 @@ enum FTRQRCodeType : NSInteger;
 - (void)getSessionInfoWithoutUnlock:(SessionParameters * _Nonnull)parameters success:(void (^ _Nonnull)(FTRSession * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 @end
 
+@class FTRPendingSessions;
 @interface FTRClient (SWIFT_EXTENSION(FuturaeKit))
 /// Retrieves all accounts.
 /// This method fetches all accounts stored locally and returns them as an array of <code>FTRAccount</code> objects.
@@ -1288,6 +1289,15 @@ enum FTRQRCodeType : NSInteger;
 /// \param failure A closure called in case of a failure in retrieving the accounts’ status, providing an error describing the failure reason.
 ///
 - (void)getAccountsStatus:(NSArray<FTRAccount *> * _Nonnull)accounts success:(void (^ _Nonnull)(FTRAccountsStatus * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
+/// Retrieves the pending existing sessions for provided Accounts.
+/// This method fetches the <code>FTRPendingSessions</code> (existing sessions)  for an array of <code>FTRAccount</code> objects. The result is provided through the <code>success</code> closure. If there is an error or issue in fetching the pending existing, the <code>failure</code> closure is called with an error detailing the issue.
+/// \param accounts An array of <code>FTRAccount</code> objects whose existing sessions needs to be retrieved.
+///
+/// \param success A closure called with <code>FTRPendingSessions</code> upon successful retrieval of accounts’ pending sessions.
+///
+/// \param failure A closure called in case of a failure in retrieving the accounts’ pending sessions, providing an error describing the failure reason.
+///
+- (void)getPendingSessions:(NSArray<FTRAccount *> * _Nonnull)accounts success:(void (^ _Nonnull)(FTRPendingSessions * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 /// Retrieves the history of a specific account.
 /// This method fetches the historical activities for the specified <code>FTRAccount</code>. The history is provided through the <code>success</code> closure. In case of a failure or issue in fetching the account history, the <code>failure</code> closure is called with an error detailing the issue.
 /// \param account The <code>FTRAccount</code> whose history needs to be retrieved.
@@ -1704,6 +1714,38 @@ SWIFT_CLASS("_TtC10FuturaeKit8FTRParam")
 @property (nonatomic, readonly) BOOL enabled;
 /// An array of service identifiers to which this parameter is applicable.
 @property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull serviceIds;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+/// <code>FTRPendingSession</code> class contains a set of info fields to help identify an existing session.
+SWIFT_CLASS("_TtC10FuturaeKit17FTRPendingSession")
+@interface FTRPendingSession : NSObject
+/// The authentication factor used in the session.
+@property (nonatomic, readonly, copy) NSString * _Nonnull factor;
+/// A hash of the unique identifier for the session.
+@property (nonatomic, readonly, copy) NSString * _Nonnull sessionIdHash;
+/// The service identifier associated with the session, if available.
+@property (nonatomic, readonly, copy) NSString * _Nonnull serviceId;
+/// The user id attached to this session.
+@property (nonatomic, readonly, copy) NSString * _Nonnull userId;
+/// The type of session, if specified.
+@property (nonatomic, readonly, copy) NSString * _Nonnull type;
+/// The timeout unix timestamp of the session
+@property (nonatomic, readonly) NSInteger sessionTimeout;
+/// Boolean flag indicating this session is “offline”, applicable for qr_code factor
+@property (nonatomic, readonly) BOOL offline;
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, id> * _Nonnull asDictionary;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+/// <code>FTRPendingSessions</code> class contains a List of <code>FTRPendingSession</code> objects representing existing sessions for queried accounts.
+SWIFT_CLASS("_TtC10FuturaeKit18FTRPendingSessions")
+@interface FTRPendingSessions : NSObject
+/// An array of <code>FTRPendingSession</code> objects, each representing an existing Session belonging to one of the queried accounts.
+@property (nonatomic, readonly, copy) NSArray<FTRPendingSession *> * _Nonnull pendingSessions;
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, id> * _Nonnull asDictionary;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
