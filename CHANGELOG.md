@@ -1,3 +1,7 @@
+# Version 3.9.2-beta
+2025-09-12
+- Add new `getPendingSessions` method and corresponding `FTRPendingSessions` model.
+
 # Version 3.9.1-beta
 2025-21-11
 - Add new `enrollAndGetAccount` method
