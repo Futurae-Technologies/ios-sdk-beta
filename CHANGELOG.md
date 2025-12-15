@@ -1,3 +1,7 @@
+# Version 3.9.3-beta
+2025-15-12
+- Add new `exchangeTokenForSessionToken` and `exchangeTokenForEnrollmentActivationCode` methods for exchanging tokens with session token/activation code.
+
 # Version 3.9.2-beta
 2025-09-12
 - Add new `getPendingSessions` method and corresponding `FTRPendingSessions` model.

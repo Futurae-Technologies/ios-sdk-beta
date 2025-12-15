@@ -309,6 +309,18 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 #if defined(__OBJC__)
 
+SWIFT_CLASS("_TtC10FuturaeKit29ActivationTokenExchangeQRData")
+@interface ActivationTokenExchangeQRData : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+SWIFT_CLASS("_TtC10FuturaeKit30ActivationTokenExchangeURLData")
+@interface ActivationTokenExchangeURLData : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 @class NSString;
 SWIFT_CLASS("_TtC10FuturaeKit17ActivationURLData")
 @interface ActivationURLData : NSObject
@@ -632,6 +644,18 @@ typedef SWIFT_ENUM(NSInteger, AuthReplyType, open) {
   AuthReplyTypeReject = 1,
   AuthReplyTypeFraud = 2,
 };
+
+SWIFT_CLASS("_TtC10FuturaeKit23AuthTokenExchangeQRData")
+@interface AuthTokenExchangeQRData : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+SWIFT_CLASS("_TtC10FuturaeKit24AuthTokenExchangeURLData")
+@interface AuthTokenExchangeURLData : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
 SWIFT_CLASS("_TtC10FuturaeKit21AuthenticationURLData")
 @interface AuthenticationURLData : NSObject
@@ -1104,6 +1128,27 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) enum SDKStatus sdkSt
 /// \param failure A closure to be called in case of an enrollment failure, providing an error describing the failure reason.
 ///
 - (void)enrollAndGetAccount:(EnrollParameters * _Nonnull)parameters success:(void (^ _Nonnull)(FTRAccount * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
+@end
+
+@interface FTRClient (SWIFT_EXTENSION(FuturaeKit))
+/// This method accepts an exchange-token to validate it and return a valid enrollment activation code
+/// Upon successful retrieval, the <code>success</code> closure is called  containing the enrollment activation code. In case of failure during the retrieval process, the <code>failure</code> closure is executed with an error providing details about the failure reason.
+/// \param exchangeToken A valid exchange token retrieved from a QR code or URL.
+///
+/// \param success A closure to be called upon successful retrieval of the enrollment activation code.
+///
+/// \param failure A closure to be called in case of a failure in retrieving the session token, providing an error describing the failure reason.
+///
+- (void)exchangeTokenForEnrollmentActivationCode:(NSString * _Nonnull)exchangeToken success:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
+/// This method accepts an exchange-token to validate it and return a valid session-token
+/// Upon successful retrieval, the <code>success</code> closure is called  containing the session token. In case of failure during the retrieval process, the <code>failure</code> closure is executed with an error providing details about the failure reason.
+/// \param exchangeToken A valid exchange token retrieved from a QR code or URL.
+///
+/// \param success A closure to be called upon successful retrieval of the session token.
+///
+/// \param failure A closure to be called in case of a failure in retrieving the session token, providing an error describing the failure reason.
+///
+- (void)exchangeTokenForSessionToken:(NSString * _Nonnull)exchangeToken success:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 @end
 
 @class FTRMigrationCheckData;
@@ -1787,6 +1832,8 @@ typedef SWIFT_ENUM(NSInteger, FTRQRCodeType, open) {
   FTRQRCodeTypeOfflineAuth = 2,
   FTRQRCodeTypeInvalid = 3,
   FTRQRCodeTypeUsernameless = 4,
+  FTRQRCodeTypeActivationTokenExchange = 5,
+  FTRQRCodeTypeAuthTokenExchange = 6,
 };
 
 /// <code>FTRSession</code> class represents a session with various parameters including the authentication factor, user and session identifiers, and additional information.
@@ -1855,6 +1902,8 @@ typedef SWIFT_ENUM(NSInteger, FTRURLType, open) {
   FTRURLTypeAuthentication = 1,
   FTRURLTypeUnknown = 2,
   FTRURLTypeUsernamelessAuth = 3,
+  FTRURLTypeActivationExchangeToken = 4,
+  FTRURLTypeAuthenticationExchangeToken = 5,
 };
 
 enum UserPresenceVerificationType : NSInteger;
@@ -1869,6 +1918,34 @@ enum NotificationPayloadDataType : NSInteger;
 /// A utility class to parse values from QR codes and URIs.
 SWIFT_CLASS("_TtC10FuturaeKit8FTRUtils")
 @interface FTRUtils : NSObject
+/// Extracts authentication exchange token data from a given QR code.
+/// \param url The QR code to parse.
+///
+///
+/// returns:
+/// An <code>AuthTokenExchangeQRData</code> object containing the exchange token.
++ (AuthTokenExchangeQRData * _Nullable)authTokenExchangeFromQR:(NSString * _Nonnull)qrCode SWIFT_WARN_UNUSED_RESULT;
+/// Extracts activation exchange token data from a given QR code.
+/// \param url The QR code to parse.
+///
+///
+/// returns:
+/// An <code>ActivationTokenExchangeQRData</code> object containing the exchange token.
++ (ActivationTokenExchangeQRData * _Nullable)activationTokenExchangeFromQR:(NSString * _Nonnull)qrCode SWIFT_WARN_UNUSED_RESULT;
+/// Extracts activation exchange token data from a given URL.
+/// \param url The activation URL to parse.
+///
+///
+/// returns:
+/// An <code>ActivationTokenExchangeURLData</code> object containing the exchange token.
++ (ActivationTokenExchangeURLData * _Nullable)activationTokenExchangeFromURL:(NSURL * _Nonnull)url SWIFT_WARN_UNUSED_RESULT;
+/// Extracts authentication exchange token data from a given URL.
+/// \param url The authentication URL to parse.
+///
+///
+/// returns:
+/// An <code>AuthTokenExchangeURLData</code> object containing the exchange token.
++ (AuthTokenExchangeURLData * _Nullable)authTokenExchangeFromURL:(NSURL * _Nonnull)url SWIFT_WARN_UNUSED_RESULT;
 /// Extracts the user ID from a QR code string.
 /// \param qrCode The QR code string from which to extract the user ID.
 ///
@@ -1903,7 +1980,7 @@ SWIFT_CLASS("_TtC10FuturaeKit8FTRUtils")
 ///
 ///
 /// returns:
-/// The determined <code>FTRURLType</code> (<code>.activation</code>, <code>.authentication</code>, or <code>.unknown</code>).
+/// The determined <code>FTRURLType</code> (<code>.activation</code>, <code>.authentication</code>,  <code>activationExchangeToken</code>,  <code>authenticationExchangeToken</code> or <code>.unknown</code>).
 + (enum FTRURLType)typeFromURL:(NSURL * _Nonnull)url SWIFT_WARN_UNUSED_RESULT;
 /// Extracts activation data from a given URL.
 /// If the URL is an activation URL, this method parses it to extract the activation code and optionally a user ID, if present.
@@ -3622,6 +3699,18 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 #if defined(__OBJC__)
 
+SWIFT_CLASS("_TtC10FuturaeKit29ActivationTokenExchangeQRData")
+@interface ActivationTokenExchangeQRData : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+SWIFT_CLASS("_TtC10FuturaeKit30ActivationTokenExchangeURLData")
+@interface ActivationTokenExchangeURLData : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
 @class NSString;
 SWIFT_CLASS("_TtC10FuturaeKit17ActivationURLData")
 @interface ActivationURLData : NSObject
@@ -3945,6 +4034,18 @@ typedef SWIFT_ENUM(NSInteger, AuthReplyType, open) {
   AuthReplyTypeReject = 1,
   AuthReplyTypeFraud = 2,
 };
+
+SWIFT_CLASS("_TtC10FuturaeKit23AuthTokenExchangeQRData")
+@interface AuthTokenExchangeQRData : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+SWIFT_CLASS("_TtC10FuturaeKit24AuthTokenExchangeURLData")
+@interface AuthTokenExchangeURLData : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
 
 SWIFT_CLASS("_TtC10FuturaeKit21AuthenticationURLData")
 @interface AuthenticationURLData : NSObject
@@ -4417,6 +4518,27 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly) enum SDKStatus sdkSt
 /// \param failure A closure to be called in case of an enrollment failure, providing an error describing the failure reason.
 ///
 - (void)enrollAndGetAccount:(EnrollParameters * _Nonnull)parameters success:(void (^ _Nonnull)(FTRAccount * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
+@end
+
+@interface FTRClient (SWIFT_EXTENSION(FuturaeKit))
+/// This method accepts an exchange-token to validate it and return a valid enrollment activation code
+/// Upon successful retrieval, the <code>success</code> closure is called  containing the enrollment activation code. In case of failure during the retrieval process, the <code>failure</code> closure is executed with an error providing details about the failure reason.
+/// \param exchangeToken A valid exchange token retrieved from a QR code or URL.
+///
+/// \param success A closure to be called upon successful retrieval of the enrollment activation code.
+///
+/// \param failure A closure to be called in case of a failure in retrieving the session token, providing an error describing the failure reason.
+///
+- (void)exchangeTokenForEnrollmentActivationCode:(NSString * _Nonnull)exchangeToken success:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
+/// This method accepts an exchange-token to validate it and return a valid session-token
+/// Upon successful retrieval, the <code>success</code> closure is called  containing the session token. In case of failure during the retrieval process, the <code>failure</code> closure is executed with an error providing details about the failure reason.
+/// \param exchangeToken A valid exchange token retrieved from a QR code or URL.
+///
+/// \param success A closure to be called upon successful retrieval of the session token.
+///
+/// \param failure A closure to be called in case of a failure in retrieving the session token, providing an error describing the failure reason.
+///
+- (void)exchangeTokenForSessionToken:(NSString * _Nonnull)exchangeToken success:(void (^ _Nonnull)(NSString * _Nonnull))success failure:(void (^ _Nonnull)(NSError * _Nonnull))failure;
 @end
 
 @class FTRMigrationCheckData;
@@ -5100,6 +5222,8 @@ typedef SWIFT_ENUM(NSInteger, FTRQRCodeType, open) {
   FTRQRCodeTypeOfflineAuth = 2,
   FTRQRCodeTypeInvalid = 3,
   FTRQRCodeTypeUsernameless = 4,
+  FTRQRCodeTypeActivationTokenExchange = 5,
+  FTRQRCodeTypeAuthTokenExchange = 6,
 };
 
 /// <code>FTRSession</code> class represents a session with various parameters including the authentication factor, user and session identifiers, and additional information.
@@ -5168,6 +5292,8 @@ typedef SWIFT_ENUM(NSInteger, FTRURLType, open) {
   FTRURLTypeAuthentication = 1,
   FTRURLTypeUnknown = 2,
   FTRURLTypeUsernamelessAuth = 3,
+  FTRURLTypeActivationExchangeToken = 4,
+  FTRURLTypeAuthenticationExchangeToken = 5,
 };
 
 enum UserPresenceVerificationType : NSInteger;
@@ -5182,6 +5308,34 @@ enum NotificationPayloadDataType : NSInteger;
 /// A utility class to parse values from QR codes and URIs.
 SWIFT_CLASS("_TtC10FuturaeKit8FTRUtils")
 @interface FTRUtils : NSObject
+/// Extracts authentication exchange token data from a given QR code.
+/// \param url The QR code to parse.
+///
+///
+/// returns:
+/// An <code>AuthTokenExchangeQRData</code> object containing the exchange token.
++ (AuthTokenExchangeQRData * _Nullable)authTokenExchangeFromQR:(NSString * _Nonnull)qrCode SWIFT_WARN_UNUSED_RESULT;
+/// Extracts activation exchange token data from a given QR code.
+/// \param url The QR code to parse.
+///
+///
+/// returns:
+/// An <code>ActivationTokenExchangeQRData</code> object containing the exchange token.
++ (ActivationTokenExchangeQRData * _Nullable)activationTokenExchangeFromQR:(NSString * _Nonnull)qrCode SWIFT_WARN_UNUSED_RESULT;
+/// Extracts activation exchange token data from a given URL.
+/// \param url The activation URL to parse.
+///
+///
+/// returns:
+/// An <code>ActivationTokenExchangeURLData</code> object containing the exchange token.
++ (ActivationTokenExchangeURLData * _Nullable)activationTokenExchangeFromURL:(NSURL * _Nonnull)url SWIFT_WARN_UNUSED_RESULT;
+/// Extracts authentication exchange token data from a given URL.
+/// \param url The authentication URL to parse.
+///
+///
+/// returns:
+/// An <code>AuthTokenExchangeURLData</code> object containing the exchange token.
++ (AuthTokenExchangeURLData * _Nullable)authTokenExchangeFromURL:(NSURL * _Nonnull)url SWIFT_WARN_UNUSED_RESULT;
 /// Extracts the user ID from a QR code string.
 /// \param qrCode The QR code string from which to extract the user ID.
 ///
@@ -5216,7 +5370,7 @@ SWIFT_CLASS("_TtC10FuturaeKit8FTRUtils")
 ///
 ///
 /// returns:
-/// The determined <code>FTRURLType</code> (<code>.activation</code>, <code>.authentication</code>, or <code>.unknown</code>).
+/// The determined <code>FTRURLType</code> (<code>.activation</code>, <code>.authentication</code>,  <code>activationExchangeToken</code>,  <code>authenticationExchangeToken</code> or <code>.unknown</code>).
 + (enum FTRURLType)typeFromURL:(NSURL * _Nonnull)url SWIFT_WARN_UNUSED_RESULT;
 /// Extracts activation data from a given URL.
 /// If the URL is an activation URL, this method parses it to extract the activation code and optionally a user ID, if present.

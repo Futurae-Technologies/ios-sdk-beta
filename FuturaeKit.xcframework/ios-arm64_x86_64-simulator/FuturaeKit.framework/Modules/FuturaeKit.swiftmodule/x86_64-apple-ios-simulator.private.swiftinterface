@@ -95,6 +95,8 @@ import _SwiftConcurrencyShims
   case offlineAuth
   case invalid
   case usernameless
+  case activationTokenExchange
+  case authTokenExchange
   #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
   #endif
@@ -225,6 +227,14 @@ import _SwiftConcurrencyShims
   @objc public init(sdkPin: Swift.String)
   @objc deinit
 }
+@_hasMissingDesignatedInitializers @objc public class ActivationTokenExchangeQRData : ObjectiveC.NSObject {
+  final public let qrCode: Swift.String
+  final public let exchangeToken: Swift.String
+  final public let userId: Swift.String
+  final public let type: Swift.String
+  final public let timeout: Swift.Int64
+  @objc deinit
+}
 @_hasMissingDesignatedInitializers @objc public class SDKState : ObjectiveC.NSObject {
   @objc final public let lockStatus: FuturaeKit.SDKLockStatus
   @objc final public let unlockedRemainingDuration: Foundation.TimeInterval
@@ -235,6 +245,14 @@ import _SwiftConcurrencyShims
 @_hasMissingDesignatedInitializers @objc public class FTRTotp : ObjectiveC.NSObject {
   @objc final public let totp: Swift.String
   @objc final public let remainingSecs: Swift.String
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class AuthTokenExchangeQRData : ObjectiveC.NSObject {
+  final public let qrCode: Swift.String
+  final public let userId: Swift.String
+  final public let exchangeToken: Swift.String
+  final public let type: Swift.String
+  final public let timeout: Swift.Int64
   @objc deinit
 }
 @objc public class UsernamelessURLData : ObjectiveC.NSObject {
@@ -670,6 +688,8 @@ import _SwiftConcurrencyShims
   case authentication = 1
   case unknown = 2
   case usernamelessAuth = 3
+  case activationExchangeToken = 4
+  case authenticationExchangeToken = 5
   #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
   #endif
@@ -790,6 +810,18 @@ import _SwiftConcurrencyShims
 }
 @_inheritsConvenienceInitializers @objc public class FTRUtils : ObjectiveC.NSObject {
   #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func authTokenExchangeFromQR(_ qrCode: Swift.String) -> FuturaeKit.AuthTokenExchangeQRData?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func activationTokenExchangeFromQR(_ qrCode: Swift.String) -> FuturaeKit.ActivationTokenExchangeQRData?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func activationTokenExchangeFromURL(_ url: Foundation.URL) -> FuturaeKit.ActivationTokenExchangeURLData?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func authTokenExchangeFromURL(_ url: Foundation.URL) -> FuturaeKit.AuthTokenExchangeURLData?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public static func userId(fromQRCode qrCode: Swift.String) -> Swift.String?
   #endif
   #if compiler(>=5.3) && $NonescapableTypes
@@ -875,6 +907,12 @@ extension FuturaeKit.FTRClient {
   @objc dynamic public func getOfflineQRVerificationCode(_ parameters: FuturaeKit.OfflineQRCodeParameters, success: @escaping FuturaeKit.FTRVerificationCodeHandler, failure: @escaping FuturaeKit.FTRFailureHandler)
   @nonobjc public func getOfflineQRVerificationCode(_ parameters: FuturaeKit.OfflineQRCodeParameters) -> FuturaeKit.AsyncTaskResult<Swift.String>
   @objc dynamic public func extraInfoFromOfflineQRCode(_ QRCode: Swift.String) -> [FuturaeKit.FTRExtraInfo]
+}
+@objc extension FuturaeKit.FTRClient {
+  @objc dynamic public func exchangeTokenForEnrollmentActivationCode(_ exchangeToken: Swift.String, success: @escaping FuturaeKit.FTRExchangeTokenHandler, failure: @escaping FuturaeKit.FTRFailureHandler)
+  @nonobjc public func exchangeTokenForEnrollmentActivationCode(_ exchangeToken: Swift.String) -> FuturaeKit.AsyncTaskResult<Swift.String>
+  @objc dynamic public func exchangeTokenForSessionToken(_ exchangeToken: Swift.String, success: @escaping FuturaeKit.FTRExchangeTokenHandler, failure: @escaping FuturaeKit.FTRFailureHandler)
+  @nonobjc public func exchangeTokenForSessionToken(_ exchangeToken: Swift.String) -> FuturaeKit.AsyncTaskResult<Swift.String>
 }
 @_inheritsConvenienceInitializers @objc public class FTRQRCodeReader : ObjectiveC.NSObject, AVFoundation.AVCaptureMetadataOutputObjectsDelegate {
   @objc public var metadataObjectTypes: [Swift.String]
@@ -1357,6 +1395,7 @@ public typealias FTREnrollHandler = (FuturaeKit.FTRAccount) -> Swift.Void
 public typealias FTRFailureHandler = (any Swift.Error) -> Swift.Void
 public typealias FTRTotpHandler = (FuturaeKit.FTRTotp) -> Swift.Void
 public typealias FTRSessionHandler = (FuturaeKit.FTRSession) -> Swift.Void
+public typealias FTRExchangeTokenHandler = (Swift.String) -> Swift.Void
 public typealias FTRAccountsStatusHandler = (FuturaeKit.FTRAccountsStatus) -> Swift.Void
 public typealias FTRPendingSessionsHandler = (FuturaeKit.FTRPendingSessions) -> Swift.Void
 public typealias FTRNotificationHandler = (FuturaeKit.FTRNotificationData) -> Swift.Void
@@ -1385,6 +1424,12 @@ public typealias FTRVerificationCodeHandler = (Swift.String) -> Swift.Void
   public var publisher: Combine.AnyPublisher<Swift.Void, any Swift.Error> {
     get
   }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class ActivationTokenExchangeURLData : ObjectiveC.NSObject {
+  final public let exchangeToken: Swift.String
+  final public let type: Swift.String
+  final public let timeout: Swift.Int64
   @objc deinit
 }
 @_hasMissingDesignatedInitializers public class AsyncTaskResult<T> {
@@ -1646,6 +1691,13 @@ extension FuturaeKit.SDKBaseError {
   public var errorAssociatedType: FuturaeKit.SDKErrorAssociatedType {
     get
   }
+}
+@_hasMissingDesignatedInitializers @objc public class AuthTokenExchangeURLData : ObjectiveC.NSObject {
+  final public let userId: Swift.String
+  final public let exchangeToken: Swift.String
+  final public let type: Swift.String
+  final public let timeout: Swift.Int64
+  @objc deinit
 }
 @objc public class IntegrityVerdictConfiguration : ObjectiveC.NSObject {
   @objc final public let production: Swift.Bool

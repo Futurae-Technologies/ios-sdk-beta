@@ -2691,6 +2691,88 @@
             "fixedbinaryorder": 4
           },
           {
+            "kind": "Var",
+            "name": "activationTokenExchange",
+            "printedName": "activationTokenExchange",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FuturaeKit.FTRQRCodeType.Type) -> FuturaeKit.FTRQRCodeType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "FTRQRCodeType",
+                    "printedName": "FuturaeKit.FTRQRCodeType",
+                    "usr": "c:@M@FuturaeKit@E@FTRQRCodeType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FuturaeKit.FTRQRCodeType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "FTRQRCodeType",
+                        "printedName": "FuturaeKit.FTRQRCodeType",
+                        "usr": "c:@M@FuturaeKit@E@FTRQRCodeType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@FuturaeKit@E@FTRQRCodeType@FTRQRCodeTypeActivationTokenExchange",
+            "mangledName": "$s10FuturaeKit13FTRQRCodeTypeO23activationTokenExchangeyA2CmF",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 5
+          },
+          {
+            "kind": "Var",
+            "name": "authTokenExchange",
+            "printedName": "authTokenExchange",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FuturaeKit.FTRQRCodeType.Type) -> FuturaeKit.FTRQRCodeType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "FTRQRCodeType",
+                    "printedName": "FuturaeKit.FTRQRCodeType",
+                    "usr": "c:@M@FuturaeKit@E@FTRQRCodeType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FuturaeKit.FTRQRCodeType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "FTRQRCodeType",
+                        "printedName": "FuturaeKit.FTRQRCodeType",
+                        "usr": "c:@M@FuturaeKit@E@FTRQRCodeType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@FuturaeKit@E@FTRQRCodeType@FTRQRCodeTypeAuthTokenExchange",
+            "mangledName": "$s10FuturaeKit13FTRQRCodeTypeO17authTokenExchangeyA2CmF",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 6
+          },
+          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init(rawValue:)",
@@ -3284,6 +3366,16 @@
         "printedName": "SQLite3",
         "declKind": "Import",
         "moduleName": "FuturaeKit"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FuturaeKit",
+        "declAttributes": [
+          "RawDocComment"
+        ]
       },
       {
         "kind": "Import",
@@ -7179,6 +7271,358 @@
         "moduleName": "FuturaeKit"
       },
       {
+        "kind": "TypeDecl",
+        "name": "ActivationTokenExchangeQRData",
+        "printedName": "ActivationTokenExchangeQRData",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "qrCode",
+            "printedName": "qrCode",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:10FuturaeKit29ActivationTokenExchangeQRDataC6qrCodeSSvp",
+            "mangledName": "$s10FuturaeKit29ActivationTokenExchangeQRDataC6qrCodeSSvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10FuturaeKit29ActivationTokenExchangeQRDataC6qrCodeSSvg",
+                "mangledName": "$s10FuturaeKit29ActivationTokenExchangeQRDataC6qrCodeSSvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "exchangeToken",
+            "printedName": "exchangeToken",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:10FuturaeKit29ActivationTokenExchangeQRDataC08exchangeD0SSvp",
+            "mangledName": "$s10FuturaeKit29ActivationTokenExchangeQRDataC08exchangeD0SSvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10FuturaeKit29ActivationTokenExchangeQRDataC08exchangeD0SSvg",
+                "mangledName": "$s10FuturaeKit29ActivationTokenExchangeQRDataC08exchangeD0SSvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userId",
+            "printedName": "userId",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:10FuturaeKit29ActivationTokenExchangeQRDataC6userIdSSvp",
+            "mangledName": "$s10FuturaeKit29ActivationTokenExchangeQRDataC6userIdSSvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10FuturaeKit29ActivationTokenExchangeQRDataC6userIdSSvg",
+                "mangledName": "$s10FuturaeKit29ActivationTokenExchangeQRDataC6userIdSSvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "type",
+            "printedName": "type",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:10FuturaeKit29ActivationTokenExchangeQRDataC4typeSSvp",
+            "mangledName": "$s10FuturaeKit29ActivationTokenExchangeQRDataC4typeSSvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10FuturaeKit29ActivationTokenExchangeQRDataC4typeSSvg",
+                "mangledName": "$s10FuturaeKit29ActivationTokenExchangeQRDataC4typeSSvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "timeout",
+            "printedName": "timeout",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int64",
+                "printedName": "Swift.Int64",
+                "usr": "s:s5Int64V"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:10FuturaeKit29ActivationTokenExchangeQRDataC7timeouts5Int64Vvp",
+            "mangledName": "$s10FuturaeKit29ActivationTokenExchangeQRDataC7timeouts5Int64Vvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int64",
+                    "printedName": "Swift.Int64",
+                    "usr": "s:s5Int64V"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10FuturaeKit29ActivationTokenExchangeQRDataC7timeouts5Int64Vvg",
+                "mangledName": "$s10FuturaeKit29ActivationTokenExchangeQRDataC7timeouts5Int64Vvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ActivationTokenExchangeQRData",
+                "printedName": "FuturaeKit.ActivationTokenExchangeQRData",
+                "usr": "c:@M@FuturaeKit@objc(cs)ActivationTokenExchangeQRData"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@FuturaeKit@objc(cs)ActivationTokenExchangeQRData(im)init",
+            "mangledName": "$s10FuturaeKit29ActivationTokenExchangeQRDataCACycfc",
+            "moduleName": "FuturaeKit",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@FuturaeKit@objc(cs)ActivationTokenExchangeQRData",
+        "mangledName": "$s10FuturaeKit29ActivationTokenExchangeQRDataC",
+        "moduleName": "FuturaeKit",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "hasMissingDesignatedInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
         "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
@@ -7813,6 +8257,358 @@
         "moduleName": "FuturaeKit",
         "declAttributes": [
           "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "AuthTokenExchangeQRData",
+        "printedName": "AuthTokenExchangeQRData",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "qrCode",
+            "printedName": "qrCode",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:10FuturaeKit23AuthTokenExchangeQRDataC6qrCodeSSvp",
+            "mangledName": "$s10FuturaeKit23AuthTokenExchangeQRDataC6qrCodeSSvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10FuturaeKit23AuthTokenExchangeQRDataC6qrCodeSSvg",
+                "mangledName": "$s10FuturaeKit23AuthTokenExchangeQRDataC6qrCodeSSvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "userId",
+            "printedName": "userId",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:10FuturaeKit23AuthTokenExchangeQRDataC6userIdSSvp",
+            "mangledName": "$s10FuturaeKit23AuthTokenExchangeQRDataC6userIdSSvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10FuturaeKit23AuthTokenExchangeQRDataC6userIdSSvg",
+                "mangledName": "$s10FuturaeKit23AuthTokenExchangeQRDataC6userIdSSvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "exchangeToken",
+            "printedName": "exchangeToken",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:10FuturaeKit23AuthTokenExchangeQRDataC08exchangeD0SSvp",
+            "mangledName": "$s10FuturaeKit23AuthTokenExchangeQRDataC08exchangeD0SSvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10FuturaeKit23AuthTokenExchangeQRDataC08exchangeD0SSvg",
+                "mangledName": "$s10FuturaeKit23AuthTokenExchangeQRDataC08exchangeD0SSvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "type",
+            "printedName": "type",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:10FuturaeKit23AuthTokenExchangeQRDataC4typeSSvp",
+            "mangledName": "$s10FuturaeKit23AuthTokenExchangeQRDataC4typeSSvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10FuturaeKit23AuthTokenExchangeQRDataC4typeSSvg",
+                "mangledName": "$s10FuturaeKit23AuthTokenExchangeQRDataC4typeSSvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "timeout",
+            "printedName": "timeout",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int64",
+                "printedName": "Swift.Int64",
+                "usr": "s:s5Int64V"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:10FuturaeKit23AuthTokenExchangeQRDataC7timeouts5Int64Vvp",
+            "mangledName": "$s10FuturaeKit23AuthTokenExchangeQRDataC7timeouts5Int64Vvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int64",
+                    "printedName": "Swift.Int64",
+                    "usr": "s:s5Int64V"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10FuturaeKit23AuthTokenExchangeQRDataC7timeouts5Int64Vvg",
+                "mangledName": "$s10FuturaeKit23AuthTokenExchangeQRDataC7timeouts5Int64Vvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AuthTokenExchangeQRData",
+                "printedName": "FuturaeKit.AuthTokenExchangeQRData",
+                "usr": "c:@M@FuturaeKit@objc(cs)AuthTokenExchangeQRData"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@FuturaeKit@objc(cs)AuthTokenExchangeQRData(im)init",
+            "mangledName": "$s10FuturaeKit23AuthTokenExchangeQRDataCACycfc",
+            "moduleName": "FuturaeKit",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@FuturaeKit@objc(cs)AuthTokenExchangeQRData",
+        "mangledName": "$s10FuturaeKit23AuthTokenExchangeQRDataC",
+        "moduleName": "FuturaeKit",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "hasMissingDesignatedInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
         ]
       },
       {
@@ -20346,6 +21142,88 @@
             "fixedbinaryorder": 3
           },
           {
+            "kind": "Var",
+            "name": "activationExchangeToken",
+            "printedName": "activationExchangeToken",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FuturaeKit.FTRURLType.Type) -> FuturaeKit.FTRURLType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "FTRURLType",
+                    "printedName": "FuturaeKit.FTRURLType",
+                    "usr": "c:@M@FuturaeKit@E@FTRURLType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FuturaeKit.FTRURLType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "FTRURLType",
+                        "printedName": "FuturaeKit.FTRURLType",
+                        "usr": "c:@M@FuturaeKit@E@FTRURLType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@FuturaeKit@E@FTRURLType@FTRURLTypeActivationExchangeToken",
+            "mangledName": "$s10FuturaeKit10FTRURLTypeO23activationExchangeTokenyA2CmF",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 4
+          },
+          {
+            "kind": "Var",
+            "name": "authenticationExchangeToken",
+            "printedName": "authenticationExchangeToken",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(FuturaeKit.FTRURLType.Type) -> FuturaeKit.FTRURLType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "FTRURLType",
+                    "printedName": "FuturaeKit.FTRURLType",
+                    "usr": "c:@M@FuturaeKit@E@FTRURLType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "FuturaeKit.FTRURLType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "FTRURLType",
+                        "printedName": "FuturaeKit.FTRURLType",
+                        "usr": "c:@M@FuturaeKit@E@FTRURLType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@FuturaeKit@E@FTRURLType@FTRURLTypeAuthenticationExchangeToken",
+            "mangledName": "$s10FuturaeKit10FTRURLTypeO27authenticationExchangeTokenyA2CmF",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 5
+          },
+          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init(rawValue:)",
@@ -24105,6 +24983,162 @@
         "children": [
           {
             "kind": "Function",
+            "name": "authTokenExchangeFromQR",
+            "printedName": "authTokenExchangeFromQR(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "FuturaeKit.AuthTokenExchangeQRData?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AuthTokenExchangeQRData",
+                    "printedName": "FuturaeKit.AuthTokenExchangeQRData",
+                    "usr": "c:@M@FuturaeKit@objc(cs)AuthTokenExchangeQRData"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@FuturaeKit@objc(cs)FTRUtils(cm)authTokenExchangeFromQR:",
+            "mangledName": "$s10FuturaeKit8FTRUtilsC23authTokenExchangeFromQRyAA04AutheF6QRDataCSgSSFZ",
+            "moduleName": "FuturaeKit",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "activationTokenExchangeFromQR",
+            "printedName": "activationTokenExchangeFromQR(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "FuturaeKit.ActivationTokenExchangeQRData?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ActivationTokenExchangeQRData",
+                    "printedName": "FuturaeKit.ActivationTokenExchangeQRData",
+                    "usr": "c:@M@FuturaeKit@objc(cs)ActivationTokenExchangeQRData"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@FuturaeKit@objc(cs)FTRUtils(cm)activationTokenExchangeFromQR:",
+            "mangledName": "$s10FuturaeKit8FTRUtilsC29activationTokenExchangeFromQRyAA010ActivationeF6QRDataCSgSSFZ",
+            "moduleName": "FuturaeKit",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "activationTokenExchangeFromURL",
+            "printedName": "activationTokenExchangeFromURL(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "FuturaeKit.ActivationTokenExchangeURLData?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ActivationTokenExchangeURLData",
+                    "printedName": "FuturaeKit.ActivationTokenExchangeURLData",
+                    "usr": "c:@M@FuturaeKit@objc(cs)ActivationTokenExchangeURLData"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@FuturaeKit@objc(cs)FTRUtils(cm)activationTokenExchangeFromURL:",
+            "mangledName": "$s10FuturaeKit8FTRUtilsC30activationTokenExchangeFromURLyAA010ActivationeF7URLDataCSg10Foundation0H0VFZ",
+            "moduleName": "FuturaeKit",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "authTokenExchangeFromURL",
+            "printedName": "authTokenExchangeFromURL(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "FuturaeKit.AuthTokenExchangeURLData?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AuthTokenExchangeURLData",
+                    "printedName": "FuturaeKit.AuthTokenExchangeURLData",
+                    "usr": "c:@M@FuturaeKit@objc(cs)AuthTokenExchangeURLData"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@FuturaeKit@objc(cs)FTRUtils(cm)authTokenExchangeFromURL:",
+            "mangledName": "$s10FuturaeKit8FTRUtilsC24authTokenExchangeFromURLyAA04AutheF7URLDataCSg10Foundation0H0VFZ",
+            "moduleName": "FuturaeKit",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "userId",
             "printedName": "userId(fromQRCode:)",
             "children": [
@@ -25560,6 +26594,16 @@
         "printedName": "Foundation",
         "declKind": "Import",
         "moduleName": "FuturaeKit"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "FuturaeKit",
+        "declAttributes": [
+          "RawDocComment"
+        ]
       },
       {
         "kind": "Import",
@@ -32524,6 +33568,210 @@
             "declAttributes": [
               "Dynamic",
               "ObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "exchangeTokenForEnrollmentActivationCode",
+            "printedName": "exchangeTokenForEnrollmentActivationCode(_:success:failure:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.String) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(any Swift.Error) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Error",
+                    "printedName": "any Swift.Error",
+                    "usr": "s:s5ErrorP"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@FuturaeKit@objc(cs)FTRClient(im)exchangeTokenForEnrollmentActivationCode:success:failure:",
+            "mangledName": "$s10FuturaeKit9FTRClientC40exchangeTokenForEnrollmentActivationCode_7success7failureySS_ySScys5Error_pctF",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "exchangeTokenForEnrollmentActivationCode",
+            "printedName": "exchangeTokenForEnrollmentActivationCode(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AsyncTaskResult",
+                "printedName": "FuturaeKit.AsyncTaskResult<Swift.String>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:10FuturaeKit15AsyncTaskResultC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:10FuturaeKit9FTRClientC40exchangeTokenForEnrollmentActivationCodeyAA15AsyncTaskResultCySSGSSF",
+            "mangledName": "$s10FuturaeKit9FTRClientC40exchangeTokenForEnrollmentActivationCodeyAA15AsyncTaskResultCySSGSSF",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "NonObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "exchangeTokenForSessionToken",
+            "printedName": "exchangeTokenForSessionToken(_:success:failure:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Swift.String) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(any Swift.Error) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Error",
+                    "printedName": "any Swift.Error",
+                    "usr": "s:s5ErrorP"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@FuturaeKit@objc(cs)FTRClient(im)exchangeTokenForSessionToken:success:failure:",
+            "mangledName": "$s10FuturaeKit9FTRClientC023exchangeTokenForSessionE0_7success7failureySS_ySScys5Error_pctF",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "exchangeTokenForSessionToken",
+            "printedName": "exchangeTokenForSessionToken(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AsyncTaskResult",
+                "printedName": "FuturaeKit.AsyncTaskResult<Swift.String>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:10FuturaeKit15AsyncTaskResultC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:10FuturaeKit9FTRClientC023exchangeTokenForSessionE0yAA15AsyncTaskResultCySSGSSF",
+            "mangledName": "$s10FuturaeKit9FTRClientC023exchangeTokenForSessionE0yAA15AsyncTaskResultCySSGSSF",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "NonObjC",
               "RawDocComment"
             ],
             "isFromExtension": true,
@@ -44700,6 +45948,262 @@
         ]
       },
       {
+        "kind": "TypeDecl",
+        "name": "ActivationTokenExchangeURLData",
+        "printedName": "ActivationTokenExchangeURLData",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "exchangeToken",
+            "printedName": "exchangeToken",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:10FuturaeKit30ActivationTokenExchangeURLDataC08exchangeD0SSvp",
+            "mangledName": "$s10FuturaeKit30ActivationTokenExchangeURLDataC08exchangeD0SSvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10FuturaeKit30ActivationTokenExchangeURLDataC08exchangeD0SSvg",
+                "mangledName": "$s10FuturaeKit30ActivationTokenExchangeURLDataC08exchangeD0SSvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "type",
+            "printedName": "type",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:10FuturaeKit30ActivationTokenExchangeURLDataC4typeSSvp",
+            "mangledName": "$s10FuturaeKit30ActivationTokenExchangeURLDataC4typeSSvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10FuturaeKit30ActivationTokenExchangeURLDataC4typeSSvg",
+                "mangledName": "$s10FuturaeKit30ActivationTokenExchangeURLDataC4typeSSvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "timeout",
+            "printedName": "timeout",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int64",
+                "printedName": "Swift.Int64",
+                "usr": "s:s5Int64V"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:10FuturaeKit30ActivationTokenExchangeURLDataC7timeouts5Int64Vvp",
+            "mangledName": "$s10FuturaeKit30ActivationTokenExchangeURLDataC7timeouts5Int64Vvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int64",
+                    "printedName": "Swift.Int64",
+                    "usr": "s:s5Int64V"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10FuturaeKit30ActivationTokenExchangeURLDataC7timeouts5Int64Vvg",
+                "mangledName": "$s10FuturaeKit30ActivationTokenExchangeURLDataC7timeouts5Int64Vvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ActivationTokenExchangeURLData",
+                "printedName": "FuturaeKit.ActivationTokenExchangeURLData",
+                "usr": "c:@M@FuturaeKit@objc(cs)ActivationTokenExchangeURLData"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@FuturaeKit@objc(cs)ActivationTokenExchangeURLData(im)init",
+            "mangledName": "$s10FuturaeKit30ActivationTokenExchangeURLDataCACycfc",
+            "moduleName": "FuturaeKit",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@FuturaeKit@objc(cs)ActivationTokenExchangeURLData",
+        "mangledName": "$s10FuturaeKit30ActivationTokenExchangeURLDataC",
+        "moduleName": "FuturaeKit",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "hasMissingDesignatedInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
         "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
@@ -53763,6 +55267,310 @@
         ]
       },
       {
+        "kind": "TypeDecl",
+        "name": "AuthTokenExchangeURLData",
+        "printedName": "AuthTokenExchangeURLData",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "userId",
+            "printedName": "userId",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:10FuturaeKit24AuthTokenExchangeURLDataC6userIdSSvp",
+            "mangledName": "$s10FuturaeKit24AuthTokenExchangeURLDataC6userIdSSvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10FuturaeKit24AuthTokenExchangeURLDataC6userIdSSvg",
+                "mangledName": "$s10FuturaeKit24AuthTokenExchangeURLDataC6userIdSSvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "exchangeToken",
+            "printedName": "exchangeToken",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:10FuturaeKit24AuthTokenExchangeURLDataC08exchangeD0SSvp",
+            "mangledName": "$s10FuturaeKit24AuthTokenExchangeURLDataC08exchangeD0SSvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10FuturaeKit24AuthTokenExchangeURLDataC08exchangeD0SSvg",
+                "mangledName": "$s10FuturaeKit24AuthTokenExchangeURLDataC08exchangeD0SSvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "type",
+            "printedName": "type",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:10FuturaeKit24AuthTokenExchangeURLDataC4typeSSvp",
+            "mangledName": "$s10FuturaeKit24AuthTokenExchangeURLDataC4typeSSvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10FuturaeKit24AuthTokenExchangeURLDataC4typeSSvg",
+                "mangledName": "$s10FuturaeKit24AuthTokenExchangeURLDataC4typeSSvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "timeout",
+            "printedName": "timeout",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int64",
+                "printedName": "Swift.Int64",
+                "usr": "s:s5Int64V"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:10FuturaeKit24AuthTokenExchangeURLDataC7timeouts5Int64Vvp",
+            "mangledName": "$s10FuturaeKit24AuthTokenExchangeURLDataC7timeouts5Int64Vvp",
+            "moduleName": "FuturaeKit",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int64",
+                    "printedName": "Swift.Int64",
+                    "usr": "s:s5Int64V"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:10FuturaeKit24AuthTokenExchangeURLDataC7timeouts5Int64Vvg",
+                "mangledName": "$s10FuturaeKit24AuthTokenExchangeURLDataC7timeouts5Int64Vvg",
+                "moduleName": "FuturaeKit",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AuthTokenExchangeURLData",
+                "printedName": "FuturaeKit.AuthTokenExchangeURLData",
+                "usr": "c:@M@FuturaeKit@objc(cs)AuthTokenExchangeURLData"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@FuturaeKit@objc(cs)AuthTokenExchangeURLData(im)init",
+            "mangledName": "$s10FuturaeKit24AuthTokenExchangeURLDataCACycfc",
+            "moduleName": "FuturaeKit",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@FuturaeKit@objc(cs)AuthTokenExchangeURLData",
+        "mangledName": "$s10FuturaeKit24AuthTokenExchangeURLDataC",
+        "moduleName": "FuturaeKit",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC",
+          "RawDocComment"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "hasMissingDesignatedInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
         "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
@@ -58491,6 +60299,20 @@
       "value": "4"
     },
     {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Enums\/FTRQRCodeType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 370,
+      "length": 23,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Enums\/FTRQRCodeType.swift",
+      "kind": "IntegerLiteral",
+      "offset": 403,
+      "length": 17,
+      "value": "6"
+    },
+    {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Libraries\/SQLite\/Extensions\/FTS4.swift",
       "kind": "Array",
       "offset": 1372,
@@ -58797,6 +60619,13 @@
       "offset": 1839,
       "length": 1,
       "value": "0"
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Response\/ExchangedAccessToken.swift",
+      "kind": "StringLiteral",
+      "offset": 310,
+      "length": 14,
+      "value": "\"access_token\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Persistence\/Database.swift",
@@ -60390,273 +62219,189 @@
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 1984,
+      "offset": 1982,
+      "length": 17,
+      "value": "\"enroll_exchange\""
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
+      "kind": "StringLiteral",
+      "offset": 2035,
+      "length": 15,
+      "value": "\"auth_exchange\""
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
+      "kind": "StringLiteral",
+      "offset": 2078,
+      "length": 16,
+      "value": "\"exchange_token\""
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
+      "kind": "StringLiteral",
+      "offset": 2128,
+      "length": 25,
+      "value": "\"validUntilUnixTimestamp\""
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
+      "kind": "StringLiteral",
+      "offset": 2227,
       "length": 9,
       "value": "\"\/usr\/v1\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 2035,
+      "offset": 2278,
       "length": 16,
       "value": "\"extra_info_enc\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 2071,
+      "offset": 2314,
       "length": 11,
       "value": "\"has_extra\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 2100,
+      "offset": 2343,
       "length": 8,
       "value": "\"action\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 2128,
+      "offset": 2371,
       "length": 10,
       "value": "\"unenroll\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 2156,
+      "offset": 2399,
       "length": 9,
       "value": "\"qr_code\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 2189,
+      "offset": 2432,
       "length": 9,
       "value": "\"approve\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 2219,
+      "offset": 2462,
       "length": 6,
       "value": "\"deny\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 2247,
+      "offset": 2490,
       "length": 7,
       "value": "\"fraud\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 2293,
+      "offset": 2536,
       "length": 23,
       "value": "\"bundle_identifier_key\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 2347,
+      "offset": 2590,
       "length": 15,
       "value": "\"attempts_left\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 2389,
+      "offset": 2632,
       "length": 12,
       "value": "\"error_type\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 2428,
+      "offset": 2671,
       "length": 16,
       "value": "\"sdk_error_code\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 2467,
+      "offset": 2710,
       "length": 13,
       "value": "\"FTR_PN_ENCR\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 2504,
+      "offset": 2747,
       "length": 13,
       "value": "\"FTR_EI_ENCR\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 2540,
+      "offset": 2783,
       "length": 11,
       "value": "\"http_code\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 2581,
+      "offset": 2824,
       "length": 11,
       "value": "\"raw_error\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 2621,
+      "offset": 2864,
       "length": 17,
       "value": "\"notification_id\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 2669,
+      "offset": 2912,
       "length": 29,
       "value": "\"request_location_collection\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 2738,
-      "length": 19,
-      "value": "\"FTRApiErrorDomain\""
-    },
-    {
-      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
-      "kind": "StringLiteral",
-      "offset": 2783,
-      "length": 20,
-      "value": "\"FTRLockErrorDomain\""
-    },
-    {
-      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
-      "kind": "StringLiteral",
-      "offset": 2834,
-      "length": 21,
-      "value": "\"FTRLockErrorInfoKey\""
-    },
-    {
-      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
-      "kind": "StringLiteral",
-      "offset": 2886,
-      "length": 25,
-      "value": "\"FTRAppAttestErrorDomain\""
-    },
-    {
-      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
-      "kind": "StringLiteral",
-      "offset": 2939,
-      "length": 22,
-      "value": "\"FTRClientErrorDomain\""
-    },
-    {
-      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
-      "kind": "IntegerLiteral",
-      "offset": 2996,
-      "length": 3,
-      "value": "500"
-    },
-    {
-      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3048,
-      "length": 3,
-      "value": "501"
-    },
-    {
-      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3103,
-      "length": 3,
-      "value": "502"
-    },
-    {
-      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3154,
-      "length": 3,
-      "value": "503"
-    },
-    {
-      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3196,
-      "length": 3,
-      "value": "504"
-    },
-    {
-      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3253,
-      "length": 3,
-      "value": "505"
-    },
-    {
-      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3294,
-      "length": 3,
-      "value": "506"
-    },
-    {
-      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3345,
-      "length": 3,
-      "value": "507"
-    },
-    {
-      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3399,
-      "length": 3,
-      "value": "508"
-    },
-    {
-      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3448,
-      "length": 3,
-      "value": "509"
-    },
-    {
-      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
-      "kind": "IntegerLiteral",
-      "offset": 3496,
-      "length": 3,
-      "value": "510"
-    },
-    {
-      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
-      "kind": "StringLiteral",
-      "offset": 3546,
+      "offset": 3001,
       "length": 22,
       "value": "\"FTRNotificationError\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 3618,
+      "offset": 3073,
       "length": 25,
       "value": "\"FTRNotificationUnEnroll\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "StringLiteral",
-      "offset": 3692,
+      "offset": 3147,
       "length": 24,
       "value": "\"FTRNotificationApprove\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Models\/Constants\/FTRConstants.swift",
       "kind": "FloatLiteral",
-      "offset": 3759,
+      "offset": 3214,
       "length": 4,
       "value": "20.0"
     },
@@ -61173,43 +62918,22 @@
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Other\/FTRURL.swift",
-      "kind": "StringLiteral",
-      "offset": 351,
-      "length": 19,
-      "value": "\"FTRURLErrorDomain\""
+      "kind": "IntegerLiteral",
+      "offset": 328,
+      "length": 1,
+      "value": "4"
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Other\/FTRURL.swift",
       "kind": "IntegerLiteral",
-      "offset": 410,
-      "length": 3,
-      "value": "500"
-    },
-    {
-      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Other\/FTRURL.swift",
-      "kind": "IntegerLiteral",
-      "offset": 463,
-      "length": 3,
-      "value": "501"
-    },
-    {
-      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Other\/FTRURL.swift",
-      "kind": "IntegerLiteral",
-      "offset": 517,
-      "length": 3,
-      "value": "502"
-    },
-    {
-      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Other\/FTRURL.swift",
-      "kind": "IntegerLiteral",
-      "offset": 575,
-      "length": 3,
-      "value": "503"
+      "offset": 369,
+      "length": 1,
+      "value": "5"
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Other\/FTRURL.swift",
       "kind": "StringLiteral",
-      "offset": 630,
+      "offset": 445,
       "length": 3,
       "value": "\":\""
     },
@@ -61377,7 +63101,7 @@
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Networking\/NetworkSession.swift",
       "kind": "IntegerLiteral",
-      "offset": 8320,
+      "offset": 8318,
       "length": 2,
       "value": "20"
     },
@@ -61534,6 +63258,55 @@
       "offset": 314,
       "length": 75,
       "value": "[1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000]"
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Other\/Utils\/FTRUtils.swift",
+      "kind": "IntegerLiteral",
+      "offset": 312,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Other\/Utils\/FTRUtils.swift",
+      "kind": "IntegerLiteral",
+      "offset": 368,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Other\/Utils\/FTRUtils.swift",
+      "kind": "IntegerLiteral",
+      "offset": 426,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Other\/Utils\/FTRUtils.swift",
+      "kind": "IntegerLiteral",
+      "offset": 486,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Other\/Utils\/FTRUtils.swift",
+      "kind": "StringLiteral",
+      "offset": 534,
+      "length": 25,
+      "value": "\"qr_code_enroll_exchange\""
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Other\/Utils\/FTRUtils.swift",
+      "kind": "StringLiteral",
+      "offset": 604,
+      "length": 23,
+      "value": "\"qr_code_auth_exchange\""
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Other\/Utils\/FTRUtils.swift",
+      "kind": "StringLiteral",
+      "offset": 669,
+      "length": 3,
+      "value": "\":\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Libraries\/RxSwift\/Observables\/Timeout.swift",
@@ -66070,6 +67843,13 @@
       "offset": 3535,
       "length": 5,
       "value": "false"
+    },
+    {
+      "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Internal\/Networking\/Params\/ExchangeTokenParams.swift",
+      "kind": "StringLiteral",
+      "offset": 432,
+      "length": 16,
+      "value": "\"exchange_token\""
     },
     {
       "filePath": "\/Users\/armendh\/futurae-ios-sdk-v1\/FuturaeKit\/Libraries\/RxSwift\/Traits\/Infallible\/Infallible+Operators.swift",
